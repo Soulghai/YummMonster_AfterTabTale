@@ -1,0 +1,2 @@
+/manifest/application/activity[@android:name="com.hyprmx.android.sdk.activity.HyprMXWebTrafficActivity"]
+/manifest/application/activity[@android:name="com.hyprmx.android.sdk.activity.HyprMXOfferViewerActivity"]

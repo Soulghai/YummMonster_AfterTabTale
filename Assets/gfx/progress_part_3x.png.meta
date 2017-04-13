@@ -1,0 +1,604 @@
+fileFormatVersion: 2
+guid: 67388aa50ac494acfa0622967fccf274
+timeCreated: 1483905610
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: progress_part_3x_0
+    21300002: progress_part_3x_1
+    21300004: progress_part_3x_3
+    21300006: progress_part_3x_4
+    21300008: progress_part_3x_5
+    21300010: progress_part_3x_7
+    21300012: progress_part_3x_9
+    21300014: progress_part_3x_11
+    21300016: progress_part_3x_13
+    21300018: progress_part_3x_19
+    21300020: progress_part_3x_21
+    21300022: progress_part_3x_22
+    21300024: progress_part_3x_29
+    21300026: progress_part_3x_34
+    21300028: progress_part_3x_46
+    21300030: progress_part_3x_50
+    21300032: progress_part_3x_54
+    21300034: progress_part_3x_58
+    21300036: progress_part_3x_70
+    21300038: progress_part_3x_74
+    21300040: progress_part_3x_78
+    21300042: progress_part_3x_82
+    21300044: progress_part_3x_98
+    21300046: progress_part_3x_103
+    21300048: progress_part_3x_109
+    21300050: progress_part_3x_111
+    21300052: progress_part_3x_133
+    21300054: progress_part_3x_136
+    21300056: progress_part_3x_137
+    21300058: progress_part_3x_140
+    21300060: progress_part_3x_158
+    21300062: progress_part_3x_159
+    21300064: progress_part_3x_162
+    21300066: progress_part_3x_163
+    21300068: progress_part_3x_177
+    21300070: progress_part_3x_180
+    21300072: progress_part_3x_181
+    21300074: progress_part_3x_182
+    21300076: progress_part_3x_183
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 1
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 200
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: progress_part_3x_0
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 4006
+        width: 101
+        height: 83
+      alignment: 9
+      pivot: {x: 0.65020925, y: 0.51455134}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: progress_part_3x_1
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 3976
+        width: 136
+        height: 113
+      alignment: 9
+      pivot: {x: 0.63322586, y: 0.5427592}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: progress_part_3x_3
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 3935
+        width: 174
+        height: 154
+      alignment: 9
+      pivot: {x: 0.6110726, y: 0.523531}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: progress_part_3x_4
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 3897
+        width: 220
+        height: 192
+      alignment: 9
+      pivot: {x: 0.6207914, y: 0.5188739}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: progress_part_3x_5
+      rect:
+        serializedVersion: 2
+        x: 659
+        y: 3891
+        width: 210
+        height: 198
+      alignment: 9
+      pivot: {x: 0.6380473, y: 0.49390018}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: progress_part_3x_7
+      rect:
+        serializedVersion: 2
+        x: 873
+        y: 3885
+        width: 204
+        height: 204
+      alignment: 9
+      pivot: {x: 0.62434417, y: 0.45855233}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: progress_part_3x_9
+      rect:
+        serializedVersion: 2
+        x: 1081
+        y: 3881
+        width: 216
+        height: 208
+      alignment: 9
+      pivot: {x: 0.64539707, y: 0.4419274}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: progress_part_3x_11
+      rect:
+        serializedVersion: 2
+        x: 1303
+        y: 3883
+        width: 244
+        height: 206
+      alignment: 9
+      pivot: {x: 0.6534644, y: 0.4179095}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: progress_part_3x_13
+      rect:
+        serializedVersion: 2
+        x: 1553
+        y: 3868
+        width: 266
+        height: 221
+      alignment: 9
+      pivot: {x: 0.66801786, y: 0.45080954}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: progress_part_3x_19
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 3631
+        width: 287
+        height: 232
+      alignment: 9
+      pivot: {x: 0.68939424, y: 0.48438028}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: progress_part_3x_21
+      rect:
+        serializedVersion: 2
+        x: 301
+        y: 3616
+        width: 318
+        height: 245
+      alignment: 9
+      pivot: {x: 0.6747298, y: 0.52958184}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: progress_part_3x_22
+      rect:
+        serializedVersion: 2
+        x: 625
+        y: 3603
+        width: 350
+        height: 258
+      alignment: 9
+      pivot: {x: 0.6587545, y: 0.55150044}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: progress_part_3x_29
+      rect:
+        serializedVersion: 2
+        x: 1367
+        y: 3590
+        width: 402
+        height: 271
+      alignment: 9
+      pivot: {x: 0.6262001, y: 0.6025174}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: progress_part_3x_34
+      rect:
+        serializedVersion: 2
+        x: 981
+        y: 3592
+        width: 378
+        height: 269
+      alignment: 9
+      pivot: {x: 0.64699495, y: 0.5718463}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: progress_part_3x_46
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3295
+        width: 428
+        height: 286
+      alignment: 9
+      pivot: {x: 0.6185336, y: 0.6604926}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: progress_part_3x_50
+      rect:
+        serializedVersion: 2
+        x: 433
+        y: 3303
+        width: 438
+        height: 280
+      alignment: 9
+      pivot: {x: 0.59928066, y: 0.6811872}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: progress_part_3x_54
+      rect:
+        serializedVersion: 2
+        x: 877
+        y: 3303
+        width: 450
+        height: 280
+      alignment: 9
+      pivot: {x: 0.59394884, y: 0.7329546}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: progress_part_3x_58
+      rect:
+        serializedVersion: 2
+        x: 1333
+        y: 3291
+        width: 464
+        height: 292
+      alignment: 9
+      pivot: {x: 0.5833046, y: 0.7440654}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: progress_part_3x_70
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 2981
+        width: 471
+        height: 304
+      alignment: 9
+      pivot: {x: 0.5769372, y: 0.75429815}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: progress_part_3x_74
+      rect:
+        serializedVersion: 2
+        x: 485
+        y: 2969
+        width: 478
+        height: 316
+      alignment: 9
+      pivot: {x: 0.5758105, y: 0.7637538}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: progress_part_3x_78
+      rect:
+        serializedVersion: 2
+        x: 968
+        y: 2959
+        width: 484
+        height: 326
+      alignment: 9
+      pivot: {x: 0.57487047, y: 0.76677907}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: progress_part_3x_82
+      rect:
+        serializedVersion: 2
+        x: 1459
+        y: 2948
+        width: 488
+        height: 337
+      alignment: 9
+      pivot: {x: 0.56930643, y: 0.7831611}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: progress_part_3x_98
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 2579
+        width: 492
+        height: 362
+      alignment: 9
+      pivot: {x: 0.57119817, y: 0.78696305}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: progress_part_3x_103
+      rect:
+        serializedVersion: 2
+        x: 503
+        y: 2559
+        width: 492
+        height: 382
+      alignment: 9
+      pivot: {x: 0.5736533, y: 0.79091144}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: progress_part_3x_109
+      rect:
+        serializedVersion: 2
+        x: 1001
+        y: 2537
+        width: 492
+        height: 404
+      alignment: 9
+      pivot: {x: 0.5785634, y: 0.79599935}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: progress_part_3x_111
+      rect:
+        serializedVersion: 2
+        x: 1499
+        y: 2517
+        width: 492
+        height: 424
+      alignment: 9
+      pivot: {x: 0.57610863, y: 0.80197895}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: progress_part_3x_133
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 2121
+        width: 491
+        height: 392
+      alignment: 9
+      pivot: {x: 0.5811837, y: 0.78040856}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: progress_part_3x_136
+      rect:
+        serializedVersion: 2
+        x: 503
+        y: 2105
+        width: 488
+        height: 408
+      alignment: 9
+      pivot: {x: 0.584158, y: 0.784215}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: progress_part_3x_137
+      rect:
+        serializedVersion: 2
+        x: 996
+        y: 2087
+        width: 483
+        height: 426
+      alignment: 9
+      pivot: {x: 0.58752996, y: 0.78921896}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: progress_part_3x_140
+      rect:
+        serializedVersion: 2
+        x: 1483
+        y: 2071
+        width: 478
+        height: 449
+      alignment: 9
+      pivot: {x: 0.5934997, y: 0.7824745}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: progress_part_3x_158
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 1607
+        width: 468
+        height: 458
+      alignment: 9
+      pivot: {x: 0.5980785, y: 0.7980227}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: progress_part_3x_159
+      rect:
+        serializedVersion: 2
+        x: 479
+        y: 1589
+        width: 458
+        height: 476
+      alignment: 9
+      pivot: {x: 0.61076945, y: 0.79944104}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: progress_part_3x_162
+      rect:
+        serializedVersion: 2
+        x: 943
+        y: 1573
+        width: 446
+        height: 493
+      alignment: 9
+      pivot: {x: 0.62187487, y: 0.8038162}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: progress_part_3x_163
+      rect:
+        serializedVersion: 2
+        x: 1395
+        y: 1665
+        width: 434
+        height: 401
+      alignment: 9
+      pivot: {x: 0.6363776, y: 0.7530295}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: progress_part_3x_177
+      rect:
+        serializedVersion: 2
+        x: 1624
+        y: 1338
+        width: 260
+        height: 229
+      alignment: 9
+      pivot: {x: 0.624484, y: 0.5227962}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: progress_part_3x_180
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 1145
+        width: 422
+        height: 422
+      alignment: 9
+      pivot: {x: 0.64914405, y: 0.76132363}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: progress_part_3x_181
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 1165
+        width: 394
+        height: 402
+      alignment: 9
+      pivot: {x: 0.6907926, y: 0.738939}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: progress_part_3x_182
+      rect:
+        serializedVersion: 2
+        x: 911
+        y: 1147
+        width: 280
+        height: 420
+      alignment: 9
+      pivot: {x: 0.56711817, y: 0.7485863}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: progress_part_3x_183
+      rect:
+        serializedVersion: 2
+        x: 1269
+        y: 1131
+        width: 283
+        height: 436
+      alignment: 9
+      pivot: {x: 0.5737848, y: 0.7514368}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: UI
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,10 @@
+{
+    "group": "psdk",
+    "libs": [],
+    "frameworks": [],
+    "headerpaths": [],                    
+    "files": ["Banners.framework"],
+    "folders": [],
+    "excludes": ["^.*.DS_Store$","^.*.meta$", "^.*.mdown^", "^.*.pdf$", "^.*.svn$"],
+    "buildSettings": { 
+    }}

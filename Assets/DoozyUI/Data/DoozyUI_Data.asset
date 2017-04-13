@@ -1,0 +1,121 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8554838fbdfd5c44f9a3cfcddb1a5a7a, type: 3}
+  m_Name: DoozyUI_Data
+  m_EditorClassIdentifier: 
+  elementNames:
+  - elementName: ~Element Name~
+  - elementName: BtnAchievements
+  - elementName: BtnGameServices
+  - elementName: BtnGift
+  - elementName: BtnHaveNewSkin
+  - elementName: BtnLeaderboard
+  - elementName: BtnMoreGames
+  - elementName: BtnPlus
+  - elementName: BtnShare
+  - elementName: BtnSkin1
+  - elementName: BtnSkin10
+  - elementName: BtnSkin11
+  - elementName: BtnSkin12
+  - elementName: BtnSkin2
+  - elementName: BtnSkin3
+  - elementName: BtnSkin4
+  - elementName: BtnSkin5
+  - elementName: BtnSkin6
+  - elementName: BtnSkin7
+  - elementName: BtnSkin8
+  - elementName: BtnSkin9
+  - elementName: BtnSkins
+  - elementName: BtnSound
+  - elementName: BtnStar
+  - elementName: BtnTier1
+  - elementName: BtnTier2
+  - elementName: BtnVideoAds
+  - elementName: elementBestScore
+  - elementName: elementCoins
+  - elementName: Hint
+  - elementName: InGameHud
+  - elementName: MainMenu
+  - elementName: MusicOFF
+  - elementName: MusicON
+  - elementName: NotificationsMenu
+  - elementName: PanelExit
+  - elementName: PanelExitBtnNo
+  - elementName: PanelExitBtnYes
+  - elementName: PauseMenu
+  - elementName: QuitMenu
+  - elementName: scrCoinsBtnBack
+  - elementName: ScreenCoins
+  - elementName: ScreenCoinsBtnNoAds
+  - elementName: ScreenCoinsBtnRestore
+  - elementName: ScreenCoinsBtnVideo
+  - elementName: ScreenMenu
+  - elementName: ScreenRate
+  - elementName: ScreenRateBtnBack
+  - elementName: ScreenRateBtnRate
+  - elementName: ScreenRevive
+  - elementName: ScreenReviveBtnBack
+  - elementName: ScreenReviveBtnRevive
+  - elementName: ScreenShare
+  - elementName: ScreenShareBtnBack
+  - elementName: ScreenShareBtnShare
+  - elementName: ScreenSkins
+  - elementName: scrMenuWowSlider
+  - elementName: scrSkinsBtnBack
+  - elementName: SettingsMenu
+  - elementName: ShopMenu
+  - elementName: SoundOFF
+  - elementName: SoundON
+  - elementName: Tab_1
+  - elementName: Tab_2
+  - elementName: Tab_3
+  elementSounds:
+  - soundName: ~No Sound~
+  - soundName: Cartoon Siren Whistle In
+  - soundName: Cartoon Siren Whistle Out
+  - soundName: Musical Accent Mallets Low Soft Music
+  - soundName: Musical Mouthpiece Fart Fast Music
+  - soundName: Musical Tonal Crescendo Music
+  - soundName: Notification Drum Hit Bongos Reverb Music
+  - soundName: Ride Cymbal Scrape Music
+  - soundName: Ring Blast Explosion
+  - soundName: Shop Close
+  - soundName: Shop Open
+  - soundName: Slide In
+  - soundName: Slide Out
+  - soundName: Slow Down Magic
+  - soundName: Speed Up Magic
+  - soundName: Swells Bells Music
+  buttonNames:
+  - buttonName: ~Button Name~
+  - buttonName: ApplicationQuit
+  - buttonName: Back
+  - buttonName: Button_1
+  - buttonName: Button_2
+  - buttonName: Button_3
+  - buttonName: GoToInGameHud
+  - buttonName: GoToMainMenu
+  - buttonName: GoToPauseMenu
+  - buttonName: GoToQuitMenu
+  - buttonName: GoToSettingsMenu
+  - buttonName: GoToShopMenu
+  - buttonName: ToggleMusic
+  - buttonName: TogglePause
+  - buttonName: ToggleSound
+  buttonSounds:
+  - onClickSound: ~No Sound~
+  - onClickSound: button
+  - onClickSound: Cartoon Car Toot-Toot
+  - onClickSound: Click Off
+  - onClickSound: Click On
+  - onClickSound: jump
+  - onClickSound: Pop
+  - onClickSound: Spring

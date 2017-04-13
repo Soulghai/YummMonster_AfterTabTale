@@ -1,0 +1,226 @@
+fileFormatVersion: 2
+guid: c3c3753ca0b734dc7ae96c2997f5a272
+timeCreated: 1480669282
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: bubble_bomb_boom_0
+    21300002: bubble_bomb_boom_1
+    21300004: bubble_bomb_boom_2
+    21300006: bubble_bomb_boom_3
+    21300008: bubble_bomb_boom_4
+    21300010: bubble_bomb_boom_5
+    21300012: bubble_bomb_boom_6
+    21300014: bubble_bomb_boom_7
+    21300016: bubble_bomb_boom_8
+    21300018: bubble_bomb_boom_10
+    21300020: bubble_bomb_boom_11
+    21300022: bubble_bomb_boom_12
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 1
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: bubble_bomb_boom_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 899
+        width: 135
+        height: 123
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bubble_bomb_boom_1
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 881
+        width: 165
+        height: 140
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bubble_bomb_boom_2
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 874
+        width: 188
+        height: 148
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bubble_bomb_boom_3
+      rect:
+        serializedVersion: 2
+        x: 497
+        y: 865
+        width: 204
+        height: 156
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bubble_bomb_boom_4
+      rect:
+        serializedVersion: 2
+        x: 703
+        y: 844
+        width: 216
+        height: 178
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bubble_bomb_boom_5
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 665
+        width: 227
+        height: 185
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bubble_bomb_boom_6
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 651
+        width: 237
+        height: 199
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bubble_bomb_boom_7
+      rect:
+        serializedVersion: 2
+        x: 471
+        y: 636
+        width: 244
+        height: 214
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bubble_bomb_boom_8
+      rect:
+        serializedVersion: 2
+        x: 718
+        y: 633
+        width: 245
+        height: 211
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bubble_bomb_boom_10
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 410
+        width: 247
+        height: 221
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bubble_bomb_boom_11
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 416
+        width: 247
+        height: 214
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bubble_bomb_boom_12
+      rect:
+        serializedVersion: 2
+        x: 503
+        y: 422
+        width: 250
+        height: 207
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: Effects
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

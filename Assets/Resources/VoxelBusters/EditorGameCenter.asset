@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f948d54487626463091054be543be75a, type: 3}
+  m_Name: EditorGameCenter
+  m_EditorClassIdentifier: 
+  m_registeredUsers:
+  - m_identifier: 4554
+    m_name: 4554
+    m_alias: 4554
+    m_image: {fileID: 0}
+    m_friends: []
+  m_leaderboardList:
+  - m_identifier: CgkIw5qwy5saEAIQAA
+    m_title: First
+    m_scores: []
+  m_achievementsList:
+  - m_identifier: saEAIQCA
+    m_percentageCompleted: 100
+    m_completed: 1
+    m_lastReportedDate: 02/01/2017 17:34:28
+  - m_identifier: saEAIQCg
+    m_percentageCompleted: 0.3
+    m_completed: 0
+    m_lastReportedDate: 02/01/2017 17:34:28
+  m_achievementDescriptionList:
+  - m_identifier: saEAIQCA
+    m_title: Beginner
+    m_achievedDescription: Achieved description
+    m_unachievedDescription: Unachieved description
+    m_image: {fileID: 0}
+    m_maximumPoints: 1
+    m_isHidden: 0
+  - m_identifier: saEAIQCQ
+    m_title: MASTER
+    m_achievedDescription: Achieved description
+    m_unachievedDescription: Unachieved description
+    m_image: {fileID: 0}
+    m_maximumPoints: 1
+    m_isHidden: 0
+  - m_identifier: saEAIQCg
+    m_title: FieldOfCandies
+    m_achievedDescription: Achieved description
+    m_unachievedDescription: Unachieved description
+    m_image: {fileID: 0}
+    m_maximumPoints: 1
+    m_isHidden: 0
+  - m_identifier: saEAIQCw
+    m_title: EXPLOSIVE
+    m_achievedDescription: Achieved description
+    m_unachievedDescription: Unachieved description
+    m_image: {fileID: 0}
+    m_maximumPoints: 1
+    m_isHidden: 0
+  - m_identifier: saEAIQDA
+    m_title: COLLECTION
+    m_achievedDescription: Achieved description
+    m_unachievedDescription: Unachieved description
+    m_image: {fileID: 0}
+    m_maximumPoints: 1
+    m_isHidden: 0

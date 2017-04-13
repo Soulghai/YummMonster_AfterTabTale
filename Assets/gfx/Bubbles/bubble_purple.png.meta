@@ -1,0 +1,268 @@
+fileFormatVersion: 2
+guid: 521d433af3e6a470b8bc069867750f9f
+timeCreated: 1489064895
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: bubble_purple_0
+    21300002: bubble_purple_1
+    21300004: bubble_purple_2
+    21300006: bubble_purple_3
+    21300008: bubble_purple_4
+    21300010: bubble_purple_5
+    21300012: bubble_purple_6
+    21300014: bubble_purple_7
+    21300016: bubble_purple_8
+    21300018: bubble_purple_9
+    21300020: bubble_purple_10
+    21300022: bubble_purple_11
+    21300024: bubble_purple_12
+    21300026: bubble_purple_13
+    21300028: bubble_purple_14
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 1
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 150
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: bubble_purple_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 1813
+        width: 243
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bubble_purple_1
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 1814
+        width: 242
+        height: 231
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bubble_purple_2
+      rect:
+        serializedVersion: 2
+        x: 488
+        y: 1813
+        width: 244
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bubble_purple_3
+      rect:
+        serializedVersion: 2
+        x: 731
+        y: 1774
+        width: 234
+        height: 271
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bubble_purple_4
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 1471
+        width: 221
+        height: 301
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bubble_purple_5
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 1513
+        width: 216
+        height: 259
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bubble_purple_6
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 1540
+        width: 243
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bubble_purple_7
+      rect:
+        serializedVersion: 2
+        x: 685
+        y: 1540
+        width: 242
+        height: 233
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bubble_purple_8
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 1252
+        width: 248
+        height: 219
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bubble_purple_9
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 1239
+        width: 242
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bubble_purple_10
+      rect:
+        serializedVersion: 2
+        x: 495
+        y: 1238
+        width: 241
+        height: 233
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bubble_purple_11
+      rect:
+        serializedVersion: 2
+        x: 737
+        y: 1239
+        width: 242
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bubble_purple_12
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 917
+        width: 234
+        height: 321
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bubble_purple_13
+      rect:
+        serializedVersion: 2
+        x: 235
+        y: 873
+        width: 220
+        height: 365
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bubble_purple_14
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 922
+        width: 216
+        height: 317
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: Bubbles
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

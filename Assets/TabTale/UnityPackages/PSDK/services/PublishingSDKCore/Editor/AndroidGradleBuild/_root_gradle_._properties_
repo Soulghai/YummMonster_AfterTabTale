@@ -1,0 +1,6 @@
+compileSdkVer=23
+buildToolsVer=21.1.2
+minSdkVer=16
+googlePlayServicesPSDKVer=8.4.0
+
+psdkPublishingPath=/Users/israelp/gitrep/publishing/master/PublishingSDK

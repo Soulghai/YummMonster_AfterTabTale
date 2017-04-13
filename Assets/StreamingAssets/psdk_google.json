@@ -1,0 +1,178 @@
+{
+  "appShelf": {
+    "locations": [],
+    "serverDomain": "apptesting-appshelf.ttpsdk.info",
+    "included": true
+  },
+  "packages": {
+    "startapp": true,
+    "ttanalytics": true,
+    "vungle": true,
+    "admob": true,
+    "adcolony": true,
+    "inmobi": true,
+    "millennial": true,
+    "unityads": true,
+    "deltadna": false,
+    "hyprmx": true,
+    "facebook": false,
+    "flurry": true,
+    "applovin": true
+  },
+  "appsFlyer": {
+    "gcmProjectNumber": "",
+    "appsFlyerKey": "8MAzUC3B2BHYVi2uYVHaSd",
+    "sendIDFA": true,
+    "included": true
+  },
+  "splash": {
+    "images": [{
+      "imagepath": "Default.png",
+      "mintime": 2
+    }],
+    "included": false
+  },
+  "locationMgr": {
+    "sessionTime": 0,
+    "level": 0,
+    "locations": {
+      "sceneTransitions": {
+        "firstDisplayAtSession": 1,
+        "source": ["interstitial"],
+        "showEveryXDisplays": 1
+      },
+      "moreApps": {
+        "source": ["appShelf"],
+        "forceShow": true
+      },
+      "sessionStart": {
+        "firstDisplayAtSession": 1,
+        "source": ["chartboost"],
+        "showEveryXDisplays": 1
+      }
+    },
+    "gameTime": 0,
+    "included": true,
+    "sources": {
+      "appShelf": {"firstDisplayAtSession": 1},
+      "chartboost": {"firstDisplayAtSession": 1},
+      "promotionPage": {"firstDisplayAtSession": 1},
+      "interstitial": {"firstDisplayAtSession": 1}
+    },
+    "timeIntervalSequence": [
+      60,
+      120
+    ]
+  },
+  "global": {
+    "orientation": "portrait",
+    "store": "google",
+    "gameEngine": "unity",
+    "audienceMode": "non-children",
+    "language": "en",
+    "googlePlayLicenceKey": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxY4Sne6uJWXv46S8dYjlSisc+RtYZCATiEsP7TgQVsAfF1ev+mNzSv7XPcRt5U9ci7J5sEu6VegZwYWBf9wpN6yuiM3y619o1+Za/XTh7FoUaYvOR/UVzfUsgW1RORS5tS3+T7xi5NJ/NQ5ZM7/9ZDu+g93cmKbiDa1E9UK2Il0+MDGP3jsJ+6R9gF0yBrlQh591/F6ggz5NuAcD+rvvqUMBGIftIpytePZF7XXlInf+n4CN57LID0/Cqfc8ISG9doOmTN8v7Otsn0YO89GGbBnVa8c6Wrr6Q1MvHNeolUXUO4dvpgGACOHjFBz4V21mTemsO+kow2Ko+aNWa2vjawIDAQAB",
+    "sdkVersion": ""
+  },
+   "promotionPage": {
+    "serverDomain": "apptesting-promotion.ttpsdk.info",
+    "modeInfo": {
+      "modes": {
+        "manual": 100,
+        "test": 0,
+        "controlled": 0
+      },
+      "expiry": "2999-12-31T23:59:59Z"
+    },
+    "included": true
+  },
+  "rewardedAds": {
+    "adColonyZoneId": "vza6c557068df440a396",
+    "hyprMxPropertyId": "",
+    "fyberClientSecurityToken": "",
+    "flurryVideoSpace": "",
+    "hyprMxDistributorId": "",
+    "admobRVMediationKey": "",
+    "adColonyApplicationId": "app4e64bca791a442bb92",
+    "fyberAppId": "",
+    "included": true,
+    "unityAdsZoneId": "rewardedVideo",
+    "vungleApplicationId": "586e4aa3dc1ad9117a000a5b",
+    "unityAdsGameId": "1256291"
+  },
+  "interstitial": {
+    "adsForChildDirectedTreatment": false,
+    "included": true,
+    "interstitialsProviders": [{
+      "adKey": "ca-app-pub-6381704506941825/7751345792",
+      "provider": "admob"
+    }]
+  },
+  "referrals": {},
+  "analytics": {
+    "gameAnalyticsServiceType": [
+      "flurry",
+      "deltaDna"
+    ],
+    "psdkAnalyticsServiceType": ["flurry"],
+    "flurry": {
+      "enableFlurryCrashReports": true,
+      "key": "2YGHRGQJ775MWRNGM7NN"
+    },
+    "ttAnalytics": {
+      "interval": 60,
+      "sendAndroidAdvertisersId": true
+    },
+    "included": true,
+    "deltaDna": {
+      "collectUrl": "",
+      "engageUrl": "",
+      "activateUsers": 0,
+      "key": ""
+    }
+  },
+  "gsdkSocialNetworks": {"included": false},
+  "gameLevelData": {"included": false},
+  "chartboost": {
+    "chartboostId": "586e4473f6cd45125e7b0030",
+    "included": true,
+    "chartboostEnableInterstitial": true,
+    "chartboostSignature": "0a151c1808d505d4f5f8ed11f2fdada1c9178da0"
+  },
+  "purchaseValidation": {
+    "active": false,
+    "timeoutInterval": 5,
+    "responseInCaseServerFailure": false
+  },
+  "socialGame": {
+    "achievementsIds": {},
+    "included": false,
+    "leaderboardsIds": {}
+  },
+  "experiment": {},
+  "configurationFetcher": {
+    "serverDomain": "apptesting-gateway.ttpsdk.info",
+    "included": true
+  },
+  "crashMonitoringTool": {
+    "hockeyAppKey": "",
+    "included": true
+  },
+  "externalConfiguration": {
+    "buyMePopupEnabled": true,
+    "rateMePopupEnabled": true
+  },
+  "banners": {
+    "bannersProviders": [{
+      "adKey": "ca-app-pub-6381704506941825/9786482193",
+      "provider": "admob"
+    }],
+    "useSmartBanners": false,
+    "adsForChildDirectedTreatment": false,
+    "showBannerAds": true,
+    "scaleScene": false,
+    "showAdsAtTop": false,
+    "showBlockingAdsView": false,
+    "adDisplayTime": 30,
+    "included": true
+  }
+}

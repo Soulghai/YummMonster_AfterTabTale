@@ -1,0 +1,212 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89aa10cdd49e949efad7c366f36fa247, type: 3}
+  m_Name: NPSettings
+  m_EditorClassIdentifier: 
+  m_lastOpenedDateString: 03/20/2017 00:00:00
+  m_applicationSettings:
+    m_supportedFeatures:
+      m_usesAddressBook: 0
+      m_usesBilling: 1
+      m_usesCloudServices: 0
+      m_usesGameServices: 1
+      m_mediaLibrary:
+        value: 0
+        usesCamera: 1
+        usesPhotoAlbum: 1
+      m_usesNetworkConnectivity: 0
+      m_notificationService:
+        value: 0
+        usesLocalNotification: 1
+        usesRemoteNotification: 1
+      m_usesSharing: 1
+      m_usesTwitter: 0
+      m_usesWebView: 0
+    m_iOS:
+      m_storeIdentifier: 1192223024
+      m_addressBookUsagePermissionDescription: $(PRODUCT_NAME) uses contacts
+      m_cameraUsagePermissionDescription: $(PRODUCT_NAME) uses camera
+      m_photoAlbumUsagePermissionDescription: $(PRODUCT_NAME) uses photo library
+    m_android:
+      m_storeIdentifier: com.crazylabs.monsteryumm
+    m_supportedAddonServices:
+      m_usesSoomlaGrow: 0
+      m_usesOneSignal: 0
+  m_utilitySettings:
+    m_rateMyApp:
+      m_isEnabled: 0
+      m_title: Rate My App
+      m_message: If you enjoy using Native Plugin would you mind taking a moment to
+        rate it? It wont take more than a minute. Thanks for your support
+      m_showFirstPromptAfterHours: 2
+      m_successivePromptAfterHours: 6
+      m_successivePromptAfterLaunches: 5
+      m_rateItButtonText: Rate It Now
+      m_remindMeLaterButtonText: Remind Me Later
+      m_dontAskButtonText: No, Thanks
+  m_billingSettings:
+    m_products:
+    - m_name: 200Coins
+      m_description: +200 coins
+      m_isConsumable: 1
+      m_price: 0
+      m_productIDs:
+      - m_platform: 0
+        m_value: com.crazylabs.monsteryumm.stack.coins
+      - m_platform: 1
+        m_value: com.crazylabs.monsteryumm.stack.coins
+      - m_platform: 2
+        m_value: com.crazylabs.monsteryumm.stack.coins
+      m_developerPayload: 
+      m_iosProductId: 
+      m_androidProductId: 
+    - m_name: 1000Coins
+      m_description: +1000 coins
+      m_isConsumable: 1
+      m_price: 0
+      m_productIDs:
+      - m_platform: 0
+        m_value: com.crazylabs.monsteryumm.heap.coins
+      - m_platform: 1
+        m_value: com.crazylabs.monsteryumm.heap.coins
+      - m_platform: 2
+        m_value: com.crazylabs.monsteryumm.heap.coins
+      m_developerPayload: 
+      m_iosProductId: 
+      m_androidProductId: 
+    - m_name: NoAds
+      m_description: No Ads
+      m_isConsumable: 0
+      m_price: 0
+      m_productIDs:
+      - m_platform: 0
+        m_value: com.crazylabs.monsteryumm.noads
+      - m_platform: 1
+        m_value: com.crazylabs.monsteryumm.noads
+      - m_platform: 2
+        m_value: com.crazylabs.monsteryumm.noads
+      m_developerPayload: 
+      m_iosProductId: 
+      m_androidProductId: 
+    m_iOS:
+      m_supportsReceiptValidation: 1
+      m_validateUsingServerURL: 
+    m_android:
+      m_publicKey: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxY4Sne6uJWXv46S8dYjlSisc+RtYZCATiEsP7TgQVsAfF1ev+mNzSv7XPcRt5U9ci7J5sEu6VegZwYWBf9wpN6yuiM3y619o1+Za/XTh7FoUaYvOR/UVzfUsgW1RORS5tS3+T7xi5NJ/NQ5ZM7/9ZDu+g93cmKbiDa1E9UK2Il0+MDGP3jsJ+6R9gF0yBrlQh591/F6ggz5NuAcD+rvvqUMBGIftIpytePZF7XXlInf+n4CN57LID0/Cqfc8ISG9doOmTN8v7Otsn0YO89GGbBnVa8c6Wrr6Q1MvHNeolUXUO4dvpgGACOHjFBz4V21mTemsO+kow2Ko+aNWa2vjawIDAQAB
+  m_gameServicesSettings:
+    m_leaderboardMetadataCollection:
+    - m_globalID: First
+      m_platformIDs:
+      - m_platform: 0
+        m_value: CgkIw5qwy5saEAIQBw
+      - m_platform: 1
+        m_value: CgkIw5qwy5saEAIQBw
+      - m_platform: 2
+        m_value: CgkIw5qwy5saEAIQBw
+    m_achievementMetadataCollection:
+    - m_globalID: Beginner
+      m_platformIDs:
+      - m_platform: 0
+        m_value: CgkIw5qwy5saEAIQCA
+      - m_platform: 1
+        m_value: CgkIw5qwy5saEAIQCA
+      - m_platform: 2
+        m_value: CgkIw5qwy5saEAIQCA
+      m_noOfSteps: 1
+    - m_globalID: MASTER
+      m_platformIDs:
+      - m_platform: 0
+        m_value: CgkIw5qwy5saEAIQCQ
+      - m_platform: 1
+        m_value: CgkIw5qwy5saEAIQCQ
+      - m_platform: 2
+        m_value: CgkIw5qwy5saEAIQCQ
+      m_noOfSteps: 1
+    - m_globalID: FieldOfCandies
+      m_platformIDs:
+      - m_platform: 0
+        m_value: CgkIw5qwy5saEAIQCg
+      - m_platform: 1
+        m_value: CgkIw5qwy5saEAIQCg
+      - m_platform: 2
+        m_value: CgkIw5qwy5saEAIQCg
+      m_noOfSteps: 1
+    - m_globalID: EXPLOSIVE
+      m_platformIDs:
+      - m_platform: 0
+        m_value: CgkIw5qwy5saEAIQCw
+      - m_platform: 1
+        m_value: CgkIw5qwy5saEAIQCw
+      - m_platform: 2
+        m_value: CgkIw5qwy5saEAIQCw
+      m_noOfSteps: 1
+    - m_globalID: COLLECTION
+      m_platformIDs:
+      - m_platform: 0
+        m_value: CgkIw5qwy5saEAIQDA
+      - m_platform: 1
+        m_value: CgkIw5qwy5saEAIQDA
+      - m_platform: 2
+        m_value: CgkIw5qwy5saEAIQDA
+      m_noOfSteps: 1
+    - m_globalID: Newskin
+      m_platformIDs:
+      - m_platform: 0
+        m_value: CgkIw5qwy5saEAIQAQ
+      - m_platform: 1
+        m_value: CgkIw5qwy5saEAIQAQ
+      - m_platform: 2
+        m_value: CgkIw5qwy5saEAIQAQ
+      m_noOfSteps: 1
+    - m_globalID: MULTI_PULTI
+      m_platformIDs:
+      - m_platform: 0
+        m_value: CgkIw5qwy5saEAIQAg
+      - m_platform: 1
+        m_value: CgkIw5qwy5saEAIQAg
+      - m_platform: 2
+        m_value: CgkIw5qwy5saEAIQAg
+      m_noOfSteps: 1
+    - m_globalID: MISS_CLICK
+      m_platformIDs:
+      - m_platform: 0
+        m_value: CgkIw5qwy5saEAIQBQ
+      - m_platform: 1
+        m_value: CgkIw5qwy5saEAIQBQ
+      - m_platform: 2
+        m_value: CgkIw5qwy5saEAIQBQ
+      m_noOfSteps: 1
+    - m_globalID: GET_MAX
+      m_platformIDs:
+      - m_platform: 0
+        m_value: CgkIw5qwy5saEAIQAw
+      - m_platform: 1
+        m_value: CgkIw5qwy5saEAIQAw
+      - m_platform: 2
+        m_value: CgkIw5qwy5saEAIQAw
+      m_noOfSteps: 1
+    - m_globalID: THREE_JUMPS
+      m_platformIDs:
+      - m_platform: 0
+        m_value: CgkIw5qwy5saEAIQBA
+      - m_platform: 1
+        m_value: CgkIw5qwy5saEAIQBA
+      - m_platform: 2
+        m_value: CgkIw5qwy5saEAIQBA
+      m_noOfSteps: 1
+    m_iOS:
+      m_showDefaultAchievementCompletionBanner: 1
+    m_android:
+      m_playServicesApplicationID: 900759031107
+      m_serverClientID: 
+      m_showDefaultErrorDialogs: 1
+    m_achievementIDCollection: []
+    m_leaderboardIDCollection: []

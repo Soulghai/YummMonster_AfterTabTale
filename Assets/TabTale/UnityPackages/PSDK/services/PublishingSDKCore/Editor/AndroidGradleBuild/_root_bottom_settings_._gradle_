@@ -1,0 +1,67 @@
+
+ext.psdkDebug = false
+if (psdkDebug) {
+
+    include ':publishingsdkcore'
+    include ':configurationfetcher'
+    include ':psdkunity'
+    include ':rewardedads'
+    //include ':deltadnaanalytics'
+    //include ':millennialcustomadaptor'
+    //include ':millennialadsproviders'
+    //include ':monetization'
+    //include ':banners'
+    //include ':ttanalytics'
+    //include ':startappadsproviders', ':inmobiadsproviders', ':applovinadsproviders'
+    //include ':inmobicustomadaptor', ':applovincustomadaptor', ':startappcustomadaptor'
+    //include ':psdkanalytics'
+    //include ':ttflurryanalytics', ':ttanalytics'
+    //include ':analyticstestapp'
+    //include ':gameleveldata', ':runtimeconfig'
+    //include ':psdkyoutube'
+    //include ':psdkgoogleanalytics'
+    //include ':splash'
+    //include ':rewardedadstestapp', ':bannerstestapp', ':publishingtestapp'
+    //include ':psdkappsflyer'
+    //include ':ttunity'
+
+
+    def psdkProjectDirs = [
+            "publishingsdkcore":"$psdkPublishingPath/PublishingSDKCore/android",
+            "configurationfetcher":"$psdkPublishingPath/ConfigurationFetcher/android/ConfigurationFetcher",
+            "rewardedads":"$psdkPublishingPath/RewardedAds/android/RewardedAds",
+            "rewardedadstestapp":"$psdkPublishingPath/RewardedAds/android/RewardedAdsTestApp",
+            "monetization":"$psdkPublishingPath/Monetization/android/Monetization",
+            "banners":"$psdkPublishingPath/Banners/android/Banners",
+            "bannerstestapp":"$psdkPublishingPath/Banners/android/BannersTest",
+            "startappadsproviders":"$psdkPublishingPath/Banners/android/AdsProviders/StartAppAdsProviders",
+            "millennialadsproviders":"$psdkPublishingPath/Banners/android/AdsProviders/MillennialAdsProviders",
+            "inmobiadsproviders":"$psdkPublishingPath/Banners/android/AdsProviders/InMobiAdsProviders",
+            "applovinadsproviders":"$psdkPublishingPath/Banners/android/AdsProviders/AppLovinAdsProviders",
+            "inmobicustomadaptor":"$psdkPublishingPath/Banners/android/CustomAdaptors/InMobiCustomAdaptor",
+            "applovincustomadaptor":"$psdkPublishingPath/Banners/android/CustomAdaptors/ApplovinCustomAdaptor",
+            "startappcustomadaptor":"$psdkPublishingPath/Banners/android/CustomAdaptors/StartAppCustomAdaptor",
+            "millennialcustomadaptor":"$psdkPublishingPath/Banners/android/CustomAdaptors/MillennialCustomAdaptor",
+            "psdkanalytics":"$psdkPublishingPath/Analytics/android/PSDKAnalytics",
+            "gameleveldata":"$psdkPublishingPath/GameLevelData/android",
+            "runtimeconfig":"$psdkPublishingPath/RuntimeConfig/android/RuntimeConfig",
+            "psdkyoutube":"$psdkPublishingPath/PSDKYoutube/android/PSDKYoutube",
+            "psdkgoogleanalytics":"$psdkPublishingPath/PSDKGoogleAnalytics/android/PSDKGoogleAnalytics",
+            "splash":"$psdkPublishingPath/Splash/android/Splash",
+            "publishingtestapp":"$psdkPublishingPath/PublishingTestApp/android",
+            "psdkappsflyer":"$psdkPublishingPath/AppsFlyer/android/PSDKAppsFlyer",
+            "psdkunity":"$psdkPublishingPath/Unity/android/Unity",
+            "ttflurryanalytics":"$psdkPublishingPath/Analytics/android/Agents/FlurryAnalytics",
+            "ttanalytics":"$psdkPublishingPath/Analytics/android/Agents/TTAnalytics",
+            "deltadnaanalytics":"$psdkPublishingPath/Analytics/android/Agents/DeltaDNAAnalytics",
+            "analyticstestapp":"$psdkPublishingPath/Analytics/android/PSDKAnalyticsTestApp",
+            "ttunity":"$psdkPublishingPath/PublishingSDKCore/unity/NativeActivityWrapperAndroidProject/ttunity"
+    ]
+
+
+    for ( pd in psdkProjectDirs ) {
+        if (settings.findProject(":${pd.key}")) {
+            project(":${pd.key}").projectDir = file("${pd.value}")
+        }
+    }
+}
