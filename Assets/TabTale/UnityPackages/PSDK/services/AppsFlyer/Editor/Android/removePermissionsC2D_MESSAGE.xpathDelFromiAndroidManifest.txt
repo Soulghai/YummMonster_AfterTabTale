@@ -1,2 +1,0 @@
-/manifest/uses-permission[contains(@android:name,'permission.C2D_MESSAGE')]
-/manifest/permission[contains(@android:name,'permission.C2D_MESSAGE')]

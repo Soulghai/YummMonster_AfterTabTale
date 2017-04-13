@@ -1,1 +1,0 @@
-PSDKAnalytics:3.8.1.2.2,PSDKAppsFlyer:3.8.1.2.2,PSDKBanners:3.8.1.2.2,PSDKCore:3.8.1.2.2,PSDKCrashTool:3.8.1.2.2,PSDKGooglePlayServices:3.8.1.2.2,PSDKMonetization:3.8.1.2.2,PSDKRewardedAds:3.8.1.2.2

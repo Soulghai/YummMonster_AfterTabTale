@@ -1,13 +1,10 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 
-using TabTale.Plugins.PSDK;
-
 public class FlurryEvents : MonoBehaviour 
 {
-	private static IPsdkAnalytics _analytics;
+	/*private static IPsdkAnalytics _analytics;
 	public static IPsdkAnalytics Analytics
 	{
 		get
@@ -17,18 +14,18 @@ public class FlurryEvents : MonoBehaviour
 
 			return _analytics;
 		}
-	}
+	}*/
 
 	public static void LogEvent(FlurryEvent @event)
 	{
-		Analytics.LogEvent(@event.targets, @event.eventName, @event.Parameters, @event.timed);
+//		Analytics.LogEvent(@event.targets, @event.eventName, @event.Parameters, @event.timed);
 
 		D.Log ("LogEvent " + @event.eventName + " : " + PrintDictionary (@event.Parameters));
 	}
 
 	public static void EndLogEvent(FlurryEndEvent @event)
 	{
-		Analytics.EndLogEvent(@event.eventName, @event.Parameters);
+//		Analytics.EndLogEvent(@event.eventName, @event.Parameters);
 
 		D.Log ("EndLogEvent " + @event.eventName + " : " + PrintDictionary (@event.Parameters));
 	}
@@ -55,9 +52,9 @@ public class FlurryEvent
 
 	public Dictionary<string, object> Parameters {get;private set;}
 
-	public FlurryEvent(string eventName, bool timed = false) : this(AnalyticsTargets.ANALYTICS_TARGET_FLURRY, eventName, timed)
-	{
-	}
+//	public FlurryEvent(string eventName, bool timed = false) : this(AnalyticsTargets.ANALYTICS_TARGET_FLURRY, eventName, timed)
+//	{
+//	}
 
 	public FlurryEvent(long targets, string eventName, bool timed)
 	{

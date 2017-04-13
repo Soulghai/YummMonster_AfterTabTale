@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class ButtonSound : MonoBehaviour {
@@ -10,14 +8,14 @@ public class ButtonSound : MonoBehaviour {
 
 	void Awake()
 	{
-		PublishingService.Instance.OnEnableMusic += OnEnableMusic;
-		PublishingService.Instance.OnDisableMusic += OnDisableMusic;
+//		PublishingService.Instance.OnEnableMusic += OnEnableMusic;
+//		PublishingService.Instance.OnDisableMusic += OnDisableMusic;
 	}
 
 	void OnDestroy()
 	{
-		PublishingService.Instance.OnEnableMusic -= OnEnableMusic;
-		PublishingService.Instance.OnDisableMusic -= OnDisableMusic;
+//		PublishingService.Instance.OnEnableMusic -= OnEnableMusic;
+//		PublishingService.Instance.OnDisableMusic -= OnDisableMusic;
 	}
 
 	private void OnEnableMusic()

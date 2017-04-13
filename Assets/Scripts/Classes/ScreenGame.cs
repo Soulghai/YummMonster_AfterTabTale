@@ -174,16 +174,16 @@ public class ScreenGame : MonoBehaviour {
 	public void EndCurrentGame() {
 		if (!isScreenReviveDone) {
 			isScreenReviveDone = true;
-			if (PublishingService.Instance.IsRewardedVideoReady() && DefsGame.currentPointsCount >= 4) {
-				UIManager.ShowUiElement ("ScreenRevive");
-				UIManager.ShowUiElement ("ScreenReviveBtnRevive");
-				UIManager.ShowUiElement ("ScreenReviveBtnBack");
-				D.Log ("isScreenReviveDone"); 
-				Defs.PlaySound (sndShowScreen);
-
-				FlurryEventsManager.SendEvent ("RV_revive_impression");
-				return;
-			}
+//			if (PublishingService.Instance.IsRewardedVideoReady() && DefsGame.currentPointsCount >= 4) {
+//				UIManager.ShowUiElement ("ScreenRevive");
+//				UIManager.ShowUiElement ("ScreenReviveBtnRevive");
+//				UIManager.ShowUiElement ("ScreenReviveBtnBack");
+//				D.Log ("isScreenReviveDone");
+//				Defs.PlaySound (sndShowScreen);
+//
+//				FlurryEventsManager.SendEvent ("RV_revive_impression");
+//				return;
+//			}
 		}
 
 		if (!isScreenShareDone) {
@@ -219,9 +219,7 @@ public class ScreenGame : MonoBehaviour {
 
 		state = 6;
 
-
-
-		PublishingService.Instance.ShowSceneTransition();
+//		PublishingService.Instance.ShowSceneTransition();
 	}
 
 	void Candy_OnTurn ()
@@ -370,36 +368,36 @@ public class ScreenGame : MonoBehaviour {
 	public void Revive() {
 		FlurryEventsManager.SendEvent ("RV_revive");
 
-		if (!PublishingService.Instance.IsRewardedVideoReady())
-		{
-			NPBinding.UI.ShowAlertDialogWithSingleButton("Ads not available", "Check your Internet connection or try later!", "Ok", (string _buttonPressed) => {});
-			return;
-		}
-
-
-		//Defs.MuteSounds (true);
-		PublishingService.Instance.ShowRewardedVideo(isSuccess => {
-			if (isSuccess)
-			{
-				state = 2;
-				isNextLevel = true;
-				isGameOver = false;
-				isReviveUsed = true;
-				DefsGame.wowSlider.MakeX3 (1.1f);
-				bubbleField.Hide ();
-
-				HideReviveScreen();
-				Defs.PlaySound (sndGrab);
-
-				FlurryEventsManager.SendEvent ("RV_revive_complete");
-			}
-			else
-			{
-				HideReviveScreen();
-				state = 6;
-			}
-			//Defs.MuteSounds (false);
-		});
+//		if (!PublishingService.Instance.IsRewardedVideoReady())
+//		{
+//			NPBinding.UI.ShowAlertDialogWithSingleButton("Ads not available", "Check your Internet connection or try later!", "Ok", (string _buttonPressed) => {});
+//			return;
+//		}
+//
+//
+//		//Defs.MuteSounds (true);
+//		PublishingService.Instance.ShowRewardedVideo(isSuccess => {
+//			if (isSuccess)
+//			{
+//				state = 2;
+//				isNextLevel = true;
+//				isGameOver = false;
+//				isReviveUsed = true;
+//				DefsGame.wowSlider.MakeX3 (1.1f);
+//				bubbleField.Hide ();
+//
+//				HideReviveScreen();
+//				Defs.PlaySound (sndGrab);
+//
+//				FlurryEventsManager.SendEvent ("RV_revive_complete");
+//			}
+//			else
+//			{
+//				HideReviveScreen();
+//				state = 6;
+//			}
+//			//Defs.MuteSounds (false);
+//		});
 	}
 
 	public void Share() {

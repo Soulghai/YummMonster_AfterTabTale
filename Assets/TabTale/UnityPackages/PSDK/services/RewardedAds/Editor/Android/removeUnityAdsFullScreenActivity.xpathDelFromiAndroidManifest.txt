@@ -1,1 +1,0 @@
-/manifest/application/activity[@android:name="com.unity3d.ads.android.view.UnityAdsFullscreenActivity"]

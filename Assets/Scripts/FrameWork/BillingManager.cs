@@ -133,7 +133,7 @@ public class BillingManager : MonoBehaviour {
 							GameEvents.Send (OnAddCoinsVisual, 1000);
 							D.Log ("OnDidFinishTransaction() - 1000 coins (bought)");
 					} else if (_transaction.ProductIdentifier == NPSettings.Billing.Products [2].ProductIdentifier) {
-						PublishingService.Instance.DisableAdsPermanently();
+//						PublishingService.Instance.DisableAdsPermanently();
 
 						DefsGame.noAds = 1;
 						PlayerPrefs.SetInt ("noAds", DefsGame.noAds);
@@ -143,8 +143,8 @@ public class BillingManager : MonoBehaviour {
 					FlurryEventsManager.SendEvent ("iap_completed_<" + _transaction.ProductIdentifier + ">", DefsGame.screenCoins.prevScreenName);
 
 					BillingProduct product = NPBinding.Billing.GetStoreProduct(_transaction.ProductIdentifier);
-					if (product != null)
-						PublishingService.Instance.ReportPurchase(product.Price.ToString(), product.CurrencyCode);
+//					if (product != null)
+//						PublishingService.Instance.ReportPurchase(product.Price.ToString(), product.CurrencyCode);
 
 					return;
 				} else {
@@ -186,7 +186,7 @@ public class BillingManager : MonoBehaviour {
 					//if (_currentTransaction.ProductIdentifier == NPSettings.Billing.Products [0].ProductIdentifier) {
 						DefsGame.noAds = 1;
 						PlayerPrefs.SetInt ("noAds", DefsGame.noAds);
-						PublishingService.Instance.DisableAdsPermanently ();
+//						PublishingService.Instance.DisableAdsPermanently ();
 					//} 
 				}
 				Debug.Log("Product Identifier = "         + _currentTransaction.ProductIdentifier);

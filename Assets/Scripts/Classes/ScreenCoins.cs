@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using System;
 using DoozyUI;
 
@@ -41,17 +39,17 @@ public class ScreenCoins : MonoBehaviour {
 
 	void Awake() {
 		Invoke("InitialRvButtonUpdate", 0.5f);
-		PublishingService.Instance.OnRewardedVideoReadyChanged += IsVideoAdsAvailable;
+//		PublishingService.Instance.OnRewardedVideoReadyChanged += IsVideoAdsAvailable;
 	}
 
 
 	void OnDestroy() {
-		PublishingService.Instance.OnRewardedVideoReadyChanged -= IsVideoAdsAvailable;
+//		PublishingService.Instance.OnRewardedVideoReadyChanged -= IsVideoAdsAvailable;
 	}
 
 	void InitialRvButtonUpdate()
 	{
-		IsVideoAdsAvailable(PublishingService.Instance.IsRewardedVideoReady());
+//		IsVideoAdsAvailable(PublishingService.Instance.IsRewardedVideoReady());
 	}
 
 	void IsVideoAdsAvailable(bool _flag) {
@@ -88,25 +86,25 @@ public class ScreenCoins : MonoBehaviour {
 	}
 
 	public void BtnTier3() {
-		FlurryEventsManager.SendEvent ("RV_strawberries", "shop");
-			
-		if (!PublishingService.Instance.IsRewardedVideoReady())
-		{
-			NPBinding.UI.ShowAlertDialogWithSingleButton("Ads not available", "Check your Internet connection or try later!", "Ok", (string _buttonPressed) => {});
-			return;
-		}
-
-		FlurryEventsManager.SendEndEvent ("iap_shop_length");
-
-		//Defs.MuteSounds (true);
-		PublishingService.Instance.ShowRewardedVideo(isSuccess => {
-			if (isSuccess) {
-				GameEvents.Send(OnAddCoinsVisual, 25);
-				FlurryEventsManager.SendEvent ("RV_strawberries_complete", "shop");
-			}
-			//Defs.MuteSounds (false);
-			FlurryEventsManager.SendStartEvent ("iap_shop_length");
-		});
+//		FlurryEventsManager.SendEvent ("RV_strawberries", "shop");
+//
+//		if (!PublishingService.Instance.IsRewardedVideoReady())
+//		{
+//			NPBinding.UI.ShowAlertDialogWithSingleButton("Ads not available", "Check your Internet connection or try later!", "Ok", (string _buttonPressed) => {});
+//			return;
+//		}
+//
+//		FlurryEventsManager.SendEndEvent ("iap_shop_length");
+//
+//		//Defs.MuteSounds (true);
+//		PublishingService.Instance.ShowRewardedVideo(isSuccess => {
+//			if (isSuccess) {
+//				GameEvents.Send(OnAddCoinsVisual, 25);
+//				FlurryEventsManager.SendEvent ("RV_strawberries_complete", "shop");
+//			}
+//			//Defs.MuteSounds (false);
+//			FlurryEventsManager.SendStartEvent ("iap_shop_length");
+//		});
 	}
 
 	public void Show(string _prevScreenName) {

@@ -17,12 +17,12 @@ public class FlurryEventsManager : MonoBehaviour {
 
 	void Awake()
 	{
-		PublishingService.Instance.OnSceneTransitionShown += OnSceneTransitionShown;
+//		PublishingService.Instance.OnSceneTransitionShown += OnSceneTransitionShown;
 	}
 
 	void OnDestroy()
 	{
-		PublishingService.Instance.OnSceneTransitionShown -= OnSceneTransitionShown;
+//		PublishingService.Instance.OnSceneTransitionShown -= OnSceneTransitionShown;
 	}
 
 	private void OnSceneTransitionShown()
@@ -32,9 +32,9 @@ public class FlurryEventsManager : MonoBehaviour {
 
 	public static void AdShow()
 	{
-		FlurryEvent flurryEvent = new FlurryEvent("ad_show");
-		flurryEvent.AddParameter("game_time", GetTimeTotalInMin());
-		FlurryEvents.LogEvent(flurryEvent);
+//		FlurryEvent flurryEvent = new FlurryEvent("ad_show");
+//		flurryEvent.AddParameter("game_time", GetTimeTotalInMin());
+//		FlurryEvents.LogEvent(flurryEvent);
 	}
 
 	void OnApplicationPause (bool pauseStatus)
@@ -114,16 +114,16 @@ public class FlurryEventsManager : MonoBehaviour {
 	{
 		if (!coldSessionStarted)
 		{
-			if (FlurryEvents.Analytics != null)
-			{
-				if (GetRealSessionTime() > 0f){
-					SendEndSessionEvent ();
-				}
-				ResetRealSessionTime();
-
-				SendStartSesionEvent ();
-				coldSessionStarted = true;
-			}
+//			if (FlurryEvents.Analytics != null)
+//			{
+//				if (GetRealSessionTime() > 0f){
+//					SendEndSessionEvent ();
+//				}
+//				ResetRealSessionTime();
+//
+//				SendStartSesionEvent ();
+//				coldSessionStarted = true;
+//			}
 		}
 	}
 
@@ -180,25 +180,25 @@ public class FlurryEventsManager : MonoBehaviour {
 	//---------------------------
 
 	static public void SendEvent(string _eventName, string _origin = null, bool _isBalance = true, int _balanceAdd = 0) {
-		FlurryEvent flurryEvent = new FlurryEvent(_eventName);
-		if (_isBalance) {
-			flurryEvent.AddParameter ("strawberries_balance", GetBalance () + _balanceAdd);
-		}
-		flurryEvent.AddParameter("game_time", GetTimeTotalInMin());
-		if (_origin != null) flurryEvent.AddParameter("origin", _origin);
-
-		FlurryEvents.LogEvent (flurryEvent);
+//		FlurryEvent flurryEvent = new FlurryEvent(_eventName);
+//		if (_isBalance) {
+//			flurryEvent.AddParameter ("strawberries_balance", GetBalance () + _balanceAdd);
+//		}
+//		flurryEvent.AddParameter("game_time", GetTimeTotalInMin());
+//		if (_origin != null) flurryEvent.AddParameter("origin", _origin);
+//
+//		FlurryEvents.LogEvent (flurryEvent);
 	}
 		
 	static public void SendEventPlayed(bool revive, string fail_reason) {
-		FlurryEvent flurryEvent = new FlurryEvent("played");
-		flurryEvent.AddParameter("strawberries_balance", GetBalance());
-		flurryEvent.AddParameter("game_time", GetTimeTotalInMin());
-		flurryEvent.AddParameter("score", GetScore());
-		flurryEvent.AddParameter("revive", revive);
-		flurryEvent.AddParameter("fail_reason", fail_reason);
-
-		FlurryEvents.LogEvent (flurryEvent);
+//		FlurryEvent flurryEvent = new FlurryEvent("played");
+//		flurryEvent.AddParameter("strawberries_balance", GetBalance());
+//		flurryEvent.AddParameter("game_time", GetTimeTotalInMin());
+//		flurryEvent.AddParameter("score", GetScore());
+//		flurryEvent.AddParameter("revive", revive);
+//		flurryEvent.AddParameter("fail_reason", fail_reason);
+//
+//		FlurryEvents.LogEvent (flurryEvent);
 	}
 
 	static public void SendStartEvent(string _eventName) {
@@ -209,8 +209,8 @@ public class FlurryEventsManager : MonoBehaviour {
 					if (_eventName == "candy_shop_length") candyShopOpened = true;
 
 
-		FlurryEvent flurryEvent = new FlurryEvent(_eventName, true);
-		FlurryEvents.LogEvent (flurryEvent);
+//		FlurryEvent flurryEvent = new FlurryEvent(_eventName, true);
+//		FlurryEvents.LogEvent (flurryEvent);
 	}
 
 	static public void SendEndEvent(string _eventName, bool _onAppPaused = false) {
@@ -230,18 +230,18 @@ public class FlurryEventsManager : MonoBehaviour {
 	}
 
 	static private void SendStartSesionEvent() {
-		FlurryEvent flurryEvent = new FlurryEvent("session_start");
-		flurryEvent.AddParameter("strawberries_balance", GetBalance());
-
-		FlurryEvents.LogEvent (flurryEvent);
+//		FlurryEvent flurryEvent = new FlurryEvent("session_start");
+//		flurryEvent.AddParameter("strawberries_balance", GetBalance());
+//
+//		FlurryEvents.LogEvent (flurryEvent);
 	}
 
 	static public void SendEndSessionEvent() {
-		FlurryEvent flurryEvent = new FlurryEvent("session_end");
-		flurryEvent.AddParameter("strawberries_balance", GetBalance());
-		flurryEvent.AddParameter("session_time", TimeToSessionTime (GetRealSessionTime()));
-
-		FlurryEvents.LogEvent (flurryEvent);
+//		FlurryEvent flurryEvent = new FlurryEvent("session_end");
+//		flurryEvent.AddParameter("strawberries_balance", GetBalance());
+//		flurryEvent.AddParameter("session_time", TimeToSessionTime (GetRealSessionTime()));
+//
+//		FlurryEvents.LogEvent (flurryEvent);
 
 		ResetRealSessionTime ();
 	}

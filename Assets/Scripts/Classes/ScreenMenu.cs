@@ -57,12 +57,12 @@ public class ScreenMenu : MonoBehaviour {
 	void Awake() 
 	{
 		Invoke("InitialRvButtonUpdate", 0.5f);
-		PublishingService.Instance.OnRewardedVideoReadyChanged += IsVideoAdsAvailable;
+//		PublishingService.Instance.OnRewardedVideoReadyChanged += IsVideoAdsAvailable;
 	}
 
 	void OnDestroy() {
 		
-		PublishingService.Instance.OnRewardedVideoReadyChanged -= IsVideoAdsAvailable;
+//		PublishingService.Instance.OnRewardedVideoReadyChanged -= IsVideoAdsAvailable;
 	}
 
 	void OnEnable()
@@ -84,7 +84,7 @@ public class ScreenMenu : MonoBehaviour {
 
 	void InitialRvButtonUpdate()
 	{
-		IsVideoAdsAvailable(PublishingService.Instance.IsRewardedVideoReady());
+//		IsVideoAdsAvailable(PublishingService.Instance.IsRewardedVideoReady());
 	}
 
 	void IsVideoAdsAvailable(bool _flag) {
@@ -207,7 +207,7 @@ public class ScreenMenu : MonoBehaviour {
 		if (isWaitGiftTime) {
 			DateTime _currentDate = System.DateTime.UtcNow;
 			TimeSpan _difference = giftNextDate.Subtract (_currentDate);
-			if (_difference.TotalSeconds <= 0f) {
+			if ((_difference.TotalSeconds <= 0f) &&(DefsGame.currentScreen == DefsGame.SCREEN_GAME)){
 				isWaitGiftTime = false;
 				UIManager.ShowUiElement ("BtnGift");
 				FlurryEventsManager.SendEvent ("collect_prize_impression");
@@ -231,7 +231,7 @@ public class ScreenMenu : MonoBehaviour {
 
 	public void OnMoreAppsClicked()
 	{
-		PublishingService.Instance.ShowAppShelf();
+//		PublishingService.Instance.ShowAppShelf();
 		FlurryEventsManager.SendEvent ("more_games");
 	}
 
@@ -241,25 +241,25 @@ public class ScreenMenu : MonoBehaviour {
 
 		//Defs.MuteSounds (true);
 
-		if (!PublishingService.Instance.IsRewardedVideoReady())
-		{
-			NPBinding.UI.ShowAlertDialogWithSingleButton("Ads not available", "Check your Internet connection or try later!", "Ok", (string _buttonPressed) => {});
-			return;
-		}
-
-
-		PublishingService.Instance.ShowRewardedVideo (isSuccess => {
-			if (isSuccess) {
-				for (int i = 0; i < 25; i++) {
-					GameObject _coin = (GameObject)Instantiate (coin, Camera.main.ScreenToWorldPoint (videoAdsButton.transform.position), Quaternion.identity); 
-					Coin coinScript = _coin.GetComponent<Coin> ();
-					coinScript.MoveToEnd ();
-				}
-				FlurryEventsManager.SendEvent ("RV_strawberries_complete", "start_screen", true, 25);
-			}else {
-			}
-			//Defs.MuteSounds (false);
-		});
+//		if (!PublishingService.Instance.IsRewardedVideoReady())
+//		{
+//			NPBinding.UI.ShowAlertDialogWithSingleButton("Ads not available", "Check your Internet connection or try later!", "Ok", (string _buttonPressed) => {});
+//			return;
+//		}
+//
+//
+//		PublishingService.Instance.ShowRewardedVideo (isSuccess => {
+//			if (isSuccess) {
+//				for (int i = 0; i < 25; i++) {
+//					GameObject _coin = (GameObject)Instantiate (coin, Camera.main.ScreenToWorldPoint (videoAdsButton.transform.position), Quaternion.identity);
+//					Coin coinScript = _coin.GetComponent<Coin> ();
+//					coinScript.MoveToEnd ();
+//				}
+//				FlurryEventsManager.SendEvent ("RV_strawberries_complete", "start_screen", true, 25);
+//			}else {
+//			}
+//			//Defs.MuteSounds (false);
+//		});
 	}
 
 	public void RateUs() {
