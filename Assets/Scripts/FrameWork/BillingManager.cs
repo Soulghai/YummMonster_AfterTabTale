@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System;
 using VoxelBusters.NativePlugins;
 
@@ -29,7 +28,7 @@ public class BillingManager : MonoBehaviour {
 		// Deregister for callbacks
 		Billing.DidFinishRequestForBillingProductsEvent	-= OnDidFinishProductsRequest;
 		Billing.DidFinishProductPurchaseEvent	        -= OnDidFinishTransaction;
-		Billing.DidFinishRestoringPurchasesEvent		-= OnDidFinishRestoringPurchases;		
+		Billing.DidFinishRestoringPurchasesEvent		-= OnDidFinishRestoringPurchases;
 	}
 
 	private bool IsAvailable ()
@@ -57,11 +56,11 @@ public class BillingManager : MonoBehaviour {
 
 		// Handle response
 		if (_error != null)
-		{        
+		{
 			// Something went wrong
 		}
-		else 
-		{  
+		else
+		{
 			// Inject code to display received products
 			foreach (BillingProduct _product in _regProductsList) {
 				D.Log("Product Identifier = "         + _product.ProductIdentifier);
@@ -88,7 +87,7 @@ public class BillingManager : MonoBehaviour {
 
 	public void BuyTier1()
 	{
-		// Buy the consumable product using its general identifier. Expect a response either 
+		// Buy the consumable product using its general identifier. Expect a response either
 		// through ProcessPurchase or OnPurchaseFailed asynchronously.
 		FlurryEventsManager.dontSendLengthtEvent = true;
 		BuyItem(NPSettings.Billing.Products[0]);
@@ -97,7 +96,7 @@ public class BillingManager : MonoBehaviour {
 
 	public void BuyTier2()
 	{
-		// Buy the consumable product using its general identifier. Expect a response either 
+		// Buy the consumable product using its general identifier. Expect a response either
 		// through ProcessPurchase or OnPurchaseFailed asynchronously.
 		FlurryEventsManager.dontSendLengthtEvent = true;
 		BuyItem(NPSettings.Billing.Products[1]);
@@ -106,7 +105,7 @@ public class BillingManager : MonoBehaviour {
 
 	public void BuyNoAds()
 	{
-		// Buy the non-consumable product using its general identifier. Expect a response either 
+		// Buy the non-consumable product using its general identifier. Expect a response either
 		// through ProcessPurchase or OnPurchaseFailed asynchronously.
 		FlurryEventsManager.dontSendLengthtEvent = true;
 		BuyItem(NPSettings.Billing.Products[2]);
@@ -138,7 +137,7 @@ public class BillingManager : MonoBehaviour {
 						DefsGame.noAds = 1;
 						PlayerPrefs.SetInt ("noAds", DefsGame.noAds);
 						D.Log ("OnDidFinishTransaction() - NoAds (bought)");
-					} 
+					}
 
 					FlurryEventsManager.SendEvent ("iap_completed_<" + _transaction.ProductIdentifier + ">", DefsGame.screenCoins.prevScreenName);
 
@@ -176,7 +175,7 @@ public class BillingManager : MonoBehaviour {
 		Debug.Log(string.Format("Received restore purchases response. Error = ", _error));
 
 		if (_transactions != null)
-		{                
+		{
 			Debug.Log("Count of transaction information received = "+_transactions.Length.ToString());
 
 			foreach (BillingTransaction _currentTransaction in _transactions)
@@ -187,7 +186,7 @@ public class BillingManager : MonoBehaviour {
 						DefsGame.noAds = 1;
 						PlayerPrefs.SetInt ("noAds", DefsGame.noAds);
 //						PublishingService.Instance.DisableAdsPermanently ();
-					//} 
+					//}
 				}
 				Debug.Log("Product Identifier = "         + _currentTransaction.ProductIdentifier);
 				Debug.Log("Transaction State = "        + _currentTransaction.TransactionState.ToString());

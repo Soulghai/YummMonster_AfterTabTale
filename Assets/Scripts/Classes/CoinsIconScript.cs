@@ -1,15 +1,14 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 
 public class CoinsIconScript : MonoBehaviour {
 	public Text coinsText;
-	Image image;
+	//Image image;
 	//float startPosX;
 	// Use this for initialization
 	void Start () {
 		DefsGame.coinsIcon = this;
-		image = GetComponent<Image> ();
+		//image = GetComponent<Image> ();
 		//startPosX = transform.position.x;
 
 		//transform.position = new Vector3 (coinsText.transform.position.x - 65 + coinsText.preferredWidth, transform.position.y,  transform.position.z);

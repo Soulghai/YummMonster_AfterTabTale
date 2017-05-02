@@ -36,7 +36,7 @@ public class MyNativeShare : MonoBehaviour {
 
         //Application.CaptureScreenshot(ScreenshotName);
 
-//		Share(text,screenShotPath,_url);
+		Share(text,screenShotPath,_url);
     }
 
 	public void ShareClick() {

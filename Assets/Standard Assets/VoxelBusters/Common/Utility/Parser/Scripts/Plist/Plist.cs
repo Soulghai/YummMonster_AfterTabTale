@@ -190,7 +190,7 @@ namespace VoxelBusters.Utility
 						xmlWriter.WriteStartDocument(); 
 
 						// Add this only if we are saving it in property list format
-						xmlWriter.WriteDocType("plist", "-//Apple Computer//DTD PLIST 1.0//EN", "http://www.apple.com/DTDs/PropertyList-1.0.dtd", null);
+						xmlWriter.WriteDocType("plist", "-//Apple Computer//DTD PLIST 1.0//EN", "http://www.apple.com/DTDs/Plist-1.0.dtd", null);
 
 						// We are using format v1.0
 						xmlWriter.WriteStartElement("plist");

@@ -306,9 +306,9 @@ namespace VoxelBusters.NativePlugins
 
 			if(m_supportedFeatures.UsesGameServices)
 			{
-//				WriteUsesPermission(_xmlWriter:	_xmlWriter, 	
-//					                _name: 		"com.google.android.providers.gsf.permission.READ_GSERVICES", 	
-//					                _comment: 	"GameServices : For getting content provider access.");
+				WriteUsesPermission(_xmlWriter:	_xmlWriter, 	
+					                _name: 		"com.google.android.providers.gsf.permission.READ_GSERVICES", 	
+					                _comment: 	"GameServices : For getting content provider access.");
 
 				// Below permissions are no more required as we are targetting selective API's in Google Play Services.
 				/*WriteUsesPermission(_xmlWriter:	_xmlWriter, 	
@@ -336,12 +336,12 @@ namespace VoxelBusters.NativePlugins
 				#endif
 				)	
 			{
-//				WriteUsesPermission(_xmlWriter:	_xmlWriter,
-//				                    _name: 		"android.permission.WRITE_EXTERNAL_STORAGE", 	
-//				                    _comment:	"For Saving to external directory - Save to Gallery Feature in MediaLibrary / Used for sharing");
-//				
-//				WriteUsesPermission(_xmlWriter:	_xmlWriter, 	
-//				                    _name: 		"android.permission.READ_EXTERNAL_STORAGE");
+				WriteUsesPermission(_xmlWriter:	_xmlWriter,
+				                    _name: 		"android.permission.WRITE_EXTERNAL_STORAGE", 	
+				                    _comment:	"For Saving to external directory - Save to Gallery Feature in MediaLibrary / Used for sharing");
+				
+				WriteUsesPermission(_xmlWriter:	_xmlWriter, 	
+				                    _name: 		"android.permission.READ_EXTERNAL_STORAGE");
 			}
 
 		}

@@ -32,7 +32,7 @@ namespace VoxelBusters.NativePlugins
 		{
 			get
 			{
-				return false;//Debug.isDebugBuild;
+				return Debug.isDebugBuild;
 			}
 		}
 

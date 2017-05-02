@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 using VoxelBusters.NativePlugins;
 	
 public class GameServicesManager : MonoBehaviour {
@@ -156,7 +155,7 @@ public class GameServicesManager : MonoBehaviour {
 			Debug.Log ("ShowLeaderboard - !IsAuthenticated");
 			AuthenticateUser ();
 		}
-		
+
 		Debug.Log("Game Services ShowLeaderboard()");
 
 		//Show Leaderboards UI
@@ -214,8 +213,8 @@ public class GameServicesManager : MonoBehaviour {
 	public void ShowAchievements() {
 		if (!IsServiceAvailable ())
 			return;
-			
-		if (!IsAuthenticated ()) 
+
+		if (!IsAuthenticated ())
 			AuthenticateUser ();
 
 
@@ -342,27 +341,27 @@ public class GameServicesManager : MonoBehaviour {
 					if (_achievementGID == ACHIEVEMENT_FIRST_WIN) {
 						DefsGame.IS_ACHIEVEMENT_FIRST_WIN = 1;
 						PlayerPrefs.SetInt("IS_ACHIEVEMENT_FIRST_WIN", 1);
-					}else 
+					}else
 							if (_achievementGID == ACHIEVEMENT_NEW_SKIN) {
 								DefsGame.IS_ACHIEVEMENT_NEW_SKIN = 1;
 								PlayerPrefs.SetInt("IS_ACHIEVEMENT_NEW_SKIN", 1);
-							}else 
+							}else
 								if (_achievementGID == ACHIEVEMENT_MULTI_PULTI) {
 									DefsGame.IS_ACHIEVEMENT_MULTI_PULTI = 1;
 									PlayerPrefs.SetInt("IS_ACHIEVEMENT_MULTI_PULTI", 1);
-								}else 
+								}else
 									if (_achievementGID == ACHIEVEMENT_MISS_CLICK) {
 										DefsGame.IS_ACHIEVEMENT_MISS_CLICK = 1;
 										PlayerPrefs.SetInt("IS_ACHIEVEMENT_MISS_CLICK", 1);
-									}else 
+									}else
 										if (_achievementGID == ACHIEVEMENT_GET_MAX) {
 											DefsGame.IS_ACHIEVEMENT_GET_MAX = 1;
 											PlayerPrefs.SetInt("IS_ACHIEVEMENT_GET_MAX", 1);
-										}else 
+										}else
 											if (_achievementGID == ACHIEVEMENT_THREE_JUMPS) {
 												DefsGame.IS_ACHIEVEMENT_THREE_JUMPS = 1;
 												PlayerPrefs.SetInt("IS_ACHIEVEMENT_THREE_JUMPS", 1);
-											}else 
+											}else
 						if (_achievementGID == ACHIEVEMENT_MASTER) {
 							DefsGame.IS_ACHIEVEMENT_MASTER = 1;
 							PlayerPrefs.SetInt("IS_ACHIEVEMENT_MASTER", 1);
@@ -370,17 +369,17 @@ public class GameServicesManager : MonoBehaviour {
 							if (_achievementGID == ACHIEVEMENT_FiFIELD_OF_CANDIES) {
 								DefsGame.IS_ACHIEVEMENT_FiFIELD_OF_CANDIES = 1;
 								PlayerPrefs.SetInt("IS_ACHIEVEMENT_FiFIELD_OF_CANDIES", 1);
-							}else 
+							}else
 								if (_achievementGID == ACHIEVEMENT_EXPLOSIVE) {
 									DefsGame.IS_ACHIEVEMENT_EXPLOSIVE = 1;
 									PlayerPrefs.SetInt("IS_ACHIEVEMENT_EXPLOSIVE", 1);
-								}else 
+								}else
 									if (_achievementGID == ACHIEVEMENT_COLLECTION) {
 										DefsGame.IS_ACHIEVEMENT_COLLECTION = 1;
 										PlayerPrefs.SetInt("IS_ACHIEVEMENT_COLLECTION", 1);
 									}
 				}
-					
+
 
 				//Debug.Log("Request to report progress of achievement with GID= {0} finished successfully. " + _achievementGID);
 					D.Log(string.Format("ReportProgressWithGlobalID() - achievement = " + _achievementGID + " Percentage completed = "+ _progress));
