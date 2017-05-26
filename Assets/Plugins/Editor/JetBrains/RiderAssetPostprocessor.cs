@@ -8,6 +8,7 @@ using System.Text.RegularExpressions;
 using System.Xml.Linq;
 using UnityEditor;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 namespace Plugins.Editor.JetBrains
 {
@@ -24,9 +25,6 @@ namespace Plugins.Editor.JetBrains
     private static readonly string  EDITOR_PROJECT_MANUAL_CONFIG_ABSOLUTE_FILE_PATH
       = Path.Combine(UnityEngine.Application.dataPath, EDITOR_PROJECT_MANUAL_CONFIG_RELATIVE_FILE_PATH);
 
-    private static readonly int unityProcessId = Process.GetCurrentProcess().Id;
-    private static readonly string unityVersion = Application.unityVersion;
-
     public static void OnGeneratedCSProjectFiles()
     {
       if (!RiderPlugin.Enabled)
@@ -40,7 +38,7 @@ namespace Plugins.Editor.JetBrains
       }
 
       var slnFile = Directory.GetFiles(currentDirectory, "*.sln").First();
-      RiderPlugin.Log(string.Format("Post-processing {0}", slnFile));
+      if (RiderPlugin.EnableLogging) Debug.Log("[Rider] " + string.Format("Post-processing {0}", slnFile));
       string content = File.ReadAllText(slnFile);
       var lines = content.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
       var sb = new StringBuilder();
@@ -71,29 +69,19 @@ namespace Plugins.Editor.JetBrains
 
     private static void UpgradeProjectFile(string projectFile)
     {
-      RiderPlugin.Log(string.Format("Post-processing {0}", projectFile));
+      if (RiderPlugin.EnableLogging) Debug.Log("[Rider] " + string.Format("Post-processing {0}", projectFile));
       var doc = XDocument.Load(projectFile);
       var projectContentElement = doc.Root;
       XNamespace xmlns = projectContentElement.Name.NamespaceName; // do not use var
 
       FixTargetFrameworkVersion(projectContentElement, xmlns);
       SetLangVersion(projectContentElement, xmlns);
-      SetUnityData(projectContentElement, xmlns);
       SetManuallyDefinedComilingSettings(projectFile, projectContentElement, xmlns);
 
       SetXCodeDllReference("UnityEditor.iOS.Extensions.Xcode.dll", xmlns, projectContentElement);
       SetXCodeDllReference("UnityEditor.iOS.Extensions.Common.dll", xmlns, projectContentElement);
 
       doc.Save(projectFile);
-    }
-
-    private static void SetUnityData(XElement projectElement, XNamespace xmlns)
-    {
-      // will be used by dependent Rider to provide Denug Configuration and other features
-      projectElement.AddFirst(new XElement(xmlns + "PropertyGroup",
-        new XElement(xmlns + "unityProcessId", unityProcessId.ToString())));
-      projectElement.AddFirst(new XElement(xmlns + "PropertyGroup",
-        new XElement(xmlns + "unityVersion", unityVersion)));
     }
 
     private static void SetManuallyDefinedComilingSettings(string projectFile, XElement projectContentElement, XNamespace xmlns)
@@ -148,7 +136,6 @@ namespace Plugins.Editor.JetBrains
             }
           }
 
-          //UnityEngine.Debug.Log(string.Join(", ",definesList.ToArray()));
           ApplyCustomDefines(definesList.ToArray(), projectContentElement, xmlns);
         }
       }
@@ -188,16 +175,20 @@ namespace Plugins.Editor.JetBrains
     // Helps resolve System.Linq under mono 4 - RIDER-573
     private static void FixTargetFrameworkVersion(XElement projectElement, XNamespace xmlns)
     {
-      if (!RiderPlugin.TargetFrameworkVersion45)
-        return;
-
       var targetFrameworkVersion = projectElement.Elements(xmlns + "PropertyGroup").
         Elements(xmlns + "TargetFrameworkVersion").FirstOrDefault(); // Processing csproj files, which are not Unity-generated #56
       if (targetFrameworkVersion != null)
       {
         var version = new Version(targetFrameworkVersion.Value.Substring(1));
-        if (version < new Version(4, 5))
-          targetFrameworkVersion.SetValue("v4.5");
+        if (RiderPlugin.TargetFrameworkVersion45)
+        {
+          if (version < new Version(4, 5))
+            targetFrameworkVersion.SetValue("v4.5");  
+        }
+        else
+        {
+          targetFrameworkVersion.SetValue("v3.5");
+        }
       }
     }
 
@@ -219,7 +210,7 @@ namespace Plugins.Editor.JetBrains
         return "6";
 
       // Unity 5.5 supports C# 6, but only when targeting .NET 4.6. The enum doesn't exist pre Unity 5.5
-      #if UNITY_4_6 || UNITY_4_7 || UNITY_5_0 || UNITY_5_1 || UNITY_5_2 || UNITY_5_3|| UNITY_5_4 || UNITY_5_5
+      #if UNITY_4 || UNITY_4_6 || UNITY_4_7 || UNITY_5_0 || UNITY_5_1 || UNITY_5_2 || UNITY_5_3|| UNITY_5_4 || UNITY_5_5
       if ((int)PlayerSettings.apiCompatibilityLevel >= 3)
       #else
       if ((int) PlayerSettings.GetApiCompatibilityLevel(EditorUserBuildSettings.selectedBuildTargetGroup) >= 3)
