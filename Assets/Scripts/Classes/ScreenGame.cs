@@ -174,16 +174,16 @@ public class ScreenGame : MonoBehaviour {
 	public void EndCurrentGame() {
 		if (!isScreenReviveDone) {
 			isScreenReviveDone = true;
-//			if (PublishingService.Instance.IsRewardedVideoReady() && DefsGame.currentPointsCount >= 4) {
-//				UIManager.ShowUiElement ("ScreenRevive");
-//				UIManager.ShowUiElement ("ScreenReviveBtnRevive");
-//				UIManager.ShowUiElement ("ScreenReviveBtnBack");
-//				D.Log ("isScreenReviveDone");
-//				Defs.PlaySound (sndShowScreen);
-//
-//				FlurryEventsManager.SendEvent ("RV_revive_impression");
-//				return;
-//			}
+			if (DefsGame.MyHeyzap.IsRewardedVideoReady && DefsGame.currentPointsCount >= 30) {
+				UIManager.ShowUiElement ("ScreenRevive");
+				UIManager.ShowUiElement ("ScreenReviveBtnRevive");
+				UIManager.ShowUiElement ("ScreenReviveBtnBack");
+				D.Log ("isScreenReviveDone");
+				Defs.PlaySound (sndShowScreen);
+
+				FlurryEventsManager.SendEvent ("RV_revive_impression");
+				return;
+			}
 		}
 
 		if (!isScreenShareDone) {
@@ -220,6 +220,11 @@ public class ScreenGame : MonoBehaviour {
 		state = 6;
 
 //		PublishingService.Instance.ShowSceneTransition();
+		++DefsGame.MyHeyzap.VideoAdCointer;
+		if (DefsGame.MyHeyzap.VideoAdCointer % 4 == 0)
+		{
+			DefsGame.MyHeyzap.ShowVideo();
+		}
 	}
 
 	void Candy_OnTurn ()

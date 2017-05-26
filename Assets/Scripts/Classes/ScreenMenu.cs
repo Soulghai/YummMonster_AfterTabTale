@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using DoozyUI;
 using System;
@@ -15,6 +13,7 @@ public class ScreenMenu : MonoBehaviour {
 
 	bool isBtnSettingsClicked = false;
 	DateTime giftNextDate;
+	DateTime _btnVideoNextDate;
 	bool isWaitGiftTime;
 	bool isShowBtnViveoAds = true;
 
@@ -24,6 +23,8 @@ public class ScreenMenu : MonoBehaviour {
 		string _strTime = PlayerPrefs.GetString("dateGiftClicked");
 		//_strTime = "";
 		//DefsGame.BTN_GIFT_HIDE_DELAY_COUNTER = 0;
+		
+		_btnVideoNextDate  = System.DateTime.UtcNow;
 		if (_strTime == "") {
 			giftNextDate = System.DateTime.UtcNow;
 			DefsGame.BTN_GIFT_HIDE_DELAY = DefsGame.BTN_GIFT_HIDE_DELAY_ARR [DefsGame.BTN_GIFT_HIDE_DELAY_COUNTER];
@@ -54,49 +55,23 @@ public class ScreenMenu : MonoBehaviour {
 		showButtons ();
 	}
 
-	void Awake() 
-	{
-		Invoke("InitialRvButtonUpdate", 0.5f);
-//		PublishingService.Instance.OnRewardedVideoReadyChanged += IsVideoAdsAvailable;
-	}
-
-	void OnDestroy() {
-		
-//		PublishingService.Instance.OnRewardedVideoReadyChanged -= IsVideoAdsAvailable;
-	}
-
 	void OnEnable()
 	{
 		Candy.OnTurn += Candy_OnTurn;
 		ScreenGame.OnShowMenu += ScreenGame_OnShowMenu;
+		MyHeyzap.GiveReward += GiveReward;
 	}
 
 	void OnDisable()
 	{
 		Candy.OnTurn -= Candy_OnTurn;
 		ScreenGame.OnShowMenu -= ScreenGame_OnShowMenu;
+		MyHeyzap.GiveReward -= GiveReward;
 	}
 
 	void ScreenGame_OnShowMenu ()
 	{
 		showButtons ();
-	}
-
-	void InitialRvButtonUpdate()
-	{
-//		IsVideoAdsAvailable(PublishingService.Instance.IsRewardedVideoReady());
-	}
-
-	void IsVideoAdsAvailable(bool _flag) {
-		isShowBtnViveoAds = _flag;
-		if (_flag) {
-			if (DefsGame.currentScreen == DefsGame.SCREEN_MENU) {
-				UIManager.ShowUiElement ("BtnVideoAds");
-				FlurryEventsManager.SendEvent ("RV_strawberries_impression", "start_screen");
-			}
-		} else {
-			UIManager.HideUiElement ("BtnVideoAds");
-		}
 	}
 
 	void Candy_OnTurn ()
@@ -116,10 +91,18 @@ public class ScreenMenu : MonoBehaviour {
 			UIManager.ShowUiElement ("BtnGift");
 			FlurryEventsManager.SendEvent ("collect_prize_impression");
 		}
-		if (isShowBtnViveoAds) {
+		
+		DateTime currentDate = System.DateTime.UtcNow;
+		TimeSpan difference = _btnVideoNextDate.Subtract (currentDate);
+		if ((difference.TotalSeconds <= 0f))
+		if (isShowBtnViveoAds || DefsGame.MyHeyzap.VideoAdCointer == 3)
+		{
+			_btnVideoNextDate = _btnVideoNextDate.AddMinutes (1);
+			isShowBtnViveoAds = true;
 			UIManager.ShowUiElement ("BtnVideoAds");
 			FlurryEventsManager.SendEvent ("RV_strawberries_impression", "start_screen");
 		}
+		
 		UIManager.ShowUiElement ("BtnMoreGames");
 		UIManager.ShowUiElement ("BtnSound");
 		UIManager.ShowUiElement ("BtnStar");
@@ -238,28 +221,22 @@ public class ScreenMenu : MonoBehaviour {
 	public void OnVideoAdsClicked()
 	{
 		FlurryEventsManager.SendEvent ("RV_strawberries", "start_screen");
+		DefsGame.MyHeyzap.ShowRewarded();
+		isShowBtnViveoAds = false;
+		UIManager.HideUiElement ("BtnVideoAds");
+	}
 
-		//Defs.MuteSounds (true);
-
-//		if (!PublishingService.Instance.IsRewardedVideoReady())
-//		{
-//			NPBinding.UI.ShowAlertDialogWithSingleButton("Ads not available", "Check your Internet connection or try later!", "Ok", (string _buttonPressed) => {});
-//			return;
-//		}
-//
-//
-//		PublishingService.Instance.ShowRewardedVideo (isSuccess => {
-//			if (isSuccess) {
-//				for (int i = 0; i < 25; i++) {
-//					GameObject _coin = (GameObject)Instantiate (coin, Camera.main.ScreenToWorldPoint (videoAdsButton.transform.position), Quaternion.identity);
-//					Coin coinScript = _coin.GetComponent<Coin> ();
-//					coinScript.MoveToEnd ();
-//				}
-//				FlurryEventsManager.SendEvent ("RV_strawberries_complete", "start_screen", true, 25);
-//			}else {
-//			}
-//			//Defs.MuteSounds (false);
-//		});
+	private void GiveReward()
+	{
+		//	(rewarded video would reset counter / timer to 0).
+		for (int i = 0; i < 25; i++) {
+			GameObject _coin = (GameObject)Instantiate (coin, Camera.main.ScreenToWorldPoint (videoAdsButton.transform.position), Quaternion.identity);
+			Coin coinScript = _coin.GetComponent<Coin> ();
+			coinScript.MoveToEnd ();
+		}
+		FlurryEventsManager.SendEvent ("RV_strawberries_complete", "start_screen", true, 25);
+		
+		_btnVideoNextDate = System.DateTime.UtcNow;
 	}
 
 	public void RateUs() {

@@ -43,10 +43,10 @@ public class MyNativeShare : MonoBehaviour {
 		D.Log ("NativeShare.ShareClick()");
 
 
-		string _shareLink = "https://play.google.com/store/apps/details?id=com.crazylabs.monsteryumm";
+		string _shareLink = "http://smarturl.it/YummMonsters";
 
 		#if UNITY_IOS
-		_shareLink = "http://itunes.apple.com/app/id1192223024";
+		_shareLink = "http://smarturl.it/YummMonsters";
 		#endif
 
 		string _shareText = "Wow! I Just Scored ["+DefsGame.gameBestScore.ToString()+ "] in #YummMonsters! Can You Beat Me? @tabtale " + _shareLink;

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public struct DefsGame {
 
@@ -70,6 +68,7 @@ public struct DefsGame {
 
 	static public float heroMoveTop 							= 80;
 	static public int rateCounter 								= 0;
+	public static MyHeyzap MyHeyzap { get; set; }
 
 	static public void loadVariables() {
 		noAds = PlayerPrefs.GetInt ("noAds", 0);
