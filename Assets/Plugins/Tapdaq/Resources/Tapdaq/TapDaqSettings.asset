@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 770977acc539d4a13b9bd97b1ab9e9a6, type: 3}
+  m_Name: TapDaqSettings
+  m_EditorClassIdentifier: 
+  ios_applicationID: 5907b2178ac42000f5d032cb
+  ios_clientKey: 156bd775-ba73-499c-a61b-16ccb8f603f2
+  android_applicationID: 5955c22377f15000f3460ed3
+  android_clientKey: 156bd775-ba73-499c-a61b-16ccb8f603f2
+  isDebugMode: 0
+  autoReloadAds: 0
+  tags:
+    tags:
+    - 
+    - app-launch
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - video
+    - rewarded
+    - 
+  testDevices: []

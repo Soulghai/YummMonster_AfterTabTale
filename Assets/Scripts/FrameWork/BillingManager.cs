@@ -8,7 +8,6 @@ public class BillingManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		DefsGame.IAPs = this;
 		RequestBillingProducts ();
 	}
 
@@ -20,12 +19,10 @@ public class BillingManager : MonoBehaviour {
 
 		// For receiving restored transactions.
 		Billing.DidFinishRestoringPurchasesEvent		+= OnDidFinishRestoringPurchases;
-
 	}
 
 	private void OnDisable ()
 	{
-		// Deregister for callbacks
 		Billing.DidFinishRequestForBillingProductsEvent	-= OnDidFinishProductsRequest;
 		Billing.DidFinishProductPurchaseEvent	        -= OnDidFinishTransaction;
 		Billing.DidFinishRestoringPurchasesEvent		-= OnDidFinishRestoringPurchases;
@@ -33,19 +30,17 @@ public class BillingManager : MonoBehaviour {
 
 	private bool IsAvailable ()
 	{
-//		return NPBinding.Billing.IsAvailable();
-	    return false;
+		return NPBinding.Billing.IsAvailable();
 	}
 
 	private bool CanMakePayments ()
 	{
-//		return NPBinding.Billing.CanMakePayments();
-	    return false;
+		return NPBinding.Billing.CanMakePayments();
 	}
 
 	public void RequestBillingProducts ()
 	{
-//		NPBinding.Billing.RequestForBillingProducts(NPSettings.Billing.Products);
+		NPBinding.Billing.RequestForBillingProducts(NPSettings.Billing.Products);
 
 		// At this point you can display an activity indicator to inform user that task is in progress
 	}
@@ -71,16 +66,16 @@ public class BillingManager : MonoBehaviour {
 
 	public void BuyItem (BillingProduct _product)
 	{
-//		//if (NPBinding.Billing.IsProductPurchased(_product.ProductIdentifier))
-//		if (NPBinding.Billing.IsProductPurchased(_product))
-//		{
-//			// Show alert message that item is already purchased
-//
-//			return;
-//		}
-//
-//		// Call method to make purchase
-//		NPBinding.Billing.BuyProduct(_product);
+		//if (NPBinding.Billing.IsProductPurchased(_product.ProductIdentifier))
+		if (NPBinding.Billing.IsProductPurchased(_product))
+		{
+			// Show alert message that item is already purchased
+
+			return;
+		}
+
+		// Call method to make purchase
+		NPBinding.Billing.BuyProduct(_product);
 
 		// At this point you can display an activity indicator to inform user that task is in progress
 	}
@@ -91,7 +86,7 @@ public class BillingManager : MonoBehaviour {
 		// through ProcessPurchase or OnPurchaseFailed asynchronously.
 		FlurryEventsManager.dontSendLengthtEvent = true;
 		BuyItem(NPSettings.Billing.Products[0]);
-		FlurryEventsManager.SendEvent ("iap_clicked_<" + NPSettings.Billing.Products [0].ProductIdentifier + ">", DefsGame.screenCoins.prevScreenName);
+		FlurryEventsManager.SendEvent ("iap_clicked_<" + NPSettings.Billing.Products [0].ProductIdentifier + ">", DefsGame.screenCoins.PrevScreenName);
 	}
 
 	public void BuyTier2()
@@ -100,7 +95,7 @@ public class BillingManager : MonoBehaviour {
 		// through ProcessPurchase or OnPurchaseFailed asynchronously.
 		FlurryEventsManager.dontSendLengthtEvent = true;
 		BuyItem(NPSettings.Billing.Products[1]);
-		FlurryEventsManager.SendEvent ("iap_clicked_<" + NPSettings.Billing.Products[1].ProductIdentifier + ">", DefsGame.screenCoins.prevScreenName);
+		FlurryEventsManager.SendEvent ("iap_clicked_<" + NPSettings.Billing.Products[1].ProductIdentifier + ">", DefsGame.screenCoins.PrevScreenName);
 	}
 
 	public void BuyNoAds()
@@ -109,7 +104,7 @@ public class BillingManager : MonoBehaviour {
 		// through ProcessPurchase or OnPurchaseFailed asynchronously.
 		FlurryEventsManager.dontSendLengthtEvent = true;
 		BuyItem(NPSettings.Billing.Products[2]);
-		FlurryEventsManager.SendEvent ("iap_clicked_<" + NPSettings.Billing.Products[2].ProductIdentifier + ">", DefsGame.screenCoins.prevScreenName);
+		FlurryEventsManager.SendEvent ("iap_clicked_<" + NPSettings.Billing.Products[2].ProductIdentifier + ">", DefsGame.screenCoins.PrevScreenName);
 	}
 
 	private void OnDidFinishTransaction (BillingTransaction _transaction)
@@ -139,9 +134,9 @@ public class BillingManager : MonoBehaviour {
 						D.Log ("OnDidFinishTransaction() - NoAds (bought)");
 					}
 
-					FlurryEventsManager.SendEvent ("iap_completed_<" + _transaction.ProductIdentifier + ">", DefsGame.screenCoins.prevScreenName);
+					FlurryEventsManager.SendEvent ("iap_completed_<" + _transaction.ProductIdentifier + ">", DefsGame.screenCoins.PrevScreenName);
 
-					BillingProduct product = NPBinding.Billing.GetStoreProduct(_transaction.ProductIdentifier);
+//					BillingProduct product = NPBinding.Billing.GetStoreProduct(_transaction.ProductIdentifier);
 //					if (product != null)
 //						PublishingService.Instance.ReportPurchase(product.Price.ToString(), product.CurrencyCode);
 
@@ -157,15 +152,10 @@ public class BillingManager : MonoBehaviour {
 		NPBinding.UI.ShowAlertDialogWithSingleButton("Purchase failed", "Check your Internet connection or try later!", "Ok", (string _buttonPressed) => {});
 	}
 
-	//public void BtnRestoreIaps() {
-	//	NPBinding.Billing.RestorePurchases ();
-	//	Debug.Log("BtnRestoreIaps()");
-	//}
-
 	public void BtnRestoreIaps() {
-//		Debug.Log("BtnRestoreIaps()");
-//		FlurryEventsManager.dontSendLengthtEvent = true;
-//		NPBinding.Billing.RestorePurchases ();
+		Debug.Log("BtnRestoreIaps()");
+		FlurryEventsManager.dontSendLengthtEvent = true;
+		NPBinding.Billing.RestorePurchases ();
 	}
 
 	private void OnDidFinishRestoringPurchases (BillingTransaction[] _transactions, string _error)

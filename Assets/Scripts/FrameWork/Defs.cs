@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public struct Defs {
 	public static readonly string androidApp_ID = "com.crazylabs.monsteryumm";
@@ -15,18 +13,18 @@ public struct Defs {
 	public static AudioSource audioSourceMusic;
 	public static bool mute = false;
 
-	static public void PlaySound(AudioClip _audioClip, float _volume = 1f) {
-		audioSource.volume = _volume * AudioListener.volume;
+	static public void PlaySound(AudioClip audioClip, float volume = 1f) {
+		audioSource.volume = volume * AudioListener.volume;
 		if (audioSource.volume > 0f) {
-			audioSource.PlayOneShot (_audioClip);
+			audioSource.PlayOneShot (audioClip);
 		}
 	}
 
-	static public void MuteSounds(bool _flag) {
-		if (mute == _flag)
+	static public void MuteSounds(bool flag) {
+		if (mute == flag)
 			return;
 
-		mute = _flag;
+		mute = flag;
 
 		if (mute) {
 			AudioListener.volume = 0f;

@@ -39,14 +39,12 @@ public class GameServicesManager : MonoBehaviour {
 
 	bool IsServiceAvailable()
 	{
-//		return NPBinding.GameServices.IsAvailable();
-	    return false;
+		return NPBinding.GameServices.IsAvailable();
 	}
 
 	bool IsAuthenticated()
 	{
-//		return NPBinding.GameServices.LocalUser.IsAuthenticated;
-	    return false;
+		return NPBinding.GameServices.LocalUser.IsAuthenticated;
 	}
 
 	// LOG IN / LOG OUT
@@ -392,18 +390,18 @@ public class GameServicesManager : MonoBehaviour {
 		});
 	}
 
-	bool IsAchievementAlreadyUnlocked (string globalId, Achievement[] achievements)
-	{
-		if (achievements == null) return false;
-
-		foreach (Achievement achievement in achievements)
-		{
-			if (achievement.GlobalIdentifier == globalId)
-			{
-				return achievement.Completed;
-			}
-		}
-
-		return false;
-	}
+//	bool IsAchievementAlreadyUnlocked (string globalId, Achievement[] achievements)
+//	{
+//		if (achievements == null) return false;
+//
+//		foreach (Achievement achievement in achievements)
+//		{
+//			if (achievement.GlobalIdentifier == globalId)
+//			{
+//				return achievement.Completed;
+//			}
+//		}
+//
+//		return false;
+//	}
 }

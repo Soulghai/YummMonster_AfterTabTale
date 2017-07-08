@@ -5,13 +5,23 @@ using DoozyUI;
 public class ScreenCoins : MonoBehaviour {
 	public static event Action<int> OnAddCoinsVisual;
 
-	bool isShowBtnViveoAds = true;
-	// Use this for initialization
+	private bool isShowBtnViveoAds;
 
-	public string prevScreenName;
+	[HideInInspector] public string PrevScreenName;
+	private bool _isWaitReward;
 
 	void Start () {
 		DefsGame.screenCoins = this;
+	}
+	
+	void OnEnable() {
+		GlobalEvents<OnGiveReward>.Happened += GetReward;
+		GlobalEvents<OnRewardedVideoAvailable>.Happened += IsRewardedVideoAvailable;
+	}
+
+	void OnDisable() {
+		GlobalEvents<OnGiveReward>.Happened -= GetReward;
+		GlobalEvents<OnRewardedVideoAvailable>.Happened -= IsRewardedVideoAvailable;
 	}
 
 	public void ShowButtons() {
@@ -37,24 +47,9 @@ public class ScreenCoins : MonoBehaviour {
 		UIManager.HideUiElement ("ScreenCoinsBtnRestore");
 	}
 
-	void Awake() {
-		Invoke("InitialRvButtonUpdate", 0.5f);
-//		PublishingService.Instance.OnRewardedVideoReadyChanged += IsVideoAdsAvailable;
-	}
-
-
-	void OnDestroy() {
-//		PublishingService.Instance.OnRewardedVideoReadyChanged -= IsVideoAdsAvailable;
-	}
-
-	void InitialRvButtonUpdate()
-	{
-//		IsVideoAdsAvailable(PublishingService.Instance.IsRewardedVideoReady());
-	}
-
-	void IsVideoAdsAvailable(bool _flag) {
-		isShowBtnViveoAds = _flag;
-		if (_flag) {
+	private void IsRewardedVideoAvailable(OnRewardedVideoAvailable e) {
+		isShowBtnViveoAds = e.isAvailable;
+		if (isShowBtnViveoAds) {
 			if (DefsGame.currentScreen == DefsGame.SCREEN_IAPS) {
 				UIManager.ShowUiElement ("ScreenCoinsBtnVideo");
 				FlurryEventsManager.SendEvent ("RV_strawberries_impression", "shop");
@@ -63,31 +58,11 @@ public class ScreenCoins : MonoBehaviour {
 			UIManager.HideUiElement ("ScreenCoinsBtnVideo");
 		}
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-		
-	public void BtnTier1() {
-		//IAPManager.Instance.Buy50Coins ();
-	}
-
-	void boughtTier1() {
-		//GameEvents.Send (OnAddCoinsVisual, 200);
-	}
-
-	public void BtnTier2() {
-		//IAPManager.Instance.Buy200Coins ();
-	}
-
-	void boughtTier2() {
-		//GameEvents.Send (OnAddCoinsVisual, 1000);
-	}
 
 	public void BtnTier3() {
-//		FlurryEventsManager.SendEvent ("RV_strawberries", "shop");
-//
+		FlurryEventsManager.SendEvent ("RV_strawberries", "shop");
+		MyAds.ShowRewardedAds();
+		_isWaitReward = true;
 //		if (!PublishingService.Instance.IsRewardedVideoReady())
 //		{
 //			NPBinding.UI.ShowAlertDialogWithSingleButton("Ads not available", "Check your Internet connection or try later!", "Ok", (string _buttonPressed) => {});
@@ -106,11 +81,24 @@ public class ScreenCoins : MonoBehaviour {
 //			FlurryEventsManager.SendStartEvent ("iap_shop_length");
 //		});
 	}
+	
+	private void GetReward(OnGiveReward e)
+	{
+		if (_isWaitReward)
+		{
+			_isWaitReward = false;
+			if (e.isAvailable)
+			{
+				GameEvents.Send(OnAddCoinsVisual, 25);
+//				FlurryEventsManager.SendEvent ("RV_strawberries_complete", "shop");
+			}
+		}
+	}
 
-	public void Show(string _prevScreenName) {
-		prevScreenName = _prevScreenName;
+	public void Show(string prevScreenName) {
+		PrevScreenName = prevScreenName;
 		FlurryEventsManager.SendStartEvent ("iap_shop_length");
-		FlurryEventsManager.SendEvent ("iap_shop", prevScreenName);
+		FlurryEventsManager.SendEvent ("iap_shop", PrevScreenName);
 
 		DefsGame.currentScreen = DefsGame.SCREEN_IAPS;
 		DefsGame.isCanPlay = false;
@@ -124,7 +112,7 @@ public class ScreenCoins : MonoBehaviour {
 		DefsGame.isCanPlay = true;
 		HideButtons ();
 
-		FlurryEventsManager.SendEvent ("iap_shop_home", prevScreenName);
+		FlurryEventsManager.SendEvent ("iap_shop_home", PrevScreenName);
 	}
 
 }

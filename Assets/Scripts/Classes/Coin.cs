@@ -16,7 +16,7 @@ public class Coin : MonoBehaviour {
 	bool isShowAnimation;
 	bool isHideAnimation;
 	bool isMoveToTarget = false;
-	const float velocityMax = 0.22f; 
+	const float velocityMax = 0.20f; 
 	float showTime = 0f;
 
 	// Use this for initialization
@@ -99,7 +99,7 @@ public class Coin : MonoBehaviour {
 	}
 
 	public void MoveToEnd() {
-		targetPos = new Vector3 (1.00f, 2.87f, 1); ;
+		targetPos = new Vector3 (2.00f, 2.87f, 1); ;
 		velocity = 0.03f + Random.value*0.03f;
 		if (Random.value < 0.5f) moveAngle = Random.value * 180f* Mathf.Deg2Rad;
 		else moveAngle = -Random.value * 180f* Mathf.Deg2Rad;

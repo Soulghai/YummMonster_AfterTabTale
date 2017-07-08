@@ -1,10 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using DoozyUI;
 using System;
-using Random = UnityEngine.Random;
 
 public class ScreenSkins : MonoBehaviour {
 	public static event Action<int> OnAddCoinsVisual;
@@ -25,11 +22,6 @@ public class ScreenSkins : MonoBehaviour {
 	void Awake () {
 		DefsGame.screenSkins = this;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
 	void SetSkin(int _id) {
 		FlurryEventsManager.SendEvent ("candy_purchase_<" + _id.ToString() + ">");
@@ -42,7 +34,6 @@ public class ScreenSkins : MonoBehaviour {
 			PlayerPrefs.SetInt ("currentFaceID", DefsGame.currentFaceID);
 			DefsGame.candy.SetNewSkin (_id);
 		} else if (DefsGame.coinsCount >= DefsGame.facePrice [_id-1]) {
-			//DefsGame.coinsIcon.UpdatePosition ();
 			GameEvents.Send(OnAddCoinsVisual, -DefsGame.facePrice [_id-1]);
 			DefsGame.faceAvailable [_id] = 1;
 			DefsGame.currentFaceID = _id;

@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System.Runtime.InteropServices;
 using System.IO;
 
@@ -49,7 +48,7 @@ public class MyNativeShare : MonoBehaviour {
 		_shareLink = "http://smarturl.it/YummMonsters";
 		#endif
 
-		string _shareText = "Wow! I Just Scored ["+DefsGame.gameBestScore.ToString()+ "] in #YummMonsters! Can You Beat Me? @tabtale " + _shareLink;
+		string _shareText = "Wow! I Just Scored ["+DefsGame.gameBestScore.ToString()+ "] in #YummMonsters! Can You Beat Me? @AppsoluteGames " + _shareLink;
 		ShareScreenshotWithText (_shareText, "");
 	}
 

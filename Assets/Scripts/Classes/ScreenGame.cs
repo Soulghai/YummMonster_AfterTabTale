@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 using System;
 using Random = UnityEngine.Random;
 using DoozyUI;
@@ -49,10 +46,8 @@ public class ScreenGame : MonoBehaviour {
 	AudioClip sndClose;
 
 	string fail_reason;
-
-	void Awake () {
-
-	}
+	private bool _isWaitReward;
+	private bool IsRewardedVideoReadyToShow;
 
 	// Use this for initialization
 	void Start () {
@@ -93,6 +88,8 @@ public class ScreenGame : MonoBehaviour {
 
 		DefsGame.gameServices.ReportProgressWithGlobalID (DefsGame.gameServices.ACHIEVEMENT_MASTER, DefsGame.QUEST_GAMEPLAY_Counter);
 
+		MyAds.ShowVideoAds();
+		
 		++DefsGame.gameplayCounter;
 	
 		PlayerPrefs.SetInt ("QUEST_THROW_CounterCounter", DefsGame.QUEST_THROW_Counter);
@@ -125,21 +122,25 @@ public class ScreenGame : MonoBehaviour {
 		Candy.OnTurn += Candy_OnTurn;
 		Candy.OnMiss += Candy_OnMiss;
 		Bubble.OnMatch += Bubble_OnMatch;
+		GlobalEvents<OnGiveReward>.Happened += GetReward;
+		GlobalEvents<OnRewardedVideoAvailable>.Happened += IsRewardedVideoAvailable;
 	}
 
 	void OnDisable() {
 		Candy.OnTurn -= Candy_OnTurn;
 		Candy.OnMiss -= Candy_OnMiss;
-		Bubble.OnMatch -= Bubble_OnMatch; 
+		Bubble.OnMatch -= Bubble_OnMatch;
+		GlobalEvents<OnGiveReward>.Happened -= GetReward;
+		GlobalEvents<OnRewardedVideoAvailable>.Happened -= IsRewardedVideoAvailable;
 	}
 
-	void Bubble_OnMatch (Bubble _bubble)
+	void Bubble_OnMatch (Bubble bubble)
 	{
 		if (isGameOver)
 			return;
 		D.Log ("ScreenGame.Bubble_OnMatch()");
 		isNextLevel = true;
-		int _pointsCount = DefsGame.bubbleMaxSize - _bubble.GetStartSize () + 1;
+		int _pointsCount = DefsGame.bubbleMaxSize - bubble.GetStartSize () + 1;
 		if (DefsGame.WOW_MEETERER_x2) {
 			_pointsCount *= 2;
 		} else 
@@ -149,17 +150,17 @@ public class ScreenGame : MonoBehaviour {
 
 		points.addPoint (_pointsCount);
 		DefsGame.wowSlider.addPoints (_pointsCount);
-		poinsBMScript.AddPoints (_pointsCount, _bubble.id, _bubble.transform.position);
+		poinsBMScript.AddPoints (_pointsCount, bubble.id, bubble.transform.position);
 	}
 
-	void Candy_OnMiss (float _delay, bool wrong_color)
+	void Candy_OnMiss (float delay, bool wrong_color)
 	{
 		if (isGameOver)
 			return;
 
 		Defs.PlaySound (sndLose);
 
-		missDelay = _delay;
+		missDelay = delay;
 		if (DefsGame.IS_ACHIEVEMENT_MISS_CLICK == 0) {
 			++DefsGame.QUEST_MISS_Counter;
 			PlayerPrefs.SetInt ("QUEST_MISS_Counter", DefsGame.QUEST_MISS_Counter);
@@ -170,11 +171,15 @@ public class ScreenGame : MonoBehaviour {
 
 		if (wrong_color) fail_reason = "wrong_color"; else fail_reason = "missed";
 	}
+	
+	private void IsRewardedVideoAvailable(OnRewardedVideoAvailable e) {
+		IsRewardedVideoReadyToShow = e.isAvailable;
+	}
 
 	public void EndCurrentGame() {
 		if (!isScreenReviveDone) {
 			isScreenReviveDone = true;
-			if (DefsGame.MyHeyzap.IsRewardedVideoReady && DefsGame.currentPointsCount >= 30) {
+			if (IsRewardedVideoReadyToShow && DefsGame.currentPointsCount >= 4) {
 				UIManager.ShowUiElement ("ScreenRevive");
 				UIManager.ShowUiElement ("ScreenReviveBtnRevive");
 				UIManager.ShowUiElement ("ScreenReviveBtnBack");
@@ -220,11 +225,6 @@ public class ScreenGame : MonoBehaviour {
 		state = 6;
 
 //		PublishingService.Instance.ShowSceneTransition();
-		++DefsGame.MyHeyzap.VideoAdCointer;
-		if (DefsGame.MyHeyzap.VideoAdCointer % 4 == 0)
-		{
-			DefsGame.MyHeyzap.ShowVideo();
-		}
 	}
 
 	void Candy_OnTurn ()
@@ -372,37 +372,35 @@ public class ScreenGame : MonoBehaviour {
 
 	public void Revive() {
 		FlurryEventsManager.SendEvent ("RV_revive");
+		MyAds.ShowRewardedAds();
+		_isWaitReward = true;
+	}
 
-//		if (!PublishingService.Instance.IsRewardedVideoReady())
-//		{
-//			NPBinding.UI.ShowAlertDialogWithSingleButton("Ads not available", "Check your Internet connection or try later!", "Ok", (string _buttonPressed) => {});
-//			return;
-//		}
-//
-//
-//		//Defs.MuteSounds (true);
-//		PublishingService.Instance.ShowRewardedVideo(isSuccess => {
-//			if (isSuccess)
-//			{
-//				state = 2;
-//				isNextLevel = true;
-//				isGameOver = false;
-//				isReviveUsed = true;
-//				DefsGame.wowSlider.MakeX3 (1.1f);
-//				bubbleField.Hide ();
-//
-//				HideReviveScreen();
-//				Defs.PlaySound (sndGrab);
-//
-//				FlurryEventsManager.SendEvent ("RV_revive_complete");
-//			}
-//			else
-//			{
-//				HideReviveScreen();
-//				state = 6;
-//			}
-//			//Defs.MuteSounds (false);
-//		});
+	private void GetReward(OnGiveReward e)
+	{
+		if (_isWaitReward)
+		{
+			_isWaitReward = false;
+			if (e.isAvailable)
+			{
+				state = 2;
+				isNextLevel = true;
+				isGameOver = false;
+				isReviveUsed = true;
+				DefsGame.wowSlider.MakeX3(1.1f);
+				bubbleField.Hide();
+
+				HideReviveScreen();
+				Defs.PlaySound(sndGrab);
+
+				FlurryEventsManager.SendEvent("RV_revive_complete");
+			}
+			else
+			{
+				HideReviveScreen();
+				state = 6;
+			}
+		}
 	}
 
 	public void Share() {

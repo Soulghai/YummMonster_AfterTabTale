@@ -16,7 +16,7 @@ public class Share : MonoBehaviour {
 		_shareLink = "http://smarturl.it/YummMonsters";
 		#endif
 
-		string shareText = "Wow! I Just Scored ["+DefsGame.gameBestScore.ToString()+ "] in #YummMonsters! Can You Beat Me? @tabtale " + _shareLink;
+		string shareText = "Wow! I Just Scored ["+DefsGame.gameBestScore.ToString()+ "] in #YummMonsters! Can You Beat Me? @AppsoluteGames " + _shareLink;
 
 
 		string _screenShotPath = Application.persistentDataPath + "/promo1.jpg";

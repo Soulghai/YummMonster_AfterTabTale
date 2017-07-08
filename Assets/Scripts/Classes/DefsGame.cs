@@ -1,13 +1,10 @@
 ﻿using UnityEngine;
 
 public struct DefsGame {
-
-	public static int noAds = 0;
-	public static BillingManager IAPs;
+	public static int noAds;
 	public static GameServicesManager gameServices;
 	public static ScreenCoins screenCoins;
 	public static ScreenSkins screenSkins;
-	public static CoinsIconScript coinsIcon;
 	public static Candy candy;
 	public static BubbleField bubbleField;
 	public static WowSlider wowSlider;
@@ -27,10 +24,8 @@ public struct DefsGame {
 	public static readonly int[] facePrice = new int[] { 50, 100, 150, 200, 250, 300, 350, 400, 450, 500, 550, 600 };
 	public static int BTN_GIFT_HIDE_DELAY 			= 0;
 	public static int BTN_GIFT_HIDE_DELAY_COUNTER	= 0;
-	public static readonly int[] BTN_GIFT_HIDE_DELAY_ARR = new int[] {1, 2, 5, 10, 15, 20, 25, 30, 60};
-	//public static readonly int[] BTN_GIFT_HIDE_DELAY_ARR = new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0};
-
-
+//	public static readonly int[] BTN_GIFT_HIDE_DELAY_ARR = new int[] {1, 2, 5, 10, 15, 20, 25, 30, 60};
+	public static readonly int[] BTN_GIFT_HIDE_DELAY_ARR = new int[] {1, 1, 1};
 
 	public static int currentScreen = 0;
 	public static int SCREEN_MENU = 0;
@@ -65,10 +60,7 @@ public struct DefsGame {
 	public const int BUBBLE_COLOR_MULTI 					= 4;
 	public const int BUBBLE_COLOR_TIMER 					= 5;
 	public const int BUBBLE_COLOR_HEAVY 					= 6;
-
-	static public float heroMoveTop 							= 80;
 	static public int rateCounter 								= 0;
-	public static MyHeyzap MyHeyzap { get; set; }
 
 	static public void loadVariables() {
 		noAds = PlayerPrefs.GetInt ("noAds", 0);

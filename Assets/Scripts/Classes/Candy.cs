@@ -356,7 +356,7 @@ public class Candy : MonoBehaviour {
 
 			moveAngle *= Mathf.Deg2Rad;
 
-			Debug.Log("MAIN velocity "+ startVelocity);
+//			Debug.Log("MAIN velocity "+ startVelocity);
 			if (Mathf.Sin (moveAngle) * startVelocity > 100.0f) {
 				// ускорение в рамках нашего поля
 				if (startVelocity > VELOCITY_MAX) startVelocity = VELOCITY_MAX;

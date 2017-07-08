@@ -12,7 +12,7 @@
 #import "RMStoreTransactionReceiptVerificator.h"
 
 // Constants
-const NSString *bundleIdentifier	= @"com.squaredino.yummmonsters";
+const NSString *bundleIdentifier	= @"com.appsolutegames.yummmonsters";
 const NSString *bundleVersion		= @"0";
 
 @interface ReceiptVerificationManager ()

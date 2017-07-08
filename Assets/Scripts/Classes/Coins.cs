@@ -1,9 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
-//using System;
-using Random = UnityEngine.Random;
 
 public class Coins : MonoBehaviour {
 
@@ -20,7 +16,6 @@ public class Coins : MonoBehaviour {
 		audioSource = GetComponentInParent<AudioSource> ();
 		sndCoin = Resources.Load<AudioClip>("snd/bonus");
 		textField.text = DefsGame.coinsCount.ToString();
-		//DefsGame.coinsIcon.UpdatePosition ();
 		pointsCount = DefsGame.coinsCount;
 		Color _color = textField.color;
 		_color.a = 0f;
@@ -87,7 +82,6 @@ public class Coins : MonoBehaviour {
 		pointsCount += _count;
 		DefsGame.coinsCount += _count;
 		PlayerPrefs.SetInt ("coinsCount", DefsGame.coinsCount);
-		//DefsGame.coinsIcon.UpdatePosition ();
 	}
 
 	void addPointVisual(int _value) 

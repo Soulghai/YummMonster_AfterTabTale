@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89aa10cdd49e949efad7c366f36fa247, type: 3}
   m_Name: NPSettings
   m_EditorClassIdentifier: 
-  m_lastOpenedDateString: 03/20/2017 00:00:00
+  m_lastOpenedDateString: 06/02/2017 00:00:00
   m_applicationSettings:
     m_supportedFeatures:
       m_usesAddressBook: 0
@@ -31,12 +31,12 @@ MonoBehaviour:
       m_usesTwitter: 0
       m_usesWebView: 0
     m_iOS:
-      m_storeIdentifier: 1192223024
+      m_storeIdentifier: 1232028575
       m_addressBookUsagePermissionDescription: $(PRODUCT_NAME) uses contacts
       m_cameraUsagePermissionDescription: $(PRODUCT_NAME) uses camera
       m_photoAlbumUsagePermissionDescription: $(PRODUCT_NAME) uses photo library
     m_android:
-      m_storeIdentifier: com.crazylabs.monsteryumm
+      m_storeIdentifier: com.appsolutegames.yummmonsters
     m_supportedAddonServices:
       m_usesSoomlaGrow: 0
       m_usesOneSignal: 0
@@ -60,11 +60,11 @@ MonoBehaviour:
       m_price: 0
       m_productIDs:
       - m_platform: 0
-        m_value: com.crazylabs.monsteryumm.stack.coins
+        m_value: com.appsolutegames.yummmonsters.coins1
       - m_platform: 1
-        m_value: com.crazylabs.monsteryumm.stack.coins
+        m_value: com.appsolutegames.yummmonsters.coins1
       - m_platform: 2
-        m_value: com.crazylabs.monsteryumm.stack.coins
+        m_value: com.appsolutegames.yummmonsters.coins1
       m_developerPayload: 
       m_iosProductId: 
       m_androidProductId: 
@@ -74,11 +74,11 @@ MonoBehaviour:
       m_price: 0
       m_productIDs:
       - m_platform: 0
-        m_value: com.crazylabs.monsteryumm.heap.coins
+        m_value: com.appsolutegames.yummmonsters.coins3
       - m_platform: 1
-        m_value: com.crazylabs.monsteryumm.heap.coins
+        m_value: com.appsolutegames.yummmonsters.coins3
       - m_platform: 2
-        m_value: com.crazylabs.monsteryumm.heap.coins
+        m_value: com.appsolutegames.yummmonsters.coins3
       m_developerPayload: 
       m_iosProductId: 
       m_androidProductId: 
@@ -88,11 +88,11 @@ MonoBehaviour:
       m_price: 0
       m_productIDs:
       - m_platform: 0
-        m_value: com.crazylabs.monsteryumm.noads
+        m_value: com.appsolutegames.yummmonsters.noads
       - m_platform: 1
-        m_value: com.crazylabs.monsteryumm.noads
+        m_value: com.appsolutegames.yummmonsters.noads
       - m_platform: 2
-        m_value: com.crazylabs.monsteryumm.noads
+        m_value: com.appsolutegames.yummmonsters.noads
       m_developerPayload: 
       m_iosProductId: 
       m_androidProductId: 
@@ -106,101 +106,101 @@ MonoBehaviour:
     - m_globalID: First
       m_platformIDs:
       - m_platform: 0
-        m_value: CgkIw5qwy5saEAIQBw
+        m_value: com.appsolutegames.yummmonsters.leaderboard
       - m_platform: 1
-        m_value: CgkIw5qwy5saEAIQBw
+        m_value: com.appsolutegames.yummmonsters.leaderboard
       - m_platform: 2
-        m_value: CgkIw5qwy5saEAIQBw
+        m_value: com.appsolutegames.yummmonsters.leaderboard
     m_achievementMetadataCollection:
     - m_globalID: Beginner
       m_platformIDs:
       - m_platform: 0
-        m_value: CgkIw5qwy5saEAIQCA
+        m_value: com.appsolutegames.yummmonsters.firstwin
       - m_platform: 1
-        m_value: CgkIw5qwy5saEAIQCA
+        m_value: com.appsolutegames.yummmonsters.firstwin
       - m_platform: 2
-        m_value: CgkIw5qwy5saEAIQCA
+        m_value: com.appsolutegames.yummmonsters.firstwin
       m_noOfSteps: 1
     - m_globalID: MASTER
       m_platformIDs:
       - m_platform: 0
-        m_value: CgkIw5qwy5saEAIQCQ
+        m_value: com.appsolutegames.yummmonsters.play100
       - m_platform: 1
-        m_value: CgkIw5qwy5saEAIQCQ
+        m_value: com.appsolutegames.yummmonsters.play100
       - m_platform: 2
-        m_value: CgkIw5qwy5saEAIQCQ
+        m_value: com.appsolutegames.yummmonsters.play100
       m_noOfSteps: 1
     - m_globalID: FieldOfCandies
       m_platformIDs:
       - m_platform: 0
-        m_value: CgkIw5qwy5saEAIQCg
+        m_value: com.appsolutegames.yummmonsters.throws1000
       - m_platform: 1
-        m_value: CgkIw5qwy5saEAIQCg
+        m_value: com.appsolutegames.yummmonsters.throws1000
       - m_platform: 2
-        m_value: CgkIw5qwy5saEAIQCg
+        m_value: com.appsolutegames.yummmonsters.throws1000
       m_noOfSteps: 1
     - m_globalID: EXPLOSIVE
       m_platformIDs:
       - m_platform: 0
-        m_value: CgkIw5qwy5saEAIQCw
+        m_value: com.appsolutegames.yummmonsters.bombs100
       - m_platform: 1
-        m_value: CgkIw5qwy5saEAIQCw
+        m_value: com.appsolutegames.yummmonsters.bombs100
       - m_platform: 2
-        m_value: CgkIw5qwy5saEAIQCw
+        m_value: com.appsolutegames.yummmonsters.bombs100
       m_noOfSteps: 1
     - m_globalID: COLLECTION
       m_platformIDs:
       - m_platform: 0
-        m_value: CgkIw5qwy5saEAIQDA
+        m_value: com.appsolutegames.yummmonsters.chars5
       - m_platform: 1
-        m_value: CgkIw5qwy5saEAIQDA
+        m_value: com.appsolutegames.yummmonsters.chars5
       - m_platform: 2
-        m_value: CgkIw5qwy5saEAIQDA
+        m_value: com.appsolutegames.yummmonsters.chars5
       m_noOfSteps: 1
     - m_globalID: Newskin
       m_platformIDs:
       - m_platform: 0
-        m_value: CgkIw5qwy5saEAIQAQ
+        m_value: com.appsolutegames.yummmonsters.skin1
       - m_platform: 1
-        m_value: CgkIw5qwy5saEAIQAQ
+        m_value: com.appsolutegames.yummmonsters.skin1
       - m_platform: 2
-        m_value: CgkIw5qwy5saEAIQAQ
+        m_value: com.appsolutegames.yummmonsters.skin1
       m_noOfSteps: 1
     - m_globalID: MULTI_PULTI
       m_platformIDs:
       - m_platform: 0
-        m_value: CgkIw5qwy5saEAIQAg
+        m_value: com.appsolutegames.yummmonsters.multymatch
       - m_platform: 1
-        m_value: CgkIw5qwy5saEAIQAg
+        m_value: com.appsolutegames.yummmonsters.multymatch
       - m_platform: 2
-        m_value: CgkIw5qwy5saEAIQAg
+        m_value: com.appsolutegames.yummmonsters.multymatch
       m_noOfSteps: 1
     - m_globalID: MISS_CLICK
       m_platformIDs:
       - m_platform: 0
-        m_value: CgkIw5qwy5saEAIQBQ
+        m_value: com.appsolutegames.yummmonsters.missclick
       - m_platform: 1
-        m_value: CgkIw5qwy5saEAIQBQ
+        m_value: com.appsolutegames.yummmonsters.missclick
       - m_platform: 2
-        m_value: CgkIw5qwy5saEAIQBQ
+        m_value: com.appsolutegames.yummmonsters.missclick
       m_noOfSteps: 1
     - m_globalID: GET_MAX
       m_platformIDs:
       - m_platform: 0
-        m_value: CgkIw5qwy5saEAIQAw
+        m_value: com.appsolutegames.yummmonsters.progress100
       - m_platform: 1
-        m_value: CgkIw5qwy5saEAIQAw
+        m_value: com.appsolutegames.yummmonsters.progress100
       - m_platform: 2
-        m_value: CgkIw5qwy5saEAIQAw
+        m_value: com.appsolutegames.yummmonsters.progress100
       m_noOfSteps: 1
     - m_globalID: THREE_JUMPS
       m_platformIDs:
       - m_platform: 0
-        m_value: CgkIw5qwy5saEAIQBA
+        m_value: com.appsolutegames.yummmonsters.rebound
       - m_platform: 1
-        m_value: CgkIw5qwy5saEAIQBA
+        m_value: com.appsolutegames.yummmonsters.rebound
       - m_platform: 2
-        m_value: CgkIw5qwy5saEAIQBA
+        m_value: com.appsolutegames.yummmonsters.rebound
       m_noOfSteps: 1
     m_iOS:
       m_showDefaultAchievementCompletionBanner: 1
