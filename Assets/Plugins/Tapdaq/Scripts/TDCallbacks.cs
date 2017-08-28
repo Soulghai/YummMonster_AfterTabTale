@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading;
+using System.Collections.Generic;
 
 namespace Tapdaq {
 	public class TDCallbacks {
@@ -40,6 +41,8 @@ namespace Tapdaq {
 		public static event Action TapdaqConfigLoaded;
 
 		public static event Action<TDVideoReward> RewardVideoValidated;
+
+		public static event Action<Dictionary<string, object>> CustomEvent;
 
 		// Obsolete events
 
@@ -100,6 +103,10 @@ namespace Tapdaq {
 
 		public void OnRewardedVideoValidated(TDVideoReward reward) {
 			Invoke (RewardVideoValidated, reward);
+		}
+
+		public void OnCustomEvent(Dictionary<string, object> dictionary) {
+			Invoke (CustomEvent, dictionary);
 		}
 	}
 }

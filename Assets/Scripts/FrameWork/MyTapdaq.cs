@@ -1,17 +1,11 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using Tapdaq;
 
 public class MyTapdaq : MonoBehaviour {
-	[HideInInspector] public static bool IsRewardedVideoReadyToShow;
-	private DateTime rewardVideoDate;
-	private bool _isVideoReadyToShow;
-	private bool _isWaitTimer = true;
 
 	void Start ()
 	{
 	    AdManager.Init();
-		rewardVideoDate = DateTime.UtcNow;
 	}
 	
 	private void OnEnable() {
@@ -37,9 +31,10 @@ public class MyTapdaq : MonoBehaviour {
 	}
 
 	private void OnTapdaqConfigLoaded() {
-		AdManager.LoadInterstitialWithTag("app-launch");
-		AdManager.LoadVideoWithTag("video");
-		AdManager.LoadRewardedVideoWithTag("rewarded");
+		AdManager.LoadInterstitial("app-launch");
+		AdManager.LoadVideo("video");
+		AdManager.LoadRewardedVideo("rewarded");
+		AdManager.RequestBanner(TDMBannerSize.TDMBannerStandard);
 //		AdManager.LaunchMediationDebugger ();
 	}
 	
@@ -47,6 +42,10 @@ public class MyTapdaq : MonoBehaviour {
 		Debug.Log("OnAdAvailable + " + e.adType  + " " + e.tag);
 		GlobalEvents<OnDebugLog>.Call(
         			new OnDebugLog {message = "OnAdAvailable \n" + e.adType  + " " + e.tag + " " + e.message});
+		if (e.adType == "BANNER")
+		{
+			AdManager.ShowBanner(TDBannerPosition.Bottom);
+		} else
 		if (e.adType == "INTERSTITIAL" && e.tag == "app-launch")
 		{
 			AdManager.ShowInterstitial("app-launch");
@@ -93,86 +92,30 @@ public class MyTapdaq : MonoBehaviour {
 
 	private void ShowVideo(OnShowVideoAds e)
 	{
-		if (!_isVideoReadyToShow) return;
-		if (AdManager.IsVideoReadyWithTag("video"))
+		Debug.Log("ShowVideo(OnShowVideoAds e)");
+		if (AdManager.IsVideoReady("video"))
 		{
 			AdManager.ShowVideo("video");
 			Defs.MuteSounds(true);
-			rewardVideoDate = DateTime.UtcNow;
-			rewardVideoDate = rewardVideoDate.AddMinutes(1);
-			_isVideoReadyToShow = false;
-			_isWaitTimer = true;
-//			GameEvents.Send(OnRewardedVideoAvailable, false);
-			GlobalEvents<OnRewardedVideoAvailable>.Call(
-				new OnRewardedVideoAvailable { isAvailable = false });
-			GlobalEvents<OnRewardedShow>.Call(
-				new OnRewardedShow());
+			GlobalEvents<OnAdsVideoShowing>.Call(new OnAdsVideoShowing());
+			Debug.Log("Show ADS_VIDEO");
 		}
 	}
 
 	private void ShowRewarded(OnShowRewarded e)
 	{
-		/*if (!AdManager.IsRewardedVideoReadyWithTag("rewarded"))
-		{
-			NPBinding.UI.ShowAlertDialogWithSingleButton("Ads not available", "Check your Internet connection or try later!", "Ok", (string _buttonPressed) => {});
-			return;
-		}*/
 		GlobalEvents<OnDebugLog>.Call(new OnDebugLog {message = "OnShowRewarded \n"});
-		if (AdManager.IsRewardedVideoReadyWithTag("rewarded")) {
+		if (AdManager.IsRewardedVideoReady("rewarded")) {
 			AdManager.ShowRewardVideo("rewarded");
 			Defs.MuteSounds (true);
-			rewardVideoDate = DateTime.UtcNow;
-			rewardVideoDate = rewardVideoDate.AddMinutes(1);
-			IsRewardedVideoReadyToShow = false;
-			_isWaitTimer = true;
+			
+			GlobalEvents<OnAdsRewardedShowing>.Call(new OnAdsRewardedShowing());
 			GlobalEvents<OnRewardedVideoAvailable>.Call(
 				new OnRewardedVideoAvailable {isAvailable = false});
 		}
 	}
-
-	private void UpdateVideoTimerEnd()
-	{
-		if (IsRewardedVideoReadyToShow && AdManager.IsRewardedVideoReadyWithTag("rewarded")) return;
-
-		if (_isWaitTimer)
-		{
-			TimeSpan difference = rewardVideoDate.Subtract(DateTime.UtcNow);
-			D.Log(difference.TotalSeconds);
-			if (difference.TotalSeconds <= 0f)
-			{
-				_isWaitTimer = false;
-				GlobalEvents<OnDebugLog>.Call(new OnDebugLog {message = "_isWaitTimer = false \n"});
-			}
-		}
-
-		if (!_isWaitTimer)
-		{
-//			Debug.Log("UpdateVideoTimerEnd - " + IsRewardedVideoReadyToShow);
-			if (!IsRewardedVideoReadyToShow && AdManager.IsRewardedVideoReadyWithTag("rewarded"))
-			{
-				IsRewardedVideoReadyToShow = true;
-				GlobalEvents<OnRewardedVideoAvailable>.Call(
-					new OnRewardedVideoAvailable {isAvailable = true});
-				GlobalEvents<OnDebugLog>.Call(
-					new OnDebugLog {message = "OnRewardedReady \n"});
-//				Debug.Log("UpdateVideoTimerEnd - REWARDED AVAILABLE");
-			}
-			
-			if (!_isVideoReadyToShow&&AdManager.IsVideoReadyWithTag("video"))
-				_isVideoReadyToShow = true;
-		}
-	}
 	
 	private void OnRewardVideoValidated(TDVideoReward videoReward) {
-//		GameEvents.Send(OnGiveReward, true);
-		GlobalEvents<OnGiveReward>.Call(
-			new OnGiveReward { isAvailable = true });
-		Debug.Log("OnRewardVideoValidated");
-//		D.Log("I got " + videoReward.RewardAmount + " of " + videoReward.RewardName);
-	}
-
-	void Update()
-	{
-		UpdateVideoTimerEnd();
+		GlobalEvents<OnGiveReward>.Call(new OnGiveReward { isAvailable = true });
 	}
 }

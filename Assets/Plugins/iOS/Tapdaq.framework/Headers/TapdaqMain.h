@@ -6,7 +6,6 @@
 //  Copyright (c) 2016 Tapdaq. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
 #import "TDOrientationEnum.h"
@@ -30,35 +29,40 @@
 typedef NSString *const TDPTag;
 
 // Default.
-static TDPTag const TDPTagDefault = @"default";
+extern TDPTag const TDPTagDefault;
 // Bootup - Initial bootup of game.
-static TDPTag const TDPTagBootup = @"bootup";
+extern TDPTag const TDPTagBootup;
 // Home Screen - Home screen the player first sees.
-static TDPTag const TDPTagHomeScreen = @"home_screen";
+extern TDPTag const TDPTagHomeScreen;
 // Main Menu - Menu that provides game options.
-static TDPTag const TDPTagMainMenu = @"main_menu";
+extern TDPTag const TDPTagMainMenu;
 // Pause - Pause screen.
-static TDPTag const TDPTagPause = @"pause";
+extern TDPTag const TDPTagPause;
 // Level Start - Start of the level.
-static TDPTag const TDPTagLevelStart = @"start";
+extern TDPTag const TDPTagLevelStart;
 // Level Complete - Completion of the level.
-static TDPTag const TDPTagLevelComplete = @"level_complete";
+extern TDPTag const TDPTagLevelComplete;
 // Game Center - After a user visits the Game Center.
-static TDPTag const TDPTagGameCenter = @"game_center";
+extern TDPTag const TDPTagGameCenter;
 // IAP Store - The store where the player pays real money for currency or items.
-static TDPTag const TDPTagIAPStore = @"iap_store";
+extern TDPTag const TDPTagIAPStore;
 // Item Store - The store where a player buys virtual goods.
-static TDPTag const TDPTagItemStore = @"item_store";
+extern TDPTag const TDPTagItemStore;
 // Game Over - The game over screen after a player is finished playing.
-static TDPTag const TDPTagGameOver = @"game_over";
+extern TDPTag const TDPTagGameOver;
 // Leaderboard - List of leaders in the game.
-static TDPTag const TDPTagLeaderBoard = @"leaderboard";
+extern TDPTag const TDPTagLeaderBoard;
 // Settings - Screen where player can change settings such as sound.
-static TDPTag const TDPTagSettings = @"settings";
+extern TDPTag const TDPTagSettings ;
 // Quit - Screen displayed right before the player exits a game.
-static TDPTag const TDPTagQuit = @"quit";
+extern TDPTag const TDPTagQuit;
 
 @interface Tapdaq : NSObject
+
+/**
+ * Current version of the SDK
+ */
+@property (readonly, nonatomic) NSString *sdkVersion;
 
 @property (nonatomic, weak) id <TapdaqDelegate> delegate;
 
@@ -134,6 +138,14 @@ static TDPTag const TDPTagQuit = @"quit";
 - (BOOL)isRewardedVideoReady;
 
 - (void)showRewardedVideo;
+    
+#pragma mark Offerwall
+    
+- (void)loadOfferwall;
+    
+- (BOOL)isOfferwallReady;
+    
+- (void)showOfferwall;
 
 #pragma mark Native adverts
 
@@ -206,16 +218,6 @@ static TDPTag const TDPTagQuit = @"quit";
  This method is only used for plugins such as Unity which do not automatically trigger the launch request on application bootup.
  */
 - (void)launch;
-
-#pragma mark Mediation debug view
-
-/**
- Used to launch the debugger view to test if ads can be shown
- 
- @param vc The view controller which will display the launch debugger view.
- 
- */
-- (void)launchMediationDebugger:(UIViewController *)vc;
 
 @end
 
@@ -393,11 +395,27 @@ static TDPTag const TDPTagQuit = @"quit";
  @param rewardAmount The value of the reward.
  */
 - (void)rewardValidationSucceededForRewardName:(NSString *)rewardName
-                                  rewardAmount:(int)rewardAmount;
-
+                                  rewardAmount:(int)rewardAmount __attribute__((deprecated("rewardValidationSucceededForRewardName:rewardAmount: has been deprecated. Please use rewardValidationSucceededForPlacementTag:rewardName:rewardAmount:payload: instead.")));
+/**
+ Called when a reward is ready for the user.
+ @param placementTag Placement tag.
+ @param rewardName The name of the reward.
+ @param rewardAmount The value of the reward.
+ */
 - (void)rewardValidationSucceededForPlacementTag:(NSString *)placementTag
                                       rewardName:(NSString *)rewardName
-                                    rewardAmount:(int)rewardAmount;
+                                    rewardAmount:(int)rewardAmount __attribute__((deprecated("rewardValidationSucceededForPlacementTag:rewardName:rewardAmount: has been deprecated. Please use rewardValidationSucceededForPlacementTag:rewardName:rewardAmount:payload: instead.")));
+/**
+ Called when a reward is ready for the user.
+ @param placementTag Placement tag.
+ @param rewardName The name of the reward.
+ @param rewardAmount The value of the reward.
+ @param payload Dictionary payload configured on the dashboard.
+ */
+- (void)rewardValidationSucceededForPlacementTag:(NSString *)placementTag
+                                      rewardName:(NSString *)rewardName
+                                    rewardAmount:(int)rewardAmount
+                                         payload:(NSDictionary *)payload;
 
 /**
  Called if an error occurred when rewarding the user.
@@ -438,4 +456,19 @@ static TDPTag const TDPTagQuit = @"quit";
 
 - (void)didCloseMoreApps;
 
+#pragma mark Offerwall delegate methods
+    
+- (void)didLoadOfferwall;
+    
+- (void)didFailToLoadOfferwall;
+    
+- (void)willDisplayOfferwall;
+    
+- (void)didDisplayOfferwall;
+    
+- (void)didCloseOfferwall;
+    
+- (void)didReceiveOfferwallCredits:(NSDictionary *)creditInfo;
+    
+- (void)didFailToReceiveOfferwallCredits;
 @end

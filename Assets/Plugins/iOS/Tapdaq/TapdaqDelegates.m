@@ -159,20 +159,22 @@
     [self send: @"_didClick" adType: @"REWARD_AD" tag: placementTag message: @""];
 }
 
-- (void)rewardValidationSucceededForPlacementTag:(NSString *)placementTag
-                                      rewardName:(NSString *)rewardName
-                                    rewardAmount:(int)rewardAmount
+-(void)rewardValidationSucceededForPlacementTag:(NSString *)placementTag rewardName:(NSString *)rewardName rewardAmount:(int)rewardAmount payload:(NSDictionary *)payload
 {
-    NSDictionary* dict = @{
-                           @"RewardName": rewardName,
-                           @"RewardAmount": @(rewardAmount),
-                           @"Tag": placementTag
-                           };
+    NSMutableDictionary* dict = [[NSMutableDictionary alloc] init];
+    
+    dict[@"RewardName"] = rewardName;
+    dict[@"RewardAmount"] = @(rewardAmount);
+    dict[@"RewardValid"] = @YES;
+    dict[@"Tag"] = placementTag;
+    
+    if (payload != nil) {
+        dict[@"RewardJSON"] = payload;
+    }
     [self send: @"_didVerify" dictionary: dict];
 }
 
-- (void)rewardValidationErroredForPlacementTag:(NSString *)placementTag
-{
+-(void)rewardValidationErroredForPlacementTag:(NSString *)placementTag {
     [self send: @"_onValidationFailed" adType: @"REWARD_AD" tag: placementTag message: @""];
 }
 
@@ -197,7 +199,7 @@
     [self send: @"_didFailToLoad" adType: @"NATIVE_AD" tag: placementTag message: [JsonHelper toJsonString: nativeMessageDict]];
 }
 
-#pragma mark - TapdaqDelegate methods
+#pragma mark MoreApps delegate methods
 
 - (void)didLoadMoreApps
 {
@@ -237,6 +239,63 @@
                            @"adType": @"MORE_APPS"
                            };
     [self send:@"_didClose" dictionary: dict];
+}
+
+
+#pragma mark Offerwall delegate methods
+
+- (void)didLoadOfferwall
+{
+    NSDictionary* dict = @{
+                           @"adType": @"OFFERWALL"
+                           };
+    [self send:@"_didLoad" dictionary: dict];
+}
+
+- (void)didFailToLoadOfferwall
+{
+    NSDictionary* dict = @{
+                           @"adType": @"OFFERWALL"
+                           };
+    [self send:@"_didFailToLoad" dictionary: dict];
+}
+
+- (void)willDisplayOfferwall
+{
+    NSDictionary* dict = @{
+                           @"adType": @"OFFERWALL"
+                           };
+    [self send:@"_willDisplay" dictionary: dict];
+}
+
+- (void)didDisplayOfferwall
+{
+    NSDictionary* dict = @{
+                           @"adType": @"OFFERWALL"
+                           };
+    [self send:@"_didDisplay" dictionary: dict];
+}
+
+- (void)didCloseOfferwall
+{
+    NSDictionary* dict = @{
+                           @"adType": @"OFFERWALL"
+                           };
+    [self send:@"_didClose" dictionary: dict];
+}
+
+- (void)didReceiveOfferwallCredits:(NSDictionary *)creditInfo {
+    
+    NSMutableDictionary * dict = [NSMutableDictionary dictionaryWithDictionary: creditInfo];
+    dict[@"Event"] = @"onOfferwallAdCredited";
+    [self send:@"_didCustomEvent" dictionary: dict];
+}
+
+- (void)didFailToReceiveOfferwallCredits {
+    NSDictionary* dict = @{
+                           @"Event": @"onGetOfferwallCreditsFailed"
+                           };
+    [self send:@"_didCustomEvent" dictionary: dict];
 }
 
 @end

@@ -93,11 +93,17 @@
 {
     if (nativeAd != nil) {
         
-        NSData *imageData = UIImagePNGRepresentation(nativeAd.creative.image);
+        NSData *imageData;
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         NSString *documentsDirectory = [paths objectAtIndex:0];
-        NSString *filePath = [documentsDirectory stringByAppendingPathComponent:@"selected2.png"]; //Add the file name
-        [imageData writeToFile:filePath atomically:YES];
+        
+        if([nativeAd.creative isKindOfClass: [TDImageCreative class]]) {
+            
+            TDImageCreative *creative = (TDImageCreative *)nativeAd.creative;
+            imageData = UIImagePNGRepresentation(creative.image);
+            NSString *filePath = [documentsDirectory stringByAppendingPathComponent:@"selected2.png"]; //Add the file name
+            [imageData writeToFile:filePath atomically:YES];
+        }
         
         imageData = UIImagePNGRepresentation(nativeAd.icon);
         NSString *iconPath = [documentsDirectory stringByAppendingPathComponent:@"iconSelected2.png"]; //Add the file name

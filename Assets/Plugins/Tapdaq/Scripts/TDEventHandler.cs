@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace Tapdaq {
 	public class TDEventHandler : MonoBehaviour {
@@ -125,6 +126,13 @@ namespace Tapdaq {
 		void _didFailToFetchNative(string message) {
 			Debug.Log ("_didFailToFetchNative " + message);
 			TDCallbacks.instance.OnAdError (new TDAdEvent("NATIVE_AD", message));
+		}
+
+		// offerwall
+		void _didCustomEvent(string jsonMessage) {
+			var dictionary = JsonConvert.DeserializeObject<Dictionary<string, object>> (jsonMessage);
+			Debug.Log ("keys - " + dictionary.Keys.Count);
+			TDCallbacks.instance.OnCustomEvent (dictionary);
 		}
 	}
 }

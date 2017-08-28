@@ -32,6 +32,9 @@ namespace Tapdaq {
 			if (adType == "REWARD_AD")
 				return TDAdType.TDAdTypeRewardedVideo;
 			
+			if (adType == "OFFERWALL")
+				return TDAdType.TDAdTypeOfferwall;
+			
 			if (IsNativeAdEvent()) {
 				var nativeType = GetNativeEventType ();
 				return TDEnumHelper.GetAdTypeFromNativeType (nativeType);
@@ -65,6 +68,10 @@ namespace Tapdaq {
 
 		public bool IsMoreAppsEvent() {
 			return adType == "MORE_APPS";
+		}
+
+		public bool IsOfferwallEvent() {
+			return adType == "OFFERWALL";
 		}
 
 		public TDNativeAdType GetNativeEventType() {

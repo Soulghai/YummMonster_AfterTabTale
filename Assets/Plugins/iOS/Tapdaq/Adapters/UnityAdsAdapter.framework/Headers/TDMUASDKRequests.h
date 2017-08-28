@@ -8,11 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "TDMediationAdapter.h"
 
 #define UASDK 1
 
-#import <UnityAds/UnityAds.h>
-#import "TDAdUnitEnum.h"
 
 //Debug flags
 #define TDMUADEBUG 1
@@ -23,62 +22,8 @@
 #   define TDMUALog(...)
 #endif
 
-@class TDMediationConfig;
-@protocol TDMUADelegate;
-
-#ifdef UASDK
-
-@interface TDMUASDKRequests : NSObject
-#else
-@interface TDMUASDKRequests : NSObject
-#endif
-
-@property (nonatomic, weak) id <TDMUADelegate> delegate;
-
-+ (instancetype)sharedInstance;
-
-- (void)configure:(TDMediationConfig *)config;
-
-- (void)loadForAdUnit:(TDAdUnit)adUnit;
-
-- (BOOL)isReadyForAdUnit:(TDAdUnit)adUnit;
-
-- (void)showForAdUnit:(TDAdUnit)adUnit withPlacementTag:(NSString *)placementTag;
-
+@interface TDMUASDKRequests : NSObject <TDMediationAdapter>
+@property (nonatomic, weak) id <TDAdapterDelegate> delegate;
+@property (nonatomic, weak) id <TDAdapterConfigDelegate> configDelegate;
 @end
 
-
-#pragma mark -
-#pragma mark TDMUADelegate
-
-@protocol TDMUADelegate <NSObject>
-
-@required
-
-- (void)tapdaqUADidLoadConfig;
-
-- (void)tapdaqUADidFailToLoadConfig;
-
-#pragma mark - All ad units
-
-- (void)tapdaqUADidLoadAdUnit:(TDAdUnit)adUnit;
-
-- (void)tapdaqUADidFailToLoadAdUnit:(TDAdUnit)adUnit;
-
-- (void)tapdaqUAWillDisplayAdUnit:(TDAdUnit)adUnit withPlacementTag:(NSString *)placementTag;
-
-- (void)tapdaqUADidDisplayAdUnit:(TDAdUnit)adUnit withPlacementTag:(NSString *)placementTag;
-
-- (void)tapdaqUADidCloseAdUnit:(TDAdUnit)adUnit withPlacementTag:(NSString *)placementTag;
-
-- (void)tapdaqUADidClickAdUnit:(TDAdUnit)adUnit withPlacementTag:(NSString *)placementTag;
-
-#pragma mark - Rewarded Video
-
-- (void)tapdaqUARewardValidationSucceededWithPlacementTag:(NSString *)placementTag
-                                               rewardName:(NSString *)rewardName
-                                             rewardAmount:(int)rewardAmount;
-
-- (void)tapdaqUARewardValidationErroredWithPlacementTag:(NSString *)placementTag;
-
-@end

@@ -67,18 +67,18 @@ namespace VoxelBusters.NativePlugins
 	
 		private		readonly BuildTargetGroup[]	buildTargetGroups		= new BuildTargetGroup[]{
 			BuildTargetGroup.Android,
-#if UNITY_5 || UNITY_6 || UNITY_7
+#if UNITY_5 || UNITY_2017_1_OR_NEWER
 			BuildTargetGroup.iOS,
 #else
-			BuildTargetGroup.iPhone, 
+			BuildTargetGroup.iOS, 
 #endif
-#if UNITY_5 || UNITY_6 || UNITY_7			
+#if UNITY_5 || UNITY_2017_1_OR_NEWER			
 			BuildTargetGroup.WSA, 
 #else
 			BuildTargetGroup.Metro,
 			BuildTargetGroup.WP8,
 #endif
-#if !(UNITY_5_0 || UNITY_5_1 || UNITY_5_2 || UNITY_5_3_0) && (UNITY_5 || UNITY_6 || UNITY_7)
+#if !(UNITY_5_0 || UNITY_5_1 || UNITY_5_2 || UNITY_5_3_0) && (UNITY_5 || UNITY_2017_1_OR_NEWER)
 			BuildTargetGroup.tvOS,
 #endif
 			BuildTargetGroup.Standalone
@@ -333,7 +333,7 @@ namespace VoxelBusters.NativePlugins
 			m_assetStoreProduct	= new AssetStoreProduct(kProductName, kProductVersion, Constants.kLogoPath);
 
 #if UNITY_EDITOR
-			SetupRateNPSettings();
+			//SetupRateNPSettings();
 			
 #if USES_BILLING
 			// Rebuilding asset bundles is required

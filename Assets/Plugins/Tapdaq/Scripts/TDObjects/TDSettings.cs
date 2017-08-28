@@ -6,6 +6,8 @@ using Newtonsoft.Json;
 
 namespace Tapdaq {
 	public class TDSettings : ScriptableObject {
+
+		public const string pluginVersion = "unity_5.5.2";
 		
 		public string ios_applicationID = "";
 		public string ios_clientKey = "";
@@ -80,7 +82,43 @@ namespace Tapdaq {
 	[Serializable]
 	public class AdTags {
 
-		public string[] tags = new string[Enum.GetValues (typeof(TDAdType)).Length];
+		public static string DefaultTag = "default";
+
+		[SerializeField]
+		private string[] tags = new string[Enum.GetValues (typeof(TDAdType)).Length];
+
+		public string this[int index]
+		{
+			get
+			{
+				if (index >= tags.Count()) {
+					UpdateTagsLength ();
+				}
+				return tags [index];
+			}
+			set
+			{
+				if (index >= tags.Count()) {
+					UpdateTagsLength ();
+				}
+				tags [index] = value;
+			}
+		}
+
+		public int Length {
+			get { return tags.Length; }
+		}
+
+		private void UpdateTagsLength() {
+			if (tags.Count() < Enum.GetValues (typeof(TDAdType)).Length) {
+
+				var newTags = new string[Enum.GetValues (typeof(TDAdType)).Length];
+				for (int i = 0; i < tags.Count(); i++) {
+					newTags [i] = tags [i];
+				}
+				tags = newTags;
+			}
+		}
 
 		public Dictionary<TDAdType, string> GetTags () {
 

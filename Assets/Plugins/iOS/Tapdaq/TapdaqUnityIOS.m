@@ -16,7 +16,8 @@ void _ConfigureTapdaq(const char* appIdChar,
                       const char* enabledAdTypesChar,
                       const char* testDevicesChar,
                       bool isDebugMode,
-                      bool autoReloadAds) {
+                      bool autoReloadAds,
+                      const char* pluginVersion) {
     
     bool isValid = true;
     
@@ -44,13 +45,15 @@ void _ConfigureTapdaq(const char* appIdChar,
     NSString *clientKey = [[NSString stringWithUTF8String:clientKeyChar] copy];
     NSString *enabledAdTypes = [[NSString stringWithUTF8String:enabledAdTypesChar] copy];
     NSString *testDevices = [[NSString stringWithUTF8String:testDevicesChar] copy];
+    NSString *version = [[NSString stringWithUTF8String:pluginVersion] copy];
     
     [[TapdaqUnityIOS sharedInstance] initWithApplicationId:appId
                                                  clientKey:clientKey
                                             enabledAdTypes:enabledAdTypes
                                                testDevices:testDevices
                                                isDebugMode:isDebugMode
-                                             autoReloadAds:autoReloadAds];
+                                             autoReloadAds:autoReloadAds
+                                             pluginVersion:version];
     
 }
 
@@ -339,7 +342,7 @@ void _SendNativeImpression(const char* uniqueId) {
     
 }
 
-#pragma mark - Show More Apps
+#pragma mark - More Apps
 
 void _ShowMoreApps() {
     [[TapdaqMoreApps sharedInstance] show];
@@ -357,8 +360,24 @@ void _LoadMoreAppsWithConfig(const char* config) {
     [[TapdaqMoreApps sharedInstance] loadWithConfig: config];
 }
 
+#pragma mark - Offerwall
+
+void _ShowOfferwall() {
+    [[TapdaqOfferwall sharedInstance] show];
+}
+
+bool _IsOfferwallReady() {
+    return [[TapdaqOfferwall sharedInstance] isReady];
+}
+
+void _LoadOfferwall() {
+    return [[TapdaqOfferwall sharedInstance] load];
+}
+
+
+
 void _LaunchMediationDebugger() {
-    // TODO stub
+    [[Tapdaq sharedSession] presentDebugViewController];
 }
 
 bool _isEmpty(const char* str) {
@@ -395,11 +414,12 @@ bool _isEmpty(const char* str) {
                   testDevices:(NSString *)testDevices
                   isDebugMode:(bool)isDebugMode
                 autoReloadAds:(bool)autoReloadAds
+                pluginVersion:(NSString *)pluginVersion
 {
     NSLog(@"enabledAdTypes: %@", enabledAdTypes);
     
     TDProperties *properties = [[TDProperties alloc] init];
-    [properties setPluginVersion:@"unity_4.2.1"];
+    [properties setPluginVersion:pluginVersion];
     properties.isDebugEnabled = isDebugMode;
     [properties setAutoReloadAds:autoReloadAds];
     
@@ -448,7 +468,8 @@ bool _isEmpty(const char* str) {
                                                
                                                @"TDAdTypeVideo": @(23),
                                                @"TDAdTypeRewardedVideo": @(24),
-                                               @"TDAdTypeBanner": @(25)
+                                               @"TDAdTypeBanner": @(25),
+                                               @"TDAdTypeOfferwall": @(26)
                                                
                                                };
                 
@@ -531,12 +552,12 @@ bool _isEmpty(const char* str) {
         NSArray* fbArray = testDevicesDictionary[@"facebookDevices"];
         
         if(amArray != nil) {
-            TDTestDevices *amTestDevices = [[TDTestDevices alloc] initWithNetwork:TDMAdMob testDevices:amArray];
+            TDTestDevices *amTestDevices = [[TDTestDevices alloc] initWithNetwork:@"admob" testDevices:amArray];
             [properties registerTestDevices: amTestDevices];
         }
         
         if(fbArray != nil) {
-            TDTestDevices *fbTestDevices = [[TDTestDevices alloc] initWithNetwork:TDMFacebookAudienceNetwork testDevices:fbArray];
+            TDTestDevices *fbTestDevices = [[TDTestDevices alloc] initWithNetwork:@"facebook" testDevices:fbArray];
             [properties registerTestDevices: fbTestDevices];
         }
     }

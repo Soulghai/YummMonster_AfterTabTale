@@ -53,7 +53,7 @@ namespace VoxelBusters.DebugPRO
 			instance.hideFlags	= HideFlags.HideAndDontSave;
 #pragma warning restore
 
-#if  UNITY_5 || UNITY_6 || UNITY_7
+#if  UNITY_5 || UNITY_2017_1_OR_NEWER
 			// Register for callbacks
 			Application.logMessageReceived -= instance.HandleLog;
 			Application.logMessageReceived += instance.HandleLog;

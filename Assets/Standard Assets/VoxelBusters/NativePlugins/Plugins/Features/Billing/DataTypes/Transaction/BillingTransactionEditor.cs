@@ -32,8 +32,10 @@ namespace VoxelBusters.NativePlugins.Internal
 		{
 #if UNITY_ANDROID
 			return BillingTransactionAndroid.CreateJSONObject(this);
-#else
+#elif UNITY_IOS
 			return BillingTransactionIOS.CreateJSONObject(this);
+#else
+			return null;
 #endif
 		}
 

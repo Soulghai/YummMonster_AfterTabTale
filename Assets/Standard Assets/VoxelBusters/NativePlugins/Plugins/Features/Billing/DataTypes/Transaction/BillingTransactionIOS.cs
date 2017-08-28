@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-#if USES_BILLING
+#if USES_BILLING && UNITY_IOS
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using VoxelBusters.Utility;

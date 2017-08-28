@@ -60,7 +60,7 @@ public class ScreenGame : MonoBehaviour {
 		coins = GetComponent<Coins> ();
 		bestScore = GetComponent<BestScore> ();
 		poinsBMScript = GetComponent<PointsBubbleManager> ();
-		DefsGame.progressBar_x2 = transform.FindChild ("progressBar_x2").gameObject;
+		DefsGame.progressBar_x2 = transform.Find ("progressBar_x2").gameObject;
 		state = 0;
 
 		hintCounter = PlayerPrefs.GetInt ("hintCounter", 3);
@@ -88,7 +88,7 @@ public class ScreenGame : MonoBehaviour {
 
 		DefsGame.gameServices.ReportProgressWithGlobalID (DefsGame.gameServices.ACHIEVEMENT_MASTER, DefsGame.QUEST_GAMEPLAY_Counter);
 
-		MyAds.ShowVideoAds();
+		GlobalEvents<OnAdsVideoTryShow>.Call(new OnAdsVideoTryShow());
 		
 		++DefsGame.gameplayCounter;
 	
@@ -179,7 +179,7 @@ public class ScreenGame : MonoBehaviour {
 	public void EndCurrentGame() {
 		if (!isScreenReviveDone) {
 			isScreenReviveDone = true;
-			if (IsRewardedVideoReadyToShow && DefsGame.currentPointsCount >= 4) {
+			if (IsRewardedVideoReadyToShow && DefsGame.currentPointsCount >= Mathf.RoundToInt(DefsGame.gameBestScore * 0.5f)) {
 				UIManager.ShowUiElement ("ScreenRevive");
 				UIManager.ShowUiElement ("ScreenReviveBtnRevive");
 				UIManager.ShowUiElement ("ScreenReviveBtnBack");
@@ -372,7 +372,7 @@ public class ScreenGame : MonoBehaviour {
 
 	public void Revive() {
 		FlurryEventsManager.SendEvent ("RV_revive");
-		MyAds.ShowRewardedAds();
+		GlobalEvents<OnRewardedTryShow>.Call(new OnRewardedTryShow()); 
 		_isWaitReward = true;
 	}
 

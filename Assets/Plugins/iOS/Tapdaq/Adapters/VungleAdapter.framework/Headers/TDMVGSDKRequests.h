@@ -8,10 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+#import "TDMediationAdapter.h"
 #define VGSDK 1
 
-#import <VungleSDK/VungleSDK.h>
-#import "TDAdUnitEnum.h"
 
 //Debug flags
 #define TDMVGINFO 1
@@ -29,56 +28,8 @@
 #   define TDMVGDebugLog(...)
 #endif
 
-@class TDMediationConfig;
-@protocol TDMVGDelegate;
-
-#ifdef VGSDK
-
-@interface TDMVGSDKRequests : NSObject <VungleSDKDelegate>
-#else
-@interface TDMVGSDKRequests : NSObject
-#endif
-
-@property (nonatomic, weak) id <TDMVGDelegate> delegate;
-
-+ (instancetype)sharedInstance;
-
-- (void)configure:(TDMediationConfig *)config;
-
-- (void)loadForAdUnit:(TDAdUnit)adUnit;
-
-- (BOOL)isReadyForAdUnit:(TDAdUnit)adUnit;
-
-- (void)showForAdUnit:(TDAdUnit)adUnit withPlacementTag:(NSString *)placementTag;
-
+@interface TDMVGSDKRequests : NSObject <TDMediationAdapter>
+@property (nonatomic, weak) id <TDAdapterDelegate> delegate;
+@property (nonatomic, weak) id <TDAdapterConfigDelegate> configDelegate;
 @end
 
-#pragma mark - TDMVGDelegate
-
-@protocol TDMVGDelegate <NSObject>
-
-@required
-
-- (void)tapdaqVGDidLoadConfig;
-
-#pragma mark - Video
-
-- (void)tapdaqVGDidLoadAdUnit:(TDAdUnit)adUnit;
-
-- (void)tapdaqVGDidFailToLoadAdUnit:(TDAdUnit)adUnit;
-
-- (void)tapdaqVGWillDisplayAdUnit:(TDAdUnit)adUnit withPlacementTag:(NSString *)placementTag;
-
-- (void)tapdaqVGDidDisplayAdUnit:(TDAdUnit)adUnit withPlacementTag:(NSString *)placementTag;
-
-- (void)tapdaqVGDidCloseAdUnit:(TDAdUnit)adUnit withPlacementTag:(NSString *)placementTag;
-
-- (void)tapdaqVGDidClickAdUnit:(TDAdUnit)adUnit withPlacementTag:(NSString *)placementTag;
-
-#pragma mark - Rewarded Video
-
-- (void)tapdaqVGRewardValidationSucceededWithPlacementTag:(NSString *)placementTag
-                                               rewardName:(NSString *)rewardName
-                                             rewardAmount:(int)rewardAmount;
-
-@end

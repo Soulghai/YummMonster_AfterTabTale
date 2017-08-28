@@ -89,6 +89,7 @@ public class ScreenMenu : MonoBehaviour
         isShowBtnViveoAds = e.isAvailable;
         if (isShowBtnViveoAds)
         {
+            if (DefsGame.gameplayCounter % 4 == 0)
             if (DefsGame.currentScreen == DefsGame.SCREEN_MENU)
             {
                 UIManager.ShowUiElement("BtnVideoAds");
@@ -119,7 +120,7 @@ public class ScreenMenu : MonoBehaviour
             UIManager.ShowUiElement("BtnGift");
             FlurryEventsManager.SendEvent("collect_prize_impression");
         }
-        if (isShowBtnViveoAds)
+        if (isShowBtnViveoAds&&DefsGame.gameplayCounter % 4 == 0)
         {
             UIManager.ShowUiElement("BtnVideoAds");
             FlurryEventsManager.SendEvent("RV_strawberries_impression", "start_screen");
@@ -272,7 +273,7 @@ public class ScreenMenu : MonoBehaviour
     public void OnVideoAdsClicked()
     {
         FlurryEventsManager.SendEvent("RV_strawberries", "start_screen");
-        MyAds.ShowRewardedAds();
+        GlobalEvents<OnRewardedTryShow>.Call(new OnRewardedTryShow()); 
         _isWaitReward = true;
 //		if (!PublishingService.Instance.IsRewardedVideoReady())
 //		{

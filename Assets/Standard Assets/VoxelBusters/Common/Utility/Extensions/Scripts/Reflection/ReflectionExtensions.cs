@@ -273,7 +273,7 @@ namespace VoxelBusters.Utility
 
 			string _displayName		= null;
 
-#if UNITY_4_6 || UNITY_5 || UNITY_6 || UNITY_7
+#if UNITY_4_6 || UNITY_5 || UNITY_2017_1_OR_NEWER
 
 			_displayName	= _originalProperty.displayName;
 

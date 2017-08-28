@@ -191,7 +191,7 @@ namespace VoxelBusters.AssetStoreProductUtility
 				m_promptWindow	= EditorWindow.CreateInstance<UpdatePromptWindow>();
 			
 			// Set properties
-#if !(UNITY_5_0) && (UNITY_5 || UNITY_6 || UNITY_7)
+#if !(UNITY_5_0) && (UNITY_5 || UNITY_2017_1_OR_NEWER)
 			m_promptWindow.titleContent			= new GUIContent(_title);
 #else
 			m_promptWindow.title				= _title;

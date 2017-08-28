@@ -11,5 +11,7 @@ namespace Tapdaq {
 		public float RewardAmount;
 		public string Location;
 		public string Tag;
+		public bool RewardValid;
+		public string RewardJson;
 	}
 }

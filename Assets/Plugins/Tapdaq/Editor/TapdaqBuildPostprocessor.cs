@@ -72,12 +72,16 @@ public class TapdaqBuildPostprocessor : MonoBehaviour
 		proj.SetBuildProperty(target, "ENABLE_BITCODE", "YES");
 		proj.SetBuildProperty(target, "LD_RUNPATH_SEARCH_PATHS", "$(inherited) @executable_path/Frameworks");
 		proj.SetBuildProperty(target, "IPHONEOS_DEPLOYMENT_TARGET", GetIOSDeploymentTarget(proj));
+		proj.SetBuildProperty (target, "ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES", "YES");
+		proj.SetBuildProperty (target, "CLANG_ENABLE_MODULES", "YES");
+		proj.SetBuildProperty (target, "CLANG_ENABLE_OBJC_ARC", "YES");
 	}
 
 	private static void AddLibraries(PBXProject proj, string target) {
 		foreach(var name in Enum.GetNames(typeof(TapdaqAdapter))) {
 			proj.EmbedFramework(target, FrameworkPath + "Adapters/" + name +".framework");
 		}
+		proj.EmbedFramework (target, "Frameworks/Plugins/iOS/Tapdaq.framework");
 
 		if (AssetDatabase.FindAssets ("TapjoyAdapter.framework").Length > 0) {
 			if (!proj.ContainsFileByProjectPath ("TapjoyResources.bundle")) {

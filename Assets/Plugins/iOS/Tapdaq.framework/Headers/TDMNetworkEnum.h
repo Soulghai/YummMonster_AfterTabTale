@@ -7,31 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+typedef NSString * TDMNetwork;
 
-typedef NS_ENUM(NSUInteger, TDMNetwork) {
-    TDMUnknown,
-    TDMTapdaq,
-    TDMAdColony,
-    TDMAdMob,
-    TDMApplovin,
-    TDMChartboost,
-    TDMInMobi,
-    TDMFacebookAudienceNetwork,
-    TDMVungle,
-    TDMUnityAds,
-    TDMTapjoy,
-    TDMIronSource
-};
-
-static NSString *const kNetworkUnknown = @"unknown";
-static NSString *const kNetworkTapdaq = @"tapdaq";
-static NSString *const kNetworkAdColony = @"adcolony";
-static NSString *const kNetworkAdMob = @"admob";
-static NSString *const kNetworkApplovin = @"applovin";
-static NSString *const kNetworkChartboost = @"chartboost";
-static NSString *const kNetworkInMobi = @"inmobi";
-static NSString *const kNetworkFacebookAudienceNetwork = @"facebook";
-static NSString *const kNetworkVungle = @"vungle";
-static NSString *const kNetworkUnityads = @"unityads";
-static NSString *const kNetworkTapjoy = @"tapjoy";
-static NSString *const kNetworkIronSource = @"ironsource";
+static TDMNetwork const kTDMNetworkUnknown = @"unknown";
+static TDMNetwork const kTDMNetworkTapdaq = @"tapdaq";

@@ -1,0 +1,10 @@
+framework module Tapdaq {
+  umbrella header "Tapdaq.h"
+
+  export *
+  module * { export * }
+}
+
+module Tapdaq.Swift {
+    header "Tapdaq-Swift.h"
+}

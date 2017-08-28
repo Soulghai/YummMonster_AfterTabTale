@@ -5,7 +5,6 @@ using UnityEditor.Callbacks;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using System.Text.RegularExpressions;
 using VoxelBusters.Utility;
 using VoxelBusters.ThirdParty.XUPorter;
 using PlayerSettings = UnityEditor.PlayerSettings;
@@ -50,9 +49,7 @@ namespace VoxelBusters.NativePlugins
 		// Pch file modification
 		private const string 	kPrecompiledFileRelativeDirectoryPath	= "Classes/";
 		private const string 	kPrecompiledHeaderExtensionPattern		= "*.pch";
-		private const string	kPrecompiledHeaderRegexPattern			= @"#ifdef __OBJC__(\n?\t?[#|//](.)*)*";
-		private const string	kPrecompiledHeaderEndIfTag				= "#endif";
-		private const string	kPrecompiledHeaderInsertText			= "#import \"Defines.h\"";
+		private const string	kPCHInsertHeaders			= "#ifdef __OBJC__\n\t#import \"Defines.h\"\n#endif\n";
 
 		#endregion
 
@@ -161,7 +158,7 @@ namespace VoxelBusters.NativePlugins
 				{
 					const string _kBundleVersionKey		= "CFBundleVersion";
 
-					_contents[_iter]		= string.Format("const NSString *bundleIdentifier\t= @\"{0}\";", PlayerSettings.bundleIdentifier);
+					_contents[_iter]		= string.Format("const NSString *bundleIdentifier\t= @\"{0}\";", PlayerSettings.applicationIdentifier);
 					_contents[_iter + 1]	= string.Format("const NSString *bundleVersion\t\t= @\"{0}\";", infoPlist[_kBundleVersionKey]);
 					break;
 				}
@@ -388,21 +385,11 @@ namespace VoxelBusters.NativePlugins
 			if (File.Exists(_pchFilePath))
 			{
 				string 	_fileContents 		= File.ReadAllText(_pchFilePath);
-				if (_fileContents.Contains(kPrecompiledHeaderInsertText))
-					return;
-
-				// We should append text within end tag
-				Regex 	_regex				= new Regex(kPrecompiledHeaderRegexPattern);
-				Match 	_match 				= _regex.Match(_fileContents);
-				int		_endOfPatternIndex	= _match.Groups[0].Index + _match.Groups[0].Length;
-
-				if (_match.Value.Contains(kPrecompiledHeaderEndIfTag))
-					_endOfPatternIndex	-= kPrecompiledHeaderEndIfTag.Length;
-
-				string 	_updatedContents	= _fileContents.Insert(_endOfPatternIndex, "\t" + kPrecompiledHeaderInsertText + "\n");
-
-				// Write updated text
-				File.WriteAllText(_pchFilePath, _updatedContents);
+				if (!_fileContents.Contains("Defines.h"))
+				{
+					string 	_updatedContents	= _fileContents + "\n\n" + kPCHInsertHeaders;
+					File.WriteAllText(_pchFilePath, _updatedContents);
+				}
 			}
 		}
 

@@ -36,7 +36,8 @@ namespace Tapdaq {
 
 		TDAdTypeVideo        = 23,
 		TDAdTypeRewardedVideo= 24,
-		TDAdTypeBanner       = 25
+		TDAdTypeBanner       = 25,
+		TDAdTypeOfferwall	 = 26
 	}
 
 	public enum TDNativeAdType {
@@ -105,6 +106,7 @@ namespace Tapdaq {
 		AppLovinAdapter,
 		ChartboostAdapter,
 		FANAdapter,
+		InMobiAdapter,
 		IronSourceAdapter,
 		UnityAdsAdapter,
 		VungleAdapter,

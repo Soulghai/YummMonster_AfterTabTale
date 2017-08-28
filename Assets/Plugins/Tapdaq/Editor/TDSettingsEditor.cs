@@ -2,14 +2,16 @@
 using UnityEditor;
 using System;
 using System.Collections.Generic;
+using Tapdaq;
 
-namespace Tapdaq {
+namespace TDEditor {
 	[CustomEditor (typeof(TDSettings))]
     public class TDSettingsEditor : UnityEditor.Editor
     {
 		private TDSettings settings;
 
 		private bool showOther = false;
+		private bool showOfferwall = false;
 		private bool show1x1 = false;
 		private bool show1x2 = false;
 		private bool show2x1 = false;
@@ -28,6 +30,7 @@ namespace Tapdaq {
 
 		void OnEnable () {
 			settings = (TDSettings)target;
+			TDManifestResolver.FixAndroidManifest ();
 		}
 
 		public override void OnInspectorGUI () {
@@ -41,8 +44,13 @@ namespace Tapdaq {
 			if (GUILayout.Button ("Visit Tapdaq.com")) {
 				Application.OpenURL ("https://tapdaq.com/dashboard/apps");
 			}
+
+			GUILayout.Label ("Current version:", EditorStyles.boldLabel);
+			GUILayout.Label ("Unity plugin: \t" + TDSettings.pluginVersion);
+
+			GUILayout.Space(15);
 		
-			GUILayout.Label ("Ad Settings", EditorStyles.boldLabel);
+			GUILayout.Label ("App Settings", EditorStyles.boldLabel);
 		
 			settings.ios_applicationID = EditorGUILayout.TextField ("iOS Application ID", settings.ios_applicationID);
 			settings.ios_clientKey = EditorGUILayout.TextField ("iOS Client Key", settings.ios_clientKey);
@@ -54,11 +62,11 @@ namespace Tapdaq {
 
 			GUILayout.Space (15);
 
-			settings.autoReloadAds = EditorGUILayout.Toggle("Auto-reload Ads", settings.autoReloadAds, GUILayout.Width(150));
+			settings.autoReloadAds = EditorGUILayout.Toggle("Auto-reload Ads", settings.autoReloadAds);
 
 			GUILayout.Space (15);
 
-			settings.isDebugMode = EditorGUILayout.Toggle("Debug Mode?", settings.isDebugMode, GUILayout.Width(150));
+			settings.isDebugMode = EditorGUILayout.Toggle("Debug Mode?", settings.isDebugMode);
 
 			GUILayout.Space (14);
 
@@ -98,7 +106,7 @@ namespace Tapdaq {
 			
 			GUIStyle labelStyle = new GUIStyle(EditorStyles.boldLabel);
 
-			GUILayout.Label ("Add new device.", labelStyle, GUILayout.Width (200));
+			GUILayout.Label ("Add new device.", labelStyle);
 
 			newTestDeviceName = EditorGUILayout.TextField ("Name:", newTestDeviceName);
 			newTestDeviceType = (TestDeviceType)EditorGUILayout.EnumPopup ("Type:", newTestDeviceType);
@@ -129,7 +137,7 @@ namespace Tapdaq {
 			var isAndroid = device.type == TestDeviceType.Android;
 			labelStyle.normal.textColor = isAndroid ? new Color (0, 0.3f, 0) : new Color (0, 0, 0.3f);
 
-			GUILayout.Label (device.name + " (" + device.type.ToString () + ")", labelStyle, GUILayout.Width(250));
+			GUILayout.Label (device.name + " (" + device.type.ToString () + ")", labelStyle);
 
 			device.adMobId = EditorGUILayout.TextField ("AdMob ID:", device.adMobId);
 			device.facebookId = EditorGUILayout.TextField ("Facebook ID:", device.facebookId);
@@ -143,13 +151,18 @@ namespace Tapdaq {
 
 		private void DrawTagGroups () {
 
-			GUILayout.Label ("Ad Types Tags", EditorStyles.boldLabel);
-			GUILayout.Label ("--Interstitials & Video Ads--", EditorStyles.boldLabel);
+			GUILayout.Label ("Placement Tags", EditorStyles.boldLabel);
 
-			showOther = DrawBlock(showOther, "Interstitials & Video Ads",
+			showOther = DrawBlock(showOther, "Static, Video & Rewarded Videos",
 				TDAdType.TDAdTypeInterstitial, TDAdType.TDAdTypeVideo, TDAdType.TDAdTypeRewardedVideo);
 
-			GUILayout.Label ("--Natives--", EditorStyles.boldLabel);
+			showOfferwall = EditorGUILayout.Foldout (showOfferwall, "Offerwall");
+
+			if (showOfferwall) {
+				ShowOfferwallSetting ();
+			}
+
+			GUILayout.Label ("Native Ad Types", EditorStyles.boldLabel);
 
 			show1x1 = DrawBlock (show1x1, "1x1",
 				TDAdType.TDAdType1x1Large, TDAdType.TDAdType1x1Medium, TDAdType.TDAdType1x1Small);
@@ -171,6 +184,7 @@ namespace Tapdaq {
 
 			show5x1 = DrawBlock (show5x1, "5x1",
 				TDAdType.TDAdType5x1Large, TDAdType.TDAdType5x1Medium, TDAdType.TDAdType5x1Small);
+			
 		}
 
 		private bool DrawBlock(bool show, string blockName, params TDAdType[] types) {
@@ -182,13 +196,20 @@ namespace Tapdaq {
 			if (show) {
 				foreach (var t in types) {
 					var index = (int)t;
-					var tags = settings.tags.tags;
+					var tags = settings.tags;
 
 					tags [index] = EditorGUILayout.TextField (t.ToString (), tags [index]);
 				}
 			}
 
 			return show;
+		}
+
+		private void ShowOfferwallSetting() {
+			var offerwallIndex = (int)TDAdType.TDAdTypeOfferwall;
+			var useDefaultTag = (settings.tags [offerwallIndex] == AdTags.DefaultTag);
+			settings.tags [offerwallIndex] = 
+				EditorGUILayout.Toggle ("Use offerwall", useDefaultTag) ? AdTags.DefaultTag : "";
 		}
 
 		private void DrawSeparator(int height) {

@@ -15,9 +15,6 @@
 
 @interface TDProperties : NSObject
 
-@property (nonatomic, strong) NSString *rewardName;
-
-@property (nonatomic, strong) NSNumber *rewardValue;
 
 @property (nonatomic) BOOL isDebugEnabled;
 

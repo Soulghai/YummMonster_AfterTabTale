@@ -16,7 +16,8 @@ void _ConfigureTapdaq(const char* appIdChar,
                       const char* enabledAdTypesChar,
                       const char* testDevices,
                       bool isDebugMode,
-                      bool autoReloadAds);
+                      bool autoReloadAds,
+                      const char* pluginVersion);
 
 // banner
 
@@ -103,6 +104,15 @@ void _LoadMoreApps();
 
 void _LoadMoreAppsWithConfig(const char* config);
 
+
+// offerwall
+
+void _ShowOfferwall();
+
+bool _IsOfferwallReady();
+
+void _LoadOfferwall();
+
 @interface TapdaqUnityIOS : NSObject
 
 + (instancetype)sharedInstance;
@@ -112,6 +122,7 @@ void _LoadMoreAppsWithConfig(const char* config);
                enabledAdTypes:(NSString *)enabledAdTypes
                   testDevices:(NSString *)testDevices
                   isDebugMode:(bool)isDebugMode
-                autoReloadAds:(bool)autoReloadAds;
+                autoReloadAds:(bool)autoReloadAds
+                pluginVersion:(NSString *)pluginVersion;
 
 @end

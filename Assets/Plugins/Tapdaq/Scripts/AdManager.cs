@@ -30,7 +30,8 @@ namespace Tapdaq {
 		//================================= Interstitials ==================================================
 		[DllImport ("__Internal")]
 		private static extern void _ConfigureTapdaq(string appIdChar, string clientKeyChar, 
-			string enabledAdTypesChar, string testDevicesChar, bool isDebugMode, bool autoReloadAds);
+			string enabledAdTypesChar, string testDevicesChar, bool isDebugMode, bool autoReloadAds,
+			string pluginVersion);
 
 		[DllImport ("__Internal")]
 		private static extern void _LaunchMediationDebugger();
@@ -141,6 +142,17 @@ namespace Tapdaq {
 		[DllImport ("__Internal")]
 		private static extern void _LoadMoreAppsWithConfig(string config);
 
+		//////////  Show Offerwall
+
+		[DllImport ("__Internal")]
+		private static extern void _ShowOfferwall();
+
+		[DllImport ("__Internal")]
+		private static extern bool _IsOfferwallReady();
+
+		[DllImport ("__Internal")]
+		private static extern void _LoadOfferwall();
+
 		#endif
 
 		#region Class Variables
@@ -188,11 +200,11 @@ namespace Tapdaq {
 			var testDevices = new TestDevicesList (settings.testDevices, TestDeviceType.iOS).ToString ();
 			Debug.Log ("testDevices:\n" + testDevices);
 			CallIosMethod(() => _ConfigureTapdaq(appID, clientKey, adTags, testDevices, 
-				settings.isDebugMode, settings.autoReloadAds));
+				settings.isDebugMode, settings.autoReloadAds, TDSettings.pluginVersion));
 			#elif UNITY_ANDROID
 			RegisterAdapters();
 			CallAndroidStaticMethod("InitiateTapdaq", appID, clientKey, adTags, 
-				settings.isDebugMode, settings.autoReloadAds);
+			settings.isDebugMode, settings.autoReloadAds, TDSettings.pluginVersion);
 			#endif
 		}
 
@@ -275,6 +287,10 @@ namespace Tapdaq {
 
 		#endif
 		#endregion
+
+		private static void LogObsoleteWithTagMethod(string methodName) {
+			Debug.LogError("'" + methodName + "WithTag(string tag)' is Obsolete. Please, use '" + methodName +"(string tag)' instead");
+		}
 
 		private static void LogUnsupportedPlatform() {
 			if (Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.OSXEditor) {
@@ -373,12 +389,18 @@ namespace Tapdaq {
 			#endif
 		}
 
-		public static void LoadInterstitialWithTag(string tag) {
+		public static void LoadInterstitial(string tag) {
 			#if UNITY_IPHONE
 			CallIosMethod(() => _LoadInterstitialWithTag(tag));
 			#elif UNITY_ANDROID
 			CallAndroidStaticMethod("LoadInterstitialWithTag", tag);
 			#endif
+		}
+
+		[Obsolete ("Please, use 'LoadInterstitial(string tag)' method.")]
+		public static void LoadInterstitialWithTag(string tag) {
+			LogObsoleteWithTagMethod("LoadInterstitial");
+			LoadInterstitial (tag);
 		}
 
 		public static bool IsInterstitialReady() {
@@ -391,7 +413,7 @@ namespace Tapdaq {
 			return ready;
 		}
 
-		public static bool IsInterstitialReadyWithTag(string tag) {
+		public static bool IsInterstitialReady(string tag) {
 			bool ready = false;
 			#if UNITY_IPHONE
 			CallIosMethod(() => ready = _IsInterstitialReadyWithTag(tag));
@@ -399,6 +421,12 @@ namespace Tapdaq {
 			ready = GetAndroidStatic<bool>("IsInterstitialReady", tag);
 			#endif
 			return ready;
+		}
+
+		[Obsolete ("Please, use 'IsInterstitialReady(string tag)' method.")]
+		public static bool IsInterstitialReadyWithTag(string tag) {
+			LogObsoleteWithTagMethod("IsInterstitialReady");
+			return IsInterstitialReady(tag);
 		}
 			
 		// banner
@@ -465,12 +493,18 @@ namespace Tapdaq {
 			#endif
 		}
 
-		public static void LoadVideoWithTag(string tag) {
+		public static void LoadVideo(string tag) {
 			#if UNITY_IPHONE
 			CallIosMethod(() => _LoadVideoWithTag (tag));
 			#elif UNITY_ANDROID
 			CallAndroidStaticMethod("LoadVideoWithTag", tag);
 			#endif
+		}
+
+		[Obsolete ("Please, use 'LoadVideo(string tag)' method.")]
+		public static void LoadVideoWithTag(string tag) {
+			LogObsoleteWithTagMethod("LoadVideo");
+			LoadVideo (tag);
 		}
 
 		public static bool IsVideoReady() {
@@ -483,7 +517,7 @@ namespace Tapdaq {
 			return ready;
 		}
 
-		public static bool IsVideoReadyWithTag(string tag) {
+		public static bool IsVideoReady(string tag) {
 			bool ready = false;
 			#if UNITY_IPHONE
 			CallIosMethod(() => ready = _IsVideoReadyWithTag(tag));
@@ -493,6 +527,11 @@ namespace Tapdaq {
 			return ready;
 		}
 
+		[Obsolete ("Please, use 'IsVideoReady(string tag)' method.")]
+		public static bool IsVideoReadyWithTag(string tag) {
+			LogObsoleteWithTagMethod("IsVideoReady");
+			return IsVideoReady(tag);
+		}
 
 		// rewarded video
 
@@ -520,12 +559,18 @@ namespace Tapdaq {
 			#endif
 		}
 
-		public static void LoadRewardedVideoWithTag(string tag) {
+		public static void LoadRewardedVideo(string tag) {
 			#if UNITY_IPHONE
 			CallIosMethod(() => _LoadRewardedVideoWithTag (tag));
 			#elif UNITY_ANDROID
 			CallAndroidStaticMethod("LoadRewardAdWithTag", tag);
 			#endif
+		}
+
+		[Obsolete ("Please, use 'LoadRewardedVideo(string tag)' method.")]
+		public static void LoadRewardedVideoWithTag(string tag) {
+			LogObsoleteWithTagMethod("LoadRewardedVideo");
+			LoadRewardedVideo (tag);
 		}
 
 		public static bool IsRewardedVideoReady() {
@@ -538,7 +583,7 @@ namespace Tapdaq {
 			return ready;
 		}
 
-		public static bool IsRewardedVideoReadyWithTag(string tag) {
+		public static bool IsRewardedVideoReady(string tag) {
 			bool ready = false;
 			#if UNITY_IPHONE
 			CallIosMethod(() => ready = _IsRewardedVideoReadyWithTag(tag));
@@ -548,6 +593,37 @@ namespace Tapdaq {
 			return ready;
 		}
 
+		[Obsolete ("Please, use 'IsRewardedVideoReady(string tag)' method.")]
+		public static bool IsRewardedVideoReadyWithTag(string tag) {
+			LogObsoleteWithTagMethod("IsRewardedVideoReady");
+			return IsRewardedVideoReady(tag);
+		}
+
+		public static bool IsOfferwallReady() {
+			bool ready = false;
+			#if UNITY_IPHONE
+			CallIosMethod(() => ready = _IsOfferwallReady());
+			#elif UNITY_ANDROID
+			ready = GetAndroidStatic<bool>("IsOfferwallReady");
+			#endif
+			return ready;
+		}
+
+		public static void ShowOfferwall() {
+			#if UNITY_IPHONE
+			CallIosMethod(_ShowOfferwall);
+			#elif UNITY_ANDROID
+			CallAndroidStaticMethod("ShowOfferwall");
+			#endif
+		}
+
+		public static void LoadOfferwall() {
+			#if UNITY_IPHONE
+			CallIosMethod(_LoadOfferwall);
+			#elif UNITY_ANDROID
+			CallAndroidStaticMethod("LoadOfferwall");
+			#endif
+		}
 
 		// native ad
 

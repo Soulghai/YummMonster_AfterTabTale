@@ -4,8 +4,6 @@ using System.Collections;
 #if USES_GAME_SERVICES && UNITY_ANDROID
 using System;
 using System.Runtime.InteropServices;
-using UnityEngine.SocialPlatforms.GameCenter;
-using UnityEngine.SocialPlatforms;
 using VoxelBusters.DebugPRO;
 using VoxelBusters.Utility;
 

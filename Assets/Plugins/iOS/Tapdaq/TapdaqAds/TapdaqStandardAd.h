@@ -6,9 +6,9 @@
 + (instancetype) sharedInstance;
 - (BOOL)isReady;
 - (void)show;
+- (void)load;
 
 @optional
-- (void)load;
 - (void)loadForPlacementTag:(NSString *)tag;
 - (BOOL)isReadyForPlacementTag:(NSString *)tag;
 - (void)showForPlacementTag:(NSString *)tag;
@@ -36,4 +36,7 @@
 
 - (void)loadWithConfig:(const char *)moreAppsConfig;
 
+@end
+
+@interface TapdaqOfferwall : NSObject<TapdaqStandardAd>
 @end

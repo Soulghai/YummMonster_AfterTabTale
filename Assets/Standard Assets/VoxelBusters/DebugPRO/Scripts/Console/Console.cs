@@ -283,7 +283,7 @@ namespace VoxelBusters.DebugPRO
 		private Console ()
 		{
 #if UNITY_EDITOR
-#if !(UNITY_5_0) && (UNITY_5 || UNITY_6 || UNITY_7)
+#if !(UNITY_5_0) && (UNITY_5 || UNITY_2017_1_OR_NEWER)
 			titleContent		= new GUIContent("Console");		
 #else
 			title				= "Console";

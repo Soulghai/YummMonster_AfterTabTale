@@ -67,7 +67,7 @@ namespace VoxelBusters.NativePlugins.Internal
 		private void OnEnable ()
 		{
 			// Set properties
-			#if !(UNITY_5_0) && (UNITY_5 || UNITY_6 || UNITY_7)
+			#if !(UNITY_5_0) && (UNITY_5 || UNITY_2017_1_OR_NEWER)
 			titleContent	= new GUIContent("Welcome Tour");
 			#else
 			title			= "Welcome Tour";
