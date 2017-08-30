@@ -2,6 +2,7 @@
 using Tapdaq;
 
 public class MyTapdaq : MonoBehaviour {
+	private bool _isShowStartInterstitial;
 
 	void Start ()
 	{
@@ -48,7 +49,11 @@ public class MyTapdaq : MonoBehaviour {
 		} else
 		if (e.adType == "INTERSTITIAL" && e.tag == "app-launch")
 		{
-			AdManager.ShowInterstitial("app-launch");
+			if (!_isShowStartInterstitial)
+			{
+				AdManager.ShowInterstitial("app-launch");
+				_isShowStartInterstitial = true;
+			}
 		} else
 		if (e.adType == "VIDEO" && e.tag == "video")
 		{

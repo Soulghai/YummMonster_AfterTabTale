@@ -372,7 +372,7 @@ public class ScreenGame : MonoBehaviour {
 
 	public void Revive() {
 		FlurryEventsManager.SendEvent ("RV_revive");
-		GlobalEvents<OnRewardedTryShow>.Call(new OnRewardedTryShow()); 
+		GlobalEvents<OnShowRewarded>.Call(new OnShowRewarded()); 
 		_isWaitReward = true;
 	}
 

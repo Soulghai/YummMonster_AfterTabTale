@@ -61,7 +61,7 @@ public class ScreenCoins : MonoBehaviour {
 
 	public void BtnTier3() {
 		FlurryEventsManager.SendEvent ("RV_strawberries", "shop");
-		GlobalEvents<OnRewardedTryShow>.Call(new OnRewardedTryShow()); 
+		GlobalEvents<OnShowRewarded>.Call(new OnShowRewarded());
 		_isWaitReward = true;
 //		if (!PublishingService.Instance.IsRewardedVideoReady())
 //		{

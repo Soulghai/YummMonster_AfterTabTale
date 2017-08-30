@@ -16,7 +16,7 @@ MonoBehaviour:
   android_applicationID: 5955c22377f15000f3460ed3
   android_clientKey: 156bd775-ba73-499c-a61b-16ccb8f603f2
   isDebugMode: 0
-  autoReloadAds: 0
+  autoReloadAds: 1
   tags:
     tags:
     - 

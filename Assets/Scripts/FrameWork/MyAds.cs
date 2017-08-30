@@ -90,14 +90,14 @@ public class MyAds : MonoBehaviour
         // продолжаем считать геймлпеи, после которых можно показыавть Video рекламу
         _videoAdCounter = 1;
         _videoDate = DateTime.UtcNow;
-        _videoDate = _videoDate.AddMinutes(1);
+        _videoDate = _videoDate.AddMinutes(2);
         _isVideoAdCalcNext = true;
     }
     
     private void OnAdsRewardedShowing(OnAdsRewardedShowing e)
     {
         _rewardDate = DateTime.UtcNow;
-        _rewardDate = _rewardDate.AddMinutes(1);
+        _rewardDate = _rewardDate.AddMinutes(2);
         _isRewardedVideoReadyToShow = false;
         _isRewardedWaitTimer = true;
         _rewardedAdCounter = 1;

@@ -273,7 +273,7 @@ public class ScreenMenu : MonoBehaviour
     public void OnVideoAdsClicked()
     {
         FlurryEventsManager.SendEvent("RV_strawberries", "start_screen");
-        GlobalEvents<OnRewardedTryShow>.Call(new OnRewardedTryShow()); 
+        GlobalEvents<OnShowRewarded>.Call(new OnShowRewarded());
         _isWaitReward = true;
 //		if (!PublishingService.Instance.IsRewardedVideoReady())
 //		{
