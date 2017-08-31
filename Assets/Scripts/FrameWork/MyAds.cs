@@ -4,7 +4,7 @@ using UnityEngine;
 public class MyAds : MonoBehaviour
 {
     private static int _rewardedAdCounter;
-    private bool _isRewardedVideoReadyToShow;
+    private bool _isRewardedReadyToShow;
     private DateTime _rewardDate;
     private bool _isRewardedWaitTimer;
     private static bool _isRewardedAdCalcNext;
@@ -51,7 +51,7 @@ public class MyAds : MonoBehaviour
         Debug.Log("OnRewardedTryShow");
         if (_rewardedAdCounter >= 4 )
         {
-            if (_isRewardedVideoReadyToShow)
+            if (_isRewardedReadyToShow)
             {
                 GlobalEvents<OnShowRewarded>.Call(new OnShowRewarded());
                 Debug.Log("GlobalEvents<OnShowRewarded>");
@@ -88,27 +88,32 @@ public class MyAds : MonoBehaviour
     private void OnAdsVideoShowing(OnAdsVideoShowing obj)
     {
         // продолжаем считать геймлпеи, после которых можно показыавть Video рекламу
-        _videoAdCounter = 1;
-        _videoDate = DateTime.UtcNow;
-        _videoDate = _videoDate.AddMinutes(2);
-        _isVideoAdCalcNext = true;
+        StartWaitingVideo();
     }
     
     private void OnAdsRewardedShowing(OnAdsRewardedShowing e)
     {
         _rewardDate = DateTime.UtcNow;
         _rewardDate = _rewardDate.AddMinutes(2);
-        _isRewardedVideoReadyToShow = false;
-        _isRewardedWaitTimer = true;
         _rewardedAdCounter = 1;
+        _isRewardedWaitTimer = true;
+        _isRewardedReadyToShow = false;
 
         //Обнуляем Video таймер и коунтер
-        _videoAdCounter = 1;
-        _videoDate = DateTime.UtcNow;
-        _videoDate = _videoDate.AddMinutes(1);
-        _isVideoAdCalcNext = true;
+        StartWaitingVideo();
+        
         // продолжаем считать геймлпеи, после которых можно показыавть Rewarded рекламу
         _isRewardedAdCalcNext = true;
+    }
+
+    private void StartWaitingVideo()
+    {
+        _videoDate = DateTime.UtcNow;
+        _videoDate = _videoDate.AddMinutes(2);
+        _videoAdCounter = 1;
+        _isVideoAdCalcNext = true;
+        _isVideoWaitTimer = true;
+        _isVideoReadyToShow = false;
     }
 
     private void Update()
@@ -129,9 +134,9 @@ public class MyAds : MonoBehaviour
 
         if (!_isRewardedWaitTimer)
         {
-            if (!_isRewardedVideoReadyToShow)
+            if (!_isRewardedReadyToShow)
             {
-                _isRewardedVideoReadyToShow = true;
+                _isRewardedReadyToShow = true;
                 GlobalEvents<OnRewardedVideoAvailable>.Call(
                     new OnRewardedVideoAvailable {isAvailable = true});
             }
@@ -149,7 +154,9 @@ public class MyAds : MonoBehaviour
         if (!_isVideoWaitTimer)
         {
             if (!_isVideoReadyToShow)
+            {
                 _isVideoReadyToShow = true;
+            }
         }
     }
 }

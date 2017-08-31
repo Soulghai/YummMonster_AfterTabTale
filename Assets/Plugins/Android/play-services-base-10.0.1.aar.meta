@@ -1,7 +1,9 @@
 fileFormatVersion: 2
-guid: edf7301c3c7dd41fe80acc0d8cf80230
-timeCreated: 1500904379
-licenseType: Store
+guid: 882f144d720514b9f9700948a81b4349
+labels:
+- gpsr
+timeCreated: 1504163838
+licenseType: Pro
 PluginImporter:
   serializedVersion: 2
   iconMap: {}
