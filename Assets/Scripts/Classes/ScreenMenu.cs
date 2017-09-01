@@ -19,6 +19,7 @@ public class ScreenMenu : MonoBehaviour
     public AudioClip sndBtnClick;
     public Text timeText;
     public UIButton videoAdsButton;
+    private bool _isRewardedWaitTimer;
 
     private void Start()
     {
@@ -68,15 +69,13 @@ public class ScreenMenu : MonoBehaviour
         Candy.OnTurn += Candy_OnTurn;
         ScreenGame.OnShowMenu += ScreenGame_OnShowMenu;
         GlobalEvents<OnGiveReward>.Happened += GetReward;
-        GlobalEvents<OnRewardedVideoAvailable>.Happened += IsRewardedVideoAvailable;
+        GlobalEvents<OnRewardedLoaded>.Happened += IsRewardedAvailable;
+        GlobalEvents<OnRewardedWaitTimer>.Happened += OnRewardedWaitTimer;
     }
 
-    private void OnDisable()
+    private void OnRewardedWaitTimer(OnRewardedWaitTimer obj)
     {
-        Candy.OnTurn -= Candy_OnTurn;
-        ScreenGame.OnShowMenu -= ScreenGame_OnShowMenu;
-        GlobalEvents<OnGiveReward>.Happened -= GetReward;
-        GlobalEvents<OnRewardedVideoAvailable>.Happened -= IsRewardedVideoAvailable;
+        _isRewardedWaitTimer = obj.IsWait;
     }
 
     private void ScreenGame_OnShowMenu()
@@ -84,9 +83,9 @@ public class ScreenMenu : MonoBehaviour
         showButtons();
     }
 
-    private void IsRewardedVideoAvailable(OnRewardedVideoAvailable e)
+    private void IsRewardedAvailable(OnRewardedLoaded e)
     {
-        isShowBtnViveoAds = e.isAvailable;
+        isShowBtnViveoAds = e.IsAvailable;
         if (isShowBtnViveoAds)
         {
             if (DefsGame.gameplayCounter % 4 == 0)
@@ -120,10 +119,9 @@ public class ScreenMenu : MonoBehaviour
             UIManager.ShowUiElement("BtnGift");
             FlurryEventsManager.SendEvent("collect_prize_impression");
         }
-        if (isShowBtnViveoAds&&DefsGame.gameplayCounter % 4 == 0)
+        if (isShowBtnViveoAds&&DefsGame.gameplayCounter % 4 == 0 && !_isRewardedWaitTimer)
         {
             UIManager.ShowUiElement("BtnVideoAds");
-            FlurryEventsManager.SendEvent("RV_strawberries_impression", "start_screen");
         }
         UIManager.ShowUiElement("BtnMoreGames");
         UIManager.ShowUiElement("BtnSound");
@@ -255,11 +253,11 @@ public class ScreenMenu : MonoBehaviour
         if (_isWaitReward)
         {
             _isWaitReward = false;
-            if (e.isAvailable)
+            if (e.IsAvailable)
             {
                 for (var i = 0; i < 25; i++)
                 {
-                    var _coin = (GameObject) Instantiate(coin,
+                    var _coin = Instantiate(coin,
                         Camera.main.ScreenToWorldPoint(videoAdsButton.transform.position),
                         Quaternion.identity);
                     var coinScript = _coin.GetComponent<Coin>();
@@ -273,8 +271,9 @@ public class ScreenMenu : MonoBehaviour
     public void OnVideoAdsClicked()
     {
         FlurryEventsManager.SendEvent("RV_strawberries", "start_screen");
-        GlobalEvents<OnShowRewarded>.Call(new OnShowRewarded());
+        GlobalEvents<OnRewardedShow>.Call(new OnRewardedShow());
         _isWaitReward = true;
+        UIManager.HideUiElement("BtnVideoAds");
 //		if (!PublishingService.Instance.IsRewardedVideoReady())
 //		{
 //			NPBinding.UI.ShowAlertDialogWithSingleButton("Ads not available", "Check your Internet connection or try later!", "Ok", (string _buttonPressed) => {});

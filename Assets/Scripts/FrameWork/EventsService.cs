@@ -1,24 +1,27 @@
 ﻿// ADS
 // Дать награду игроку
-public struct OnGiveReward { public bool isAvailable; }
+public struct OnGiveReward { public bool IsAvailable; }
 
-// Показыаем Rewarded рекламу, если доступна
-public struct OnRewardedTryShow {}
+// Запрос на показ видео рекламы
+public struct OnRewardedShow {}
 // Показываем Video рекламу, если доступна
 public struct OnAdsVideoTryShow {}
 
 // Запрос на показ рекламы 
-public struct OnShowVideoAds { public bool isAvailable; }
-// Запрос на показ видео рекламы
-public struct OnShowRewarded { public bool isAvailable; }
+public struct OnShowVideoAds {}
 
-// Rewarded реклама готова к показу (Время ожидания завершилось)
-public struct OnRewardedVideoAvailable { public bool isAvailable; }
+// Rewarded реклама готова загружена
+public struct OnRewardedLoaded { public bool IsAvailable; }
 // Начался показ Video рекламы
 public struct OnAdsVideoShowing {}
 
 // Начался показ Rewarded рекламы
 public struct OnAdsRewardedShowing {}
+// Начался показ Rewarded рекламы
+public struct OnRewardedWaitTimer
+{
+    public bool IsWait;
+}
 
 // Debug
 public struct OnDebugLog { public string message; }

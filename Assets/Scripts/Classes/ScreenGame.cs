@@ -123,7 +123,7 @@ public class ScreenGame : MonoBehaviour {
 		Candy.OnMiss += Candy_OnMiss;
 		Bubble.OnMatch += Bubble_OnMatch;
 		GlobalEvents<OnGiveReward>.Happened += GetReward;
-		GlobalEvents<OnRewardedVideoAvailable>.Happened += IsRewardedVideoAvailable;
+		GlobalEvents<OnRewardedLoaded>.Happened += IsRewardedVideoAvailable;
 	}
 
 	void OnDisable() {
@@ -131,7 +131,7 @@ public class ScreenGame : MonoBehaviour {
 		Candy.OnMiss -= Candy_OnMiss;
 		Bubble.OnMatch -= Bubble_OnMatch;
 		GlobalEvents<OnGiveReward>.Happened -= GetReward;
-		GlobalEvents<OnRewardedVideoAvailable>.Happened -= IsRewardedVideoAvailable;
+		GlobalEvents<OnRewardedLoaded>.Happened -= IsRewardedVideoAvailable;
 	}
 
 	void Bubble_OnMatch (Bubble bubble)
@@ -172,8 +172,8 @@ public class ScreenGame : MonoBehaviour {
 		if (wrong_color) fail_reason = "wrong_color"; else fail_reason = "missed";
 	}
 	
-	private void IsRewardedVideoAvailable(OnRewardedVideoAvailable e) {
-		IsRewardedVideoReadyToShow = e.isAvailable;
+	private void IsRewardedVideoAvailable(OnRewardedLoaded e) {
+		IsRewardedVideoReadyToShow = e.IsAvailable;
 	}
 
 	public void EndCurrentGame() {
@@ -372,7 +372,7 @@ public class ScreenGame : MonoBehaviour {
 
 	public void Revive() {
 		FlurryEventsManager.SendEvent ("RV_revive");
-		GlobalEvents<OnShowRewarded>.Call(new OnShowRewarded()); 
+		GlobalEvents<OnRewardedShow>.Call(new OnRewardedShow()); 
 		_isWaitReward = true;
 	}
 
@@ -381,7 +381,7 @@ public class ScreenGame : MonoBehaviour {
 		if (_isWaitReward)
 		{
 			_isWaitReward = false;
-			if (e.isAvailable)
+			if (e.IsAvailable)
 			{
 				state = 2;
 				isNextLevel = true;

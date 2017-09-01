@@ -16,12 +16,12 @@ public class ScreenCoins : MonoBehaviour {
 	
 	void OnEnable() {
 		GlobalEvents<OnGiveReward>.Happened += GetReward;
-		GlobalEvents<OnRewardedVideoAvailable>.Happened += IsRewardedVideoAvailable;
+		GlobalEvents<OnRewardedLoaded>.Happened += IsRewardedVideoAvailable;
 	}
 
 	void OnDisable() {
 		GlobalEvents<OnGiveReward>.Happened -= GetReward;
-		GlobalEvents<OnRewardedVideoAvailable>.Happened -= IsRewardedVideoAvailable;
+		GlobalEvents<OnRewardedLoaded>.Happened -= IsRewardedVideoAvailable;
 	}
 
 	public void ShowButtons() {
@@ -47,8 +47,8 @@ public class ScreenCoins : MonoBehaviour {
 		UIManager.HideUiElement ("ScreenCoinsBtnRestore");
 	}
 
-	private void IsRewardedVideoAvailable(OnRewardedVideoAvailable e) {
-		isShowBtnViveoAds = e.isAvailable;
+	private void IsRewardedVideoAvailable(OnRewardedLoaded e) {
+		isShowBtnViveoAds = e.IsAvailable;
 		if (isShowBtnViveoAds) {
 			if (DefsGame.currentScreen == DefsGame.SCREEN_IAPS) {
 				UIManager.ShowUiElement ("ScreenCoinsBtnVideo");
@@ -61,7 +61,7 @@ public class ScreenCoins : MonoBehaviour {
 
 	public void BtnTier3() {
 		FlurryEventsManager.SendEvent ("RV_strawberries", "shop");
-		GlobalEvents<OnShowRewarded>.Call(new OnShowRewarded());
+		GlobalEvents<OnRewardedShow>.Call(new OnRewardedShow());
 		_isWaitReward = true;
 //		if (!PublishingService.Instance.IsRewardedVideoReady())
 //		{
@@ -87,7 +87,7 @@ public class ScreenCoins : MonoBehaviour {
 		if (_isWaitReward)
 		{
 			_isWaitReward = false;
-			if (e.isAvailable)
+			if (e.IsAvailable)
 			{
 				GameEvents.Send(OnAddCoinsVisual, 25);
 //				FlurryEventsManager.SendEvent ("RV_strawberries_complete", "shop");

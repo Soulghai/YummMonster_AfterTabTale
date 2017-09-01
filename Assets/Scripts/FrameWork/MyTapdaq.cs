@@ -17,18 +17,7 @@ public class MyTapdaq : MonoBehaviour {
 		TDCallbacks.RewardVideoValidated += OnRewardVideoValidated;
 
 		GlobalEvents<OnShowVideoAds>.Happened += ShowVideo;
-		GlobalEvents<OnShowRewarded>.Happened += ShowRewarded;
-	}
-
-	private void OnDisable() {
-		TDCallbacks.TapdaqConfigLoaded -= OnTapdaqConfigLoaded;
-		TDCallbacks.AdAvailable -= OnAdAvailable;
-		TDCallbacks.AdNotAvailable -= OnAdNotAvailable;
-		TDCallbacks.AdClosed -= OnAdClosed;
-		TDCallbacks.RewardVideoValidated -= OnRewardVideoValidated;
-		
-		GlobalEvents<OnShowVideoAds>.Happened -= ShowVideo;
-		GlobalEvents<OnShowRewarded>.Happened -= ShowRewarded;
+		GlobalEvents<OnRewardedShow>.Happened += ShowRewarded;
 	}
 
 	private void OnTapdaqConfigLoaded() {
@@ -60,6 +49,8 @@ public class MyTapdaq : MonoBehaviour {
 		} else
 		if (e.adType == "REWARD_AD" && e.tag == "rewarded")
 		{
+			GlobalEvents<OnRewardedLoaded>.Call(
+				new OnRewardedLoaded {IsAvailable = true});
 		}
 	}
 	
@@ -73,6 +64,8 @@ public class MyTapdaq : MonoBehaviour {
 			// Video has failed to load
 		} else if (e.adType == "REWARD_AD" && e.tag == "rewarded") {
 			// Rewarded video has failed to load
+			GlobalEvents<OnRewardedLoaded>.Call(
+				new OnRewardedLoaded {IsAvailable = false});
 		} else if (e.adType == "NATIVE_AD" && e.tag == "ingame") {
 			// Native ad has failed to load
 		} else if (e.adType == "BANNER") {
@@ -107,20 +100,17 @@ public class MyTapdaq : MonoBehaviour {
 		}
 	}
 
-	private void ShowRewarded(OnShowRewarded e)
+	private void ShowRewarded(OnRewardedShow e)
 	{
-		GlobalEvents<OnDebugLog>.Call(new OnDebugLog {message = "OnShowRewarded \n"});
 		if (AdManager.IsRewardedVideoReady("rewarded")) {
 			AdManager.ShowRewardVideo("rewarded");
 			Defs.MuteSounds (true);
 			
 			GlobalEvents<OnAdsRewardedShowing>.Call(new OnAdsRewardedShowing());
-			GlobalEvents<OnRewardedVideoAvailable>.Call(
-				new OnRewardedVideoAvailable {isAvailable = false});
 		}
 	}
 	
 	private void OnRewardVideoValidated(TDVideoReward videoReward) {
-		GlobalEvents<OnGiveReward>.Call(new OnGiveReward { isAvailable = true });
+		GlobalEvents<OnGiveReward>.Call(new OnGiveReward { IsAvailable = true });
 	}
 }

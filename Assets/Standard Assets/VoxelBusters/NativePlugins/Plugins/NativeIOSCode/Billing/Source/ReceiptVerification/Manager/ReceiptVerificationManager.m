@@ -13,7 +13,7 @@
 
 // Constants
 const NSString *bundleIdentifier	= @"com.appsolutegames.yummmonsters";
-const NSString *bundleVersion		= @"4";
+const NSString *bundleVersion		= @"5";
 
 @interface ReceiptVerificationManager ()
 
