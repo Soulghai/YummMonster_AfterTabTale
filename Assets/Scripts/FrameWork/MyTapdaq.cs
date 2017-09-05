@@ -38,9 +38,12 @@ public class MyTapdaq : MonoBehaviour {
 		} else
 		if (e.adType == "INTERSTITIAL" && e.tag == "app-launch")
 		{
+			
 			if (!_isShowStartInterstitial)
 			{
-				AdManager.ShowInterstitial("app-launch");
+				#if UNITY_IPHONE
+					AdManager.ShowInterstitial("app-launch");
+				#endif
 				_isShowStartInterstitial = true;
 			}
 		} else
