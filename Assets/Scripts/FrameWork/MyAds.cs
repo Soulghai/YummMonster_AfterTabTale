@@ -35,7 +35,7 @@ public class MyAds : MonoBehaviour
     private void OnAdsVideoTryShow(OnAdsVideoTryShow obj)
     {
         Debug.Log("OnAdsVideoTryShow" + _videoAdCounter + " " + _isVideoWaitTimer + " " + _videoDate);
-        if (_isFirstTimeVideo && _videoAdCounter == 3 ||
+        if (_isFirstTimeVideo && _videoAdCounter == 5 ||
             _videoAdCounter >= 5)
         {
             if (_isFirstTimeVideo) _isFirstTimeVideo = false;
