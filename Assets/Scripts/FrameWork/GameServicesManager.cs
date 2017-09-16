@@ -25,16 +25,32 @@ public class GameServicesManager : MonoBehaviour {
 		if (!IsServiceAvailable ()) {
 			D.Log ("Sorry, Game Services feature is not supported on this device.");
 			return;
-		} else
-			D.Log ("Game Services feature is supported on this device.");
+		} 
+		
+		D.Log ("Game Services feature is supported on this device.");
 
 		Invoke("AutoLogin", 1.0f);
 	}
 
 	private void AutoLogin()
 	{
-		if (!IsAuthenticated ())
-			AuthenticateUser (true);
+		#if UNITY_EDITOR
+			if (!IsAuthenticated ())
+				AuthenticateUser (true);
+		#endif
+		
+		#if UNITY_IOS
+			if (!IsAuthenticated ())
+				AuthenticateUser (true);
+		#endif
+		
+		#if UNITY_ANDROID
+		if (PlayerPrefs.GetInt("GameServicesAutoLogin", 1) == 1)
+		{
+			if (!IsAuthenticated())
+				AuthenticateUser(true);
+		}
+#endif
 	}
 
 	bool IsServiceAvailable()
@@ -85,6 +101,7 @@ public class GameServicesManager : MonoBehaviour {
 				LoadAchievements();
 				LoadAchievementsDescription();
 				//Debug.Log(string.Format("Local user details= {0}.", NPBinding.GameServices.LocalUser));
+				PlayerPrefs.SetInt("GameServicesAutoLogin", 1);
 			} else {
 				if (!_isFirstTime) {
 					#if UNITY_IOS
@@ -92,6 +109,7 @@ public class GameServicesManager : MonoBehaviour {
 					#endif
 				}
 				Debug.Log("LogIn - error:" + _error);
+				PlayerPrefs.SetInt("GameServicesAutoLogin", 0);
 			}
 		});
 	}
@@ -110,6 +128,7 @@ public class GameServicesManager : MonoBehaviour {
 				//Debug.Log(string.Format("Error= {0}. " +  _error.ToString()));
 			}
 		});
+		PlayerPrefs.SetInt("GameServicesAutoLogin", 0);
 	}
 
 	#if UNITY_IOS

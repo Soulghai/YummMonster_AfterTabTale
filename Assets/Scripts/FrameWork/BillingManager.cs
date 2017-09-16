@@ -38,7 +38,7 @@ public class BillingManager : MonoBehaviour {
 		return NPBinding.Billing.CanMakePayments();
 	}
 
-	public void RequestBillingProducts ()
+	private void RequestBillingProducts ()
 	{
 		NPBinding.Billing.RequestForBillingProducts(NPSettings.Billing.Products);
 
@@ -62,49 +62,6 @@ public class BillingManager : MonoBehaviour {
 				D.Log("Product Description = "        + _product.Description);
 			}
 		}
-	}
-
-	public void BuyItem (BillingProduct _product)
-	{
-		//if (NPBinding.Billing.IsProductPurchased(_product.ProductIdentifier))
-		if (NPBinding.Billing.IsProductPurchased(_product))
-		{
-			// Show alert message that item is already purchased
-
-			return;
-		}
-
-		// Call method to make purchase
-		NPBinding.Billing.BuyProduct(_product);
-
-		// At this point you can display an activity indicator to inform user that task is in progress
-	}
-
-	public void BuyTier1()
-	{
-		// Buy the consumable product using its general identifier. Expect a response either
-		// through ProcessPurchase or OnPurchaseFailed asynchronously.
-		FlurryEventsManager.dontSendLengthtEvent = true;
-		BuyItem(NPSettings.Billing.Products[0]);
-		FlurryEventsManager.SendEvent ("iap_clicked_<" + NPSettings.Billing.Products [0].ProductIdentifier + ">", DefsGame.screenCoins.PrevScreenName);
-	}
-
-	public void BuyTier2()
-	{
-		// Buy the consumable product using its general identifier. Expect a response either
-		// through ProcessPurchase or OnPurchaseFailed asynchronously.
-		FlurryEventsManager.dontSendLengthtEvent = true;
-		BuyItem(NPSettings.Billing.Products[1]);
-		FlurryEventsManager.SendEvent ("iap_clicked_<" + NPSettings.Billing.Products[1].ProductIdentifier + ">", DefsGame.screenCoins.PrevScreenName);
-	}
-
-	public void BuyNoAds()
-	{
-		// Buy the non-consumable product using its general identifier. Expect a response either
-		// through ProcessPurchase or OnPurchaseFailed asynchronously.
-		FlurryEventsManager.dontSendLengthtEvent = true;
-		BuyItem(NPSettings.Billing.Products[2]);
-		FlurryEventsManager.SendEvent ("iap_clicked_<" + NPSettings.Billing.Products[2].ProductIdentifier + ">", DefsGame.screenCoins.PrevScreenName);
 	}
 
 	private void OnDidFinishTransaction (BillingTransaction _transaction)
@@ -152,12 +109,6 @@ public class BillingManager : MonoBehaviour {
 		NPBinding.UI.ShowAlertDialogWithSingleButton("Purchase failed", "Check your Internet connection or try later!", "Ok", (string _buttonPressed) => {});
 	}
 
-	public void BtnRestoreIaps() {
-		Debug.Log("BtnRestoreIaps()");
-		FlurryEventsManager.dontSendLengthtEvent = true;
-		NPBinding.Billing.RestorePurchases ();
-	}
-
 	private void OnDidFinishRestoringPurchases (BillingTransaction[] _transactions, string _error)
 	{
 		FlurryEventsManager.dontSendLengthtEvent = true;
@@ -192,6 +143,55 @@ public class BillingManager : MonoBehaviour {
 		}
 
 		NPBinding.UI.ShowAlertDialogWithSingleButton("Restore purchase failed", "", "Ok", (string _buttonPressed) => {});
+	}
+	
+	private void BuyItem (BillingProduct _product)
+	{
+		//if (NPBinding.Billing.IsProductPurchased(_product.ProductIdentifier))
+		if (NPBinding.Billing.IsProductPurchased(_product))
+		{
+			// Show alert message that item is already purchased
+
+			return;
+		}
+
+		// Call method to make purchase
+		NPBinding.Billing.BuyProduct(_product);
+
+		// At this point you can display an activity indicator to inform user that task is in progress
+	}
+
+	public void BuyTier1()
+	{
+		// Buy the consumable product using its general identifier. Expect a response either
+		// through ProcessPurchase or OnPurchaseFailed asynchronously.
+		FlurryEventsManager.dontSendLengthtEvent = true;
+		BuyItem(NPSettings.Billing.Products[0]);
+		FlurryEventsManager.SendEvent ("iap_clicked_<" + NPSettings.Billing.Products [0].ProductIdentifier + ">", DefsGame.screenCoins.PrevScreenName);
+	}
+
+	public void BuyTier2()
+	{
+		// Buy the consumable product using its general identifier. Expect a response either
+		// through ProcessPurchase or OnPurchaseFailed asynchronously.
+		FlurryEventsManager.dontSendLengthtEvent = true;
+		BuyItem(NPSettings.Billing.Products[1]);
+		FlurryEventsManager.SendEvent ("iap_clicked_<" + NPSettings.Billing.Products[1].ProductIdentifier + ">", DefsGame.screenCoins.PrevScreenName);
+	}
+
+	public void BuyNoAds()
+	{
+		// Buy the non-consumable product using its general identifier. Expect a response either
+		// through ProcessPurchase or OnPurchaseFailed asynchronously.
+		FlurryEventsManager.dontSendLengthtEvent = true;
+		BuyItem(NPSettings.Billing.Products[2]);
+		FlurryEventsManager.SendEvent ("iap_clicked_<" + NPSettings.Billing.Products[2].ProductIdentifier + ">", DefsGame.screenCoins.PrevScreenName);
+	}
+	
+	public void BtnRestoreIaps() {
+		Debug.Log("BtnRestoreIaps()");
+		FlurryEventsManager.dontSendLengthtEvent = true;
+		NPBinding.Billing.RestorePurchases ();
 	}
 
 }
