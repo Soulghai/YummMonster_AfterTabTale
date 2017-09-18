@@ -4,7 +4,3 @@ framework module Tapdaq {
   export *
   module * { export * }
 }
-
-module Tapdaq.Swift {
-    header "Tapdaq-Swift.h"
-}

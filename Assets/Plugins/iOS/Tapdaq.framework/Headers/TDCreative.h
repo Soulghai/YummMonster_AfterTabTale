@@ -9,20 +9,22 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-#import "TDOrientationEnum.h"
-#import "TDResolutionEnum.h"
-
 @class TDAspectRatio;
 
 extern NSString *const kTDCreativeTypeKey;
 extern NSString *const kTDCreativeIdentifierKey;
 extern NSString *const kTDCreativeURLKey;
 extern NSString *const kTDCreativeLocalURLKey;
+extern NSString *const kTDCreativeDateDownloadedKey;
 
 #pragma mark - TDCreative
 @interface TDCreative : NSObject // Abstract
 
-    
+/**
+ * The date creative was downloaded
+ */
+@property (nonatomic, strong) NSDate *dateDownloaded;
+
 /**
 * Unique identifier of the creative
 */

@@ -106,6 +106,7 @@ namespace Tapdaq {
 		AppLovinAdapter,
 		ChartboostAdapter,
 		FANAdapter,
+		HyprMXAdapter,
 		InMobiAdapter,
 		IronSourceAdapter,
 		UnityAdsAdapter,

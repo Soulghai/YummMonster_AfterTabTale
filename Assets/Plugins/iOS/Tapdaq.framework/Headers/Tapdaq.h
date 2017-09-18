@@ -33,5 +33,6 @@ FOUNDATION_EXPORT const unsigned char TapdaqVersionString[];
 #import <Tapdaq/TDInterstitialAdvert.h>
 #import <Tapdaq/TDCreative.h>
 #import <Tapdaq/TDAspectRatio.h>
+#import <Tapdaq/TDResolutionEnum.h>
 
 #import <Tapdaq/TDMoreAppsConfig.h>

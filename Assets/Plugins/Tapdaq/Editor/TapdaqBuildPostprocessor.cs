@@ -47,7 +47,7 @@ public class TapdaqBuildPostprocessor : MonoBehaviour
             var path = PBXProject.GetPBXProjectPath(pathToBuiltProject);
             if (!File.Exists(path))
             {
-                Debug.LogError(string.Format("pbxproj '{0}' does not exists", path));
+                TDDebugLogger.LogError(string.Format("pbxproj '{0}' does not exists", path));
                 return;
             }
 
@@ -72,9 +72,7 @@ public class TapdaqBuildPostprocessor : MonoBehaviour
 		proj.SetBuildProperty(target, "ENABLE_BITCODE", "YES");
 		proj.SetBuildProperty(target, "LD_RUNPATH_SEARCH_PATHS", "$(inherited) @executable_path/Frameworks");
 		proj.SetBuildProperty(target, "IPHONEOS_DEPLOYMENT_TARGET", GetIOSDeploymentTarget(proj));
-		proj.SetBuildProperty (target, "ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES", "YES");
 		proj.SetBuildProperty (target, "CLANG_ENABLE_MODULES", "YES");
-		proj.SetBuildProperty (target, "CLANG_ENABLE_OBJC_ARC", "YES");
 	}
 
 	private static void AddLibraries(PBXProject proj, string target) {
@@ -144,7 +142,7 @@ public class TapdaqBuildPostprocessor : MonoBehaviour
 		if (version >= 8.0f)
 			return deploymentTarget;
 
-		Debug.LogWarning ("TapdaqBuildPostprocessor changes iOS build target version from " + deploymentTarget + " to = 8.0");
+		TDDebugLogger.LogWarning ("TapdaqBuildPostprocessor changes iOS build target version from " + deploymentTarget + " to = 8.0");
 
 		return "8.0";
 	}

@@ -59,6 +59,8 @@ extern TDPTag const TDPTagQuit;
 
 @interface Tapdaq : NSObject
 
+@property (readonly, nonatomic) BOOL isConfigLoaded;
+
 /**
  * Current version of the SDK
  */
@@ -88,6 +90,16 @@ extern TDPTag const TDPTagQuit;
 - (void)setApplicationId:(NSString *)applicationId
                clientKey:(NSString *)clientKey
               properties:(TDProperties *)properties;
+
+/**
+ * Get current SDK initialisation status
+ *
+ * @return YES if the SDK is initialised. NO otherwise.
+ */
+- (BOOL)isInitialised;
+
+#pragma mark Mediation Debugger
+- (void)presentDebugViewController;
 
 #pragma mark Banner
 
@@ -429,7 +441,7 @@ extern TDPTag const TDPTagQuit;
 /**
  Called when a native advert is successfully loaded, used in conjunction with -loadNativeAdvertForPlacementTag:adType:.
  
- @param tag The placement tag of the native advert that loaded.
+ @param placementTag The placement tag of the native advert that loaded.
  @param nativeAdType The ad type of the native advert that loaded.
  */
 - (void)didLoadNativeAdvertForPlacementTag:(NSString *)placementTag
@@ -438,7 +450,7 @@ extern TDPTag const TDPTagQuit;
 /**
  Called when the native ad failed to load, used in conjunction with -loadNativeAdvertForPlacementTag:adType:.
  
- @param tag The placement tag that failed to load the native ad.
+ @param placementTag The placement tag that failed to load the native ad.
  @param nativeAdType The ad type of the native advert that failed to load.
  */
 - (void)didFailToLoadNativeAdvertForPlacementTag:(NSString *)placementTag

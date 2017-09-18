@@ -34,6 +34,9 @@ namespace Tapdaq {
 			string pluginVersion);
 
 		[DllImport ("__Internal")]
+		private static extern bool _IsInitialised();
+
+		[DllImport ("__Internal")]
 		private static extern void _LaunchMediationDebugger();
 
 		// interstitial
@@ -194,16 +197,17 @@ namespace Tapdaq {
 
 			LogMessage (TDLogSeverity.debug, "TapdaqSDK/Initializing");
 			var adTags = settings.tags.GetTagsJson();
-			Debug.Log ("tags:\n" + adTags);
+			TDDebugLogger.Log ("tags:\n" + adTags);
 
 			#if UNITY_IPHONE
 			var testDevices = new TestDevicesList (settings.testDevices, TestDeviceType.iOS).ToString ();
-			Debug.Log ("testDevices:\n" + testDevices);
+			TDDebugLogger.Log ("testDevices:\n" + testDevices);
 			CallIosMethod(() => _ConfigureTapdaq(appID, clientKey, adTags, testDevices, 
 				settings.isDebugMode, settings.autoReloadAds, TDSettings.pluginVersion));
 			#elif UNITY_ANDROID
-			RegisterAdapters();
-			CallAndroidStaticMethod("InitiateTapdaq", appID, clientKey, adTags, 
+			var testDevices = new TestDevicesList (settings.testDevices, TestDeviceType.Android).ToString ();
+			TDDebugLogger.Log ("testDevices:\n" + testDevices);
+			CallAndroidStaticMethod("InitiateTapdaq", appID, clientKey, adTags, testDevices,
 			settings.isDebugMode, settings.autoReloadAds, TDSettings.pluginVersion);
 			#endif
 		}
@@ -231,10 +235,10 @@ namespace Tapdaq {
 						return tapdaqUnity.CallStatic<T> (methodName, paramList);
 					}
 				} catch (Exception e) {
-					Debug.LogException (e);
+					TDDebugLogger.LogException (e);
 				}
 			}
-			Debug.LogError ("Error while call static method");
+			TDDebugLogger.LogError ("Error while call static method");
 			return default(T);
 		}
 			
@@ -252,35 +256,9 @@ namespace Tapdaq {
 					}
 				} catch (Exception e) {
 					if (logException) {
-						Debug.Log ("CallAndroidStaticMethod:  " + methodName + "    FromClass: " 
+						TDDebugLogger.Log ("CallAndroidStaticMethod:  " + methodName + "    FromClass: " 
 							+ className + " failed. Message: " + e.Message);
 					}
-				}
-			}
-		}
-
-		private void RegisterAdapters() {
-
-			var testDevices = new TestDevicesList (settings.testDevices, TestDeviceType.Android);
-			var adMobDevicesJson = testDevices.GetAdMobListJson ();
-			var facebookDevicesJson = testDevices.GetFacebookListJson ();
-
-			Debug.Log ("adMobDevicesJson=" + adMobDevicesJson);
-			Debug.Log ("facebookDevicesJson=" + facebookDevicesJson);
-
-			foreach (var adapterName in Enum.GetNames(typeof(TapdaqAdapter))) {
-
-				var androidAdapter = TDEnumHelper.FixAndroidAdapterName (adapterName);
-				var shortName = androidAdapter.Replace ("Adapter", "");
-
-				var className = "com.tapdaq.tapdaq" + shortName.ToLower () + "." + androidAdapter;
-
-				if (androidAdapter == "FacebookAdapter") {
-					CallAndroidStaticMethodFromClass (className, "RegisterAdapter", false, facebookDevicesJson);
-				} else if (androidAdapter == "AdMobAdapter") {
-					CallAndroidStaticMethodFromClass (className, "RegisterAdapter", false, adMobDevicesJson);
-				} else {
-					CallAndroidStaticMethodFromClass (className, "RegisterAdapter", false);
 				}
 			}
 		}
@@ -289,7 +267,7 @@ namespace Tapdaq {
 		#endregion
 
 		private static void LogObsoleteWithTagMethod(string methodName) {
-			Debug.LogError("'" + methodName + "WithTag(string tag)' is Obsolete. Please, use '" + methodName +"(string tag)' instead");
+			TDDebugLogger.LogError("'" + methodName + "WithTag(string tag)' is Obsolete. Please, use '" + methodName +"(string tag)' instead");
 		}
 
 		private static void LogUnsupportedPlatform() {
@@ -299,24 +277,34 @@ namespace Tapdaq {
 		}
 
 		public void _UnexpectedErrorHandler (string msg) {
-			Debug.Log (":: Ad test ::" + msg);
+			TDDebugLogger.Log (":: Ad test ::" + msg);
 			LogMessage (TDLogSeverity.error, msg);
 		}
 
 		public static void LogMessage (TDLogSeverity severity, string message) {
 			string prefix = "Tapdaq Unity SDK: ";
 			if (severity == TDLogSeverity.warning) {
-				Debug.LogWarning (prefix + message);
+				TDDebugLogger.LogWarning (prefix + message);
 			} else if (severity == TDLogSeverity.error) {
-				Debug.LogError (prefix + message);
+				TDDebugLogger.LogError (prefix + message);
 			} else {
-				Debug.Log (prefix + message);
+				TDDebugLogger.Log (prefix + message);
 			}
 		}
 
 		public void FetchFailed (string msg) {
-			Debug.Log (msg);
+			TDDebugLogger.Log (msg);
 			LogMessage (TDLogSeverity.debug, "unable to fetch more ads");
+		}
+
+		public static bool IsInitialised() {
+			bool ready = false;
+			#if UNITY_IPHONE
+			CallIosMethod(() => ready = _IsInitialised());
+			#elif UNITY_ANDROID
+			ready = GetAndroidStatic<bool>("IsInitialised");
+			#endif
+			return ready;
 		}
 
 		public static void LaunchMediationDebugger () {

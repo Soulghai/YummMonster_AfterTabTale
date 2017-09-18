@@ -57,6 +57,10 @@ void _ConfigureTapdaq(const char* appIdChar,
     
 }
 
+bool _IsInitialised() {
+    return  [[TapdaqUnityIOS sharedInstance] IsInitialised];
+}
+
 #pragma mark - Banner (Bridge)
 
 void _LoadBannerForSize(const char* sizeChar) {
@@ -538,6 +542,11 @@ bool _isEmpty(const char* str) {
     
     
     [[Tapdaq sharedSession] launch];
+}
+
+- (BOOL) IsInitialised
+{
+    return [[Tapdaq sharedSession] isInitialised];
 }
 
 - (void) setTestDevices:(NSString *)testDevicesJson toProperties:(TDProperties *)properties

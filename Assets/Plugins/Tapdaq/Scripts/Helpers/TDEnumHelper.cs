@@ -38,7 +38,7 @@ namespace Tapdaq {
 				values = Enum.GetValues (typeof(T));
 			}
 			catch(Exception e) {
-				Debug.LogError ("Can't GetEnumFromString: " + enumString);
+				TDDebugLogger.LogError ("Can't GetEnumFromString: " + enumString);
 				return defaultValue;
 			}
 

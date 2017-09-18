@@ -19,6 +19,8 @@ void _ConfigureTapdaq(const char* appIdChar,
                       bool autoReloadAds,
                       const char* pluginVersion);
 
+bool _IsInitialised();
+
 // banner
 
 /**
@@ -125,4 +127,5 @@ void _LoadOfferwall();
                 autoReloadAds:(bool)autoReloadAds
                 pluginVersion:(NSString *)pluginVersion;
 
+-(BOOL) IsInitialised;
 @end

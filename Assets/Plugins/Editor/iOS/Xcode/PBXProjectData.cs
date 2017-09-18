@@ -688,7 +688,7 @@ namespace TDEditor.iOS.Xcode
         {
 			var refs = FileRefsGetByProjectPath (framework);
 			if (refs == null) {
-				UnityEngine.Debug.LogWarning ("Cannot Embed framework " + framework + ". Framework not found.");
+				TDDebugLogger.LogWarning ("Cannot Embed framework " + framework + ". Framework not found.");
 				return;
 			}
 
@@ -700,7 +700,7 @@ namespace TDEditor.iOS.Xcode
 			foreach (var embedFramework in embedFrameworks.files.AsEnumerable()) {
 				var buildFile = BuildFilesGet (embedFramework);
 				if (buildFile.fileRef == fileGuid) {
-					UnityEngine.Debug.Log ("Framework " + framework + " already added to Embed Frameworks.");
+					TDDebugLogger.Log ("Framework " + framework + " already added to Embed Frameworks.");
 					return;
 				}
 			}

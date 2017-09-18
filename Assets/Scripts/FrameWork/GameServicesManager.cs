@@ -71,6 +71,7 @@ public class GameServicesManager : MonoBehaviour {
 		
 		if (IsAuthenticated ()) {
 			SignOut ();
+			PlayerPrefs.SetInt("GameServicesAutoLogin", 0);
 		} else {
 			AuthenticateUser ();
 		}
@@ -128,7 +129,6 @@ public class GameServicesManager : MonoBehaviour {
 				//Debug.Log(string.Format("Error= {0}. " +  _error.ToString()));
 			}
 		});
-		PlayerPrefs.SetInt("GameServicesAutoLogin", 0);
 	}
 
 	#if UNITY_IOS
