@@ -25,7 +25,7 @@ public class MyTapdaq : MonoBehaviour {
 		AdManager.LoadVideo("video");
 		AdManager.LoadRewardedVideo("rewarded");
 		AdManager.RequestBanner(TDMBannerSize.TDMBannerStandard);
-		AdManager.LaunchMediationDebugger ();
+//		AdManager.LaunchMediationDebugger ();
 	}
 	
 	private void OnAdAvailable(TDAdEvent e) {
