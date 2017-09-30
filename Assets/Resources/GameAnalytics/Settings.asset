@@ -26,22 +26,22 @@ MonoBehaviour:
   CustomArea: 
   gameKey:
   - 5ddbc55160cdba129f42a9583fe895c4
-  - ba9c41bd86db9f9fbfcf8653b4020e38
+  - 79ece751f9e5456ebf773be3261d3b40
   secretKey:
   - 9a3e001370889e5532c2a6c95f5fd0d5062adc92
   - 7b95184e3d2fe650c23c382f5486579fb3775579
   Build:
-  - 1.0.1
-  - 1.0.1
+  - 1.0.2
+  - 1.0.2
   SelectedPlatformStudio:
   - 
   - 
   SelectedPlatformGame:
   - 
   - 
-  SelectedPlatformGameID: df930000ffffffff
-  SelectedStudio: 0000000000000000
-  SelectedGame: 0000000000000000
+  SelectedPlatformGameID: e0930000df930000
+  SelectedStudio: 0100000001000000
+  SelectedGame: 0200000001000000
   NewVersion: 
   Changes: 
   SignUpOpen: 0
@@ -85,7 +85,7 @@ MonoBehaviour:
   macIcon: {fileID: 0}
   windowsPhoneIcon: {fileID: 0}
   UseCustomId: 0
-  UsePlayerSettingsBundleVersion: 0
+  UsePlayerSettingsBuildNumber: 0
   SubmitErrors: 1
   MaxErrorCount: 10
   SubmitFpsAverage: 1

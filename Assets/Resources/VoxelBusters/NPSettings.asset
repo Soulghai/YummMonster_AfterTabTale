@@ -100,7 +100,7 @@ MonoBehaviour:
       m_supportsReceiptValidation: 1
       m_validateUsingServerURL: 
     m_android:
-      m_publicKey: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxY4Sne6uJWXv46S8dYjlSisc+RtYZCATiEsP7TgQVsAfF1ev+mNzSv7XPcRt5U9ci7J5sEu6VegZwYWBf9wpN6yuiM3y619o1+Za/XTh7FoUaYvOR/UVzfUsgW1RORS5tS3+T7xi5NJ/NQ5ZM7/9ZDu+g93cmKbiDa1E9UK2Il0+MDGP3jsJ+6R9gF0yBrlQh591/F6ggz5NuAcD+rvvqUMBGIftIpytePZF7XXlInf+n4CN57LID0/Cqfc8ISG9doOmTN8v7Otsn0YO89GGbBnVa8c6Wrr6Q1MvHNeolUXUO4dvpgGACOHjFBz4V21mTemsO+kow2Ko+aNWa2vjawIDAQAB
+      m_publicKey: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvD25RTrrfCrFMZfwU072GTi6jS45+joN/juiMAbUBWZET/o9Zfsl62eBpCLBxGYCww632CatsN6W6+H+TqDtv8ZTHGI0Svn36GDhkbLhy39mY+Qu6khea9WRDJR66ICUu4rJT/QkOegNgTOjDE/FkVrdl5187aSp5kYmsm06ovdfWaoiPT2/cIklr+2ou3fd8Z2eAMiaWXhm1V59hRk1Tpb5DCiETzYwOgMm7aOAVm8sTCbz5JXmUbB0b0ygNliq25aLDcqOx1IK/7uTG13CMExW2N6mlTd3Jq/amG4Rjx7T5m4gvdswv+zq465ULTHSB/NWcqeyOmg1deui1+nNxwIDAQAB
   m_gameServicesSettings:
     m_leaderboardMetadataCollection:
     - m_globalID: First
@@ -108,7 +108,7 @@ MonoBehaviour:
       - m_platform: 0
         m_value: com.appsolutegames.yummmonsters.leaderboard
       - m_platform: 1
-        m_value: com.appsolutegames.yummmonsters.leaderboard
+        m_value: CgkIpP7e6fgHEAIQCg
       - m_platform: 2
         m_value: com.appsolutegames.yummmonsters.leaderboard
     m_achievementMetadataCollection:
@@ -205,8 +205,8 @@ MonoBehaviour:
     m_iOS:
       m_showDefaultAchievementCompletionBanner: 1
     m_android:
-      m_playServicesApplicationID: 900759031107
+      m_playServicesApplicationID: 272952180516
       m_serverClientID: 
-      m_showDefaultErrorDialogs: 1
+      m_showDefaultErrorDialogs: 0
     m_achievementIDCollection: []
     m_leaderboardIDCollection: []

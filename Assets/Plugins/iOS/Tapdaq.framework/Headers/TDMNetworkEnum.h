@@ -11,3 +11,6 @@ typedef NSString * TDMNetwork;
 
 static TDMNetwork const kTDMNetworkUnknown = @"unknown";
 static TDMNetwork const kTDMNetworkTapdaq = @"tapdaq";
+
+static TDMNetwork const TDMFacebookAudienceNetwork = @"facebook";
+static TDMNetwork const TDMAdMob = @"admob";

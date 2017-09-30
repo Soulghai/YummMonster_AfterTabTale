@@ -14,18 +14,22 @@ public class Share : MonoBehaviour {
 		#if UNITY_IOS
 
 		_shareLink = "http://smarturl.it/YummMonsters";
+	
 		#endif
 
 		string shareText = "Wow! I Just Scored ["+DefsGame.gameBestScore.ToString()+ "] in #YummMonsters! Can You Beat Me? @AppsoluteGames " + _shareLink;
 
 
-		string _screenShotPath = Application.persistentDataPath + "/promo1.jpg";
-
-		if (Random.value > 0.5f) {
-			_screenShotPath = Application.persistentDataPath + "/promo2.jpg";
+		string screenShotPath = Application.persistentDataPath + "/promo1.jpg";
+		
+		float ran = Random.value;
+		if (ran < 0.33f) {
+			screenShotPath = Application.persistentDataPath + "/promo2.jpg";
+		}else if (ran < 0.66f) {
+			screenShotPath = Application.persistentDataPath + "/promo3.jpg";
 		}
 
-		ShareImageAtPathUsingShareSheet (shareText, _screenShotPath);
+		ShareImageAtPathUsingShareSheet (shareText, screenShotPath);
 	}
 
 	void ShareImageAtPathUsingShareSheet(string _shareText, string _screenShotPath) {

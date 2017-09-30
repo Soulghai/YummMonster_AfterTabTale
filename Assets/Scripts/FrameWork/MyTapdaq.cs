@@ -25,7 +25,7 @@ public class MyTapdaq : MonoBehaviour {
 		AdManager.LoadVideo("video");
 		AdManager.LoadRewardedVideo("rewarded");
 		AdManager.RequestBanner(TDMBannerSize.TDMBannerStandard);
-//		AdManager.LaunchMediationDebugger ();
+		AdManager.LaunchMediationDebugger ();
 	}
 	
 	private void OnAdAvailable(TDAdEvent e) {
@@ -39,7 +39,7 @@ public class MyTapdaq : MonoBehaviour {
 		if (e.adType == "INTERSTITIAL" && e.tag == "app-launch")
 		{
 			
-			if (!_isShowStartInterstitial)
+			if (!_isShowStartInterstitial && DefsGame.QUEST_GAMEPLAY_Counter > 1)
 			{
 				#if UNITY_IPHONE
 					AdManager.ShowInterstitial("app-launch");

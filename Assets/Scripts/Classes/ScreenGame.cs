@@ -179,7 +179,9 @@ public class ScreenGame : MonoBehaviour {
 	public void EndCurrentGame() {
 		if (!isScreenReviveDone) {
 			isScreenReviveDone = true;
-			if (IsRewardedVideoReadyToShow && DefsGame.currentPointsCount >= Mathf.RoundToInt(DefsGame.gameBestScore * 0.5f) && DefsGame.currentPointsCount > 0) {
+			if (IsRewardedVideoReadyToShow 
+			    && (DefsGame.currentPointsCount >= Mathf.RoundToInt(DefsGame.gameBestScore * 0.5f)||DefsGame.currentPointsCount > 100)
+			    && DefsGame.currentPointsCount > 0) {
 				UIManager.ShowUiElement ("ScreenRevive");
 				UIManager.ShowUiElement ("ScreenReviveBtnRevive");
 				UIManager.ShowUiElement ("ScreenReviveBtnBack");

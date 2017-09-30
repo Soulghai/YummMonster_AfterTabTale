@@ -66,8 +66,6 @@ public class BillingManager : MonoBehaviour {
 
 	private void OnDidFinishTransaction (BillingTransaction _transaction)
 	{
-		FlurryEventsManager.dontSendLengthtEvent = true;
-
 		Debug.Log ("OnDidFinishTransaction()");
 		if (_transaction != null)
 		{

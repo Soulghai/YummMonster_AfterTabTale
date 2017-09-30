@@ -101,6 +101,7 @@ namespace VoxelBusters.NativePlugins
 	            namedArgs: null
 				);
 
+
 			/*// If not enabled by default, resolve manually.
 			if (!PlayServicesResolver.Resolver.AutomaticResolutionEnabled())
 			{

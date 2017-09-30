@@ -10,6 +10,7 @@ public class MyNativeShare : MonoBehaviour {
 	//public string ScreenshotName = "promo1.jpg";
 	public Texture2D image;
 	public Texture2D image2;
+	public Texture2D image3;
 
 	void Awake() {
 		Defs.share = this;
@@ -21,6 +22,10 @@ public class MyNativeShare : MonoBehaviour {
 		bytes = image2.EncodeToPNG();
 		path = Application.persistentDataPath + "/promo2.jpg";
 		File.WriteAllBytes(path, bytes);
+		
+		bytes = image3.EncodeToPNG();
+		path = Application.persistentDataPath + "/promo3.jpg";
+		File.WriteAllBytes(path, bytes);
 		D.Log ("NativeShare.Awake()");
 	}
 
@@ -28,10 +33,13 @@ public class MyNativeShare : MonoBehaviour {
     {
         //string screenShotPath = Application.persistentDataPath + "/" + ScreenshotName;
 		string screenShotPath = Application.persistentDataPath + "/promo1.jpg";
-
-		if (Random.value > 0.5f) {
-			screenShotPath = Application.persistentDataPath + "/promo2.jpg";
-		}
+	    
+	    float ran = Random.value;
+	    if (ran < 0.33f) {
+		    screenShotPath = Application.persistentDataPath + "/promo2.jpg";
+	    }else if (ran < 0.66f) {
+		    screenShotPath = Application.persistentDataPath + "/promo3.jpg";
+	    }
 
         //Application.CaptureScreenshot(ScreenshotName);
 

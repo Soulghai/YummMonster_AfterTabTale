@@ -20,7 +20,7 @@
         <action android:name="com.amazon.inapp.purchasing.NOTIFY" android:permission="com.amazon.inapp.purchasing.Permission.NOTIFY" />
       </intent-filter>
     </receiver>
-    <meta-data android:name="com.google.android.gms.games.APP_ID" android:value="\ 900759031107" />
+    <meta-data android:name="com.google.android.gms.games.APP_ID" android:value="\ 272952180516" />
   </application>
   <!--Permissions-->
   <!--Billing-->

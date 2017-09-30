@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 namespace Tapdaq {
 	public class TDSettings : ScriptableObject {
 
-		public const string pluginVersion = "unity_5.6.1";
+		public const string pluginVersion = "unity_5.7.1";
 		
 		public string ios_applicationID = "";
 		public string ios_clientKey = "";
