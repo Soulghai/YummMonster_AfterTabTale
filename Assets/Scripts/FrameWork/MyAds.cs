@@ -27,7 +27,6 @@ public class MyAds : MonoBehaviour
     void OnEnable()
     {
         GlobalEvents<OnAdsRewardedShowing>.Happened += OnAdsRewardedShowing;
-        
         GlobalEvents<OnAdsVideoTryShow>.Happened += OnAdsVideoTryShow;
         GlobalEvents<OnAdsVideoShowing>.Happened += OnAdsVideoShowing;
     }

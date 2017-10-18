@@ -1,0 +1,24 @@
+<dependencies>
+  <packages>
+    <package>com.android.support:recyclerview-v7:24.0.0</package>
+    <package>com.android.support:support-v4:26.+</package>
+    <package>com.google.android.gms:play-services-ads:10.0.1+</package>
+    <package>com.google.android.gms:play-services-ads-lite:10.0.1+</package>
+    <package>com.google.android.gms:play-services-base:10.0.1+</package>
+    <package>com.google.android.gms:play-services-basement:10.0.1+</package>
+    <package>com.google.android.gms:play-services-games:11.0+</package>
+    <package>com.google.android.gms:play-services-nearby:11.0+</package>
+  </packages>
+  <files>
+    <file>Assets/Plugins/Android/play-services-ads-10.0.1.aar</file>
+    <file>Assets/Plugins/Android/play-services-ads-lite-10.0.1.aar</file>
+    <file>Assets/Plugins/Android/play-services-base-10.0.1.aar</file>
+    <file>Assets/Plugins/Android/play-services-basement-10.0.1.aar</file>
+    <file>Assets/Plugins/Android/play-services-clearcut-10.0.1.aar</file>
+    <file>Assets/Plugins/Android/play-services-gass-10.0.1.aar</file>
+    <file>Assets/Plugins/Android/play-services-tasks-10.0.1.aar</file>
+    <file>Assets/Plugins/Android/recyclerview-v7-24.0.0.aar</file>
+    <file>Assets/Plugins/Android/support-annotations-24.0.0.jar</file>
+    <file>Assets/Plugins/Android/support-v4-24.0.0.aar</file>
+  </files>
+</dependencies>
